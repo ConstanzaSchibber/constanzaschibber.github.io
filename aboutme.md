@@ -1,7 +1,7 @@
 ---
 layout: page
 bigimg:
-  - "/img/IMG_20151103_065613.jpg" : "my picture"
+  - "/img/IMG_20151103_065613.jpg"
 
 ---
 
