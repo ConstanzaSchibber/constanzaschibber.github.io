@@ -1,6 +1,6 @@
 ---
 layout: page
-bigimg:
+img:
   - "/img/banner.png" : "Assemblies in Latin America"
 
 ---
