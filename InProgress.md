@@ -3,7 +3,7 @@ layout: page
 title: "Working Papers"
 ---
 
-The following is a list of some of my current working papers, some of which are under review. My dissertation developed three papers, which are in my [Dissertation page](https://constanzaschibber.github.io/dissertation/)
+The following is a list of some of my current working papers, some of which are under review. My dissertation developed three papers, which are listed on my [Dissertation page](https://constanzaschibber.github.io/dissertation/)
 
 ## Legislative Organization
 
