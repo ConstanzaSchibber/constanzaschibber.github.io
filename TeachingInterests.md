@@ -5,7 +5,7 @@ title: "Teaching Interests"
 
 I would like to teach courses on **methods**, **comparative politics**, and **political economy**.  Below are examples of courses I would like to teach, though this is not an extensive list.
  
-*Methodology:* Introductory courses on linear models and maximum likelihood estimation, and advanced courses on Multilevel Models; Bayesian Statistics; Measurement and Latent Variable Models; Text Analysis; Statistical Programming.
+*Methodology:* Introductory courses on mathematics por political science, linear models and maximum likelihood estimation, and advanced courses on Multilevel Models; Bayesian Statistics; Measurement and Latent Variable Models; Text Analysis; Statistical Programming.
  
 *Comparative Politics:* Introduction to Comparative Politics; Comparative Political Institutions; Comparative Presidential Systems,  Policy-Making Process;  Comparative Judicial Politics; the Politics of Electoral Systems; Spatial Models of Party Competition;  Legislative Politics; or Democratic Representation, Responsiveness, and Accountability (for which I have created a sample syllabus). I can also teach a variety of introductory or advanced courses on Latin American Politics.
  
