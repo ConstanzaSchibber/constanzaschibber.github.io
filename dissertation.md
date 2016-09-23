@@ -1,9 +1,8 @@
 ---
 layout: page
 title: Dissertation
-subtitle: Variations in Separation of Powers: Institutional Designs, Policymaking, and
-Citizens’ and Elites’ Preferences in Latin America
 ---
+
 
 My dissertation project, **Variation in Separation of Powers: Institutional Designs, Policymaking, and Citizens' and Elites' Preferences in Latin America**, develops three essays that analyze why and how political institutions shape the behavior of citizens and elites. My dissertation employs the **Bayesian statistical techniques** most appropriate for establishing a clear connection between my theory and empirics, including a *Bayesian Binomial Hierarchical* model with a cross-level interaction to study the impact of institutional designs on legislators' success, a *Bayesian Hierarchical Ordered Logit* model to study how variation in the balance of power between branches of government affects citizens' perceptions of the work conducted by the president and the legislature, a *Bayesian Dynamic IRT* model to analyze the ideology of justices over time in Colombia. My papers leverage cross-sectional variation in political institutions in Latin American democracies. 
 
