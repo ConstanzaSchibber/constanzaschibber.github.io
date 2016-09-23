@@ -17,7 +17,7 @@ Abstract: To the degree that voters care about competence, expertise, and other 
  
 Abstract: Extending the work of Gailmard and Hammond (2011), we present a model of committee structure in a bicameral legislature.  Our theory allows for asymmetries in terms of legislators' short-run interest in "appearing active."  It illustrates that this type of impatience has implications for the optimal committee structure in a bicameral system.  In equilibrium, the effect of short-run interests are tempered by the latent ideological divergence between the chambers. As a result, the theory provides a richer portrait of the connection between institutions and representation. We derive empirical implications from the model and put them to a test with original data on the committee system of one chamber in a bicameral system. Our results support the logic that the chamber protects itself with an ``extreme'' committee when it is likely to be on the receiving end of proposals from the other chamber but keeps a committee representative of the floor when it is likely to be originating legislation to be considered by the other chamber.
 
-** John W. Patty, Constanza F. Schibber, Elizabeth Maggie Penn, and Brian F. Crisp, Agenda Setting and Party Unity in Bicameral Systems**
+** John W. Patty, Constanza F. Schibber, Elizabeth Maggie Penn, and Brian F. Crisp, Agenda Setting and Party Unity in Bicameral Systems **
 
 Abstract: Bicameral legislatures present a challenge to political parties wishing to compile positive records of accomplishment, including attaining policy goals. We present a model of such coordination problems and explore its implications for intra- and inter-chamber party unity.
  
