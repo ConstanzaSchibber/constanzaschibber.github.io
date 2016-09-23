@@ -2,7 +2,7 @@
 layout: page
 title: Constanza F. Schibber
 subtitle: Postdoctoral Fellow in Political Methodology and Data Science
-css: "/css/index.css"
+css: "/css/main.css"
 bigimg:
   - "/img/IMG_20151103_065613.jpg"
   - "/img/IMG_20150820_161317.jpg": "Saint Louis, MO"
