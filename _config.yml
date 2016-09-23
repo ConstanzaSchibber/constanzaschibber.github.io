@@ -5,7 +5,7 @@
 
 # If you are building a simple GitHub user page (http://username.github.io) then use these settings:
 url: "https://constanzaschibber.github.io/"
-baseurl: ""
+baseurl: "constanzaschibber.github.io"
 
 # If you are building a GitHub project page then use these settings:
 #url: "http://username.github.io/projectname"
@@ -14,10 +14,10 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: #Constanza F. Schibber
+title: Constanza F. Schibber
 
 # Short description of your site
-description: #Postdoctoral Fellow in Political Methodology and Data Science
+description: Postdoctoral Fellow in Political Methodology and Data Science
 
 # --- Navigation bar options --- #
 
