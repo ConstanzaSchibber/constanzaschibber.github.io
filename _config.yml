@@ -30,7 +30,9 @@ navbar-links:
     - Dissertation: "Dissertation"
     - Collaborative Data Gathering Projects: "CDGP"
   Training in Statistics: "training"
-  Teaching: "teaching"
+  Teaching:
+    - Experience: "teaching"
+    - Interests: "TeachingInterests"
   Home: "https://constanzaschibber.github.io"
   
   
