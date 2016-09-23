@@ -16,6 +16,10 @@ Abstract: To the degree that voters care about competence, expertise, and other 
 **John W. Patty, Constanza F. Schibber, Elizabeth Maggie Penn, and Brian F. Crisp, Congruence, Symmetry, and Committee Structure in Bicameral Legislatures, presented at APSA 2015**
  
 Abstract: Extending the work of Gailmard and Hammond (2011), we present a model of committee structure in a bicameral legislature.  Our theory allows for asymmetries in terms of legislators' short-run interest in "appearing active."  It illustrates that this type of impatience has implications for the optimal committee structure in a bicameral system.  In equilibrium, the effect of short-run interests are tempered by the latent ideological divergence between the chambers. As a result, the theory provides a richer portrait of the connection between institutions and representation. We derive empirical implications from the model and put them to a test with original data on the committee system of one chamber in a bicameral system. Our results support the logic that the chamber protects itself with an ``extreme'' committee when it is likely to be on the receiving end of proposals from the other chamber but keeps a committee representative of the floor when it is likely to be originating legislation to be considered by the other chamber.
+
+** John W. Patty, Constanza F. Schibber, Elizabeth Maggie Penn, and Brian F. Crisp, Agenda Setting and Party Unity in Bicameral Systems**
+
+Abstract: Bicameral legislatures present a challenge to political parties wishing to compile positive records of accomplishment, including attaining policy goals. We present a model of such coordination problems and explore its implications for intra- and inter-chamber party unity.
  
 ## Legislative Institutions and Gender
  
@@ -27,6 +31,6 @@ As part of this project we are conducting an expert survey to increase the sampl
 
 ## Elite-Mass Congruence. Solving Methodological Challenges.
 
-**Constanza F. Schibber, A Common Left-Right Space for Citizens and Legislators in Latin America, presented at Polmeth 2013 and APSA**
+**Constanza F. Schibber, A Common Left-Right Space for Citizens and Legislators in Latin America, presented at APSA**
  
 Much of the current literature on political representation pays particular attention to explaining the level of congruence between the preferences of citizens and the preferences and actions of elected officials. This line of inquiry, however, has suffered from methodological limitations because a strong test of any theory requires measures of the policy positions of citizens and politicians on the same scale. To solve this methodological gap, this paper presents a Bayesian model that jointly estimates the location of citizens and legislators on the left-right scale in Latin America. More specifically, I estimate the ideal points of legislators and citizens on a common left-right scale by relying on two set of surveys that tap into citizens' (Latinobarometer & LAPOP) and legislators' (Salamanca University) policy preferences, along with a set of identical questions across the two surveys that allow to scale the estimates within countries. I also estimate the location of legislators' revealed behavior (or actions) by including their voting record on economic policies, along with a set of identical legislators that answered the elite survey and voted on roll-calls. 
