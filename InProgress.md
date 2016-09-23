@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Current Research 
-subtitle: Working Papers
+subtitle: Current Research
 ---
 
 The following is a list of some of my current working papers, some of which are under review.
