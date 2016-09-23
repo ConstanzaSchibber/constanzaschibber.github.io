@@ -33,7 +33,7 @@ title: Teaching
   - I was in charge of two R Labs per week, develping slides for the Lab, creating homeworks and homework solutions, grading, and holding office hours.
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf)
 
-#### Programming Workshops
+### Programming Workshops
 
 1. An Introduction to R, University of Virginia, 2016
 2. Handling Non-English Text in Python, Methods Workshop, WUStL, 2014
