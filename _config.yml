@@ -26,7 +26,7 @@ navbar-links:
 #  About Me: "aboutme"
   CV: "https://graduate.artsci.wustl.edu/constanza/cv"
   Research Agenda:
-    - In Progress: "InProgress"
+    - Working Papers: "InProgress"
     - Dissertation: "dissertation"
     - Collaborative Data Gathering Projects: "CDGP"
   Training in Statistics: "training"
