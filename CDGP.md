@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 In addition to the original data I have collected for my dissertation, published work, and current working papers, I am involved in the following two collaborative projects. 
 
 **(1) Institutional Interactions: The Impacts of Bicameralism and Presidential Powers on Legislative Structure**
