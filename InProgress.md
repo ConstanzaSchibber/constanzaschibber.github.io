@@ -1,6 +1,6 @@
 ---
 layout: page
-subtitle: "Working Papers"
+title: "Working Papers"
 ---
 
 The following is a list of some of my current working papers, some of which are under review.
