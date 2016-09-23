@@ -23,7 +23,8 @@ description: #Postdoctoral Fellow in Political Methodology and Data Science
 
 # List of links in the navigation bar
 navbar-links:
-  About Me: "aboutme"
+#  About Me: "aboutme"
+  CV: "https://graduate.artsci.wustl.edu/constanza/cv"
   Research Agenda:
     - In Progress: "http://deanattali.com/beautiful-jekyll/"
     - Dissertation: "http://www.markdowntutorial.com/"
