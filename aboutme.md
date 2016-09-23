@@ -2,7 +2,9 @@
 layout: page
 ---
 
-I am a Postdoctoral Fellow in Political Methodology and Data Science at the University of Virginia. I recently received a PhD in Political Science at Washington University in Saint Louis. How political institutions affect the correspondence between the policies that citizens and representatives desire and the outcomes that democratic governments produce is the core concern that motivates my research agenda. My work incorporates Bayesian statistics, hierarchical modeling, and the measurement of complex concepts using latent-trait models. 
+I am a Postdoctoral Fellow in Political Methodology and Data Science at the University of Virginia. I recently received a PhD in Political Science at Washington University in Saint Louis. In a nutshell, my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior. I have a particular interest in the measurement of complex concepts, the analysis of multilevel data structures, and the application of texts-as-data.
+
+
 
 
 
