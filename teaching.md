@@ -6,7 +6,7 @@ title: Teaching
 
 ## Courses on Methodology
 
-### Lecturer
+### Lecturer, Fall 2016
 
 1. Generalized Linear Models, graduate level, University of Virginia
   - [Syllabus](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/schibber_mle.pdf)
@@ -32,6 +32,18 @@ title: Teaching
   - [Syllabus](http://pages.wustl.edu/montgomery/qpm)
   - I was in charge of two R Labs per week, develping slides for the Lab, creating homeworks and homework solutions, grading, and holding office hours.
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf)
+
+## Programming Workshops
+
+1. An Introduction to R, University of Virginia, 2016
+2. Handling Non-English Text in Python, Methods Workshop, WUStL, 2014
+  - [Slides](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/cfs_methodsworkshop_python.pdf)
+
+3. Web Mining with Python, WUStL, 2014
+  - [Slides](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/cfs_python_2014.pdf)
+  
+4. An Introduction to Python, WUStL, 2012
+  - [Slides](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/intro_to_python.pdf)
 
 ## Courses on Institutions and Behavior
 
