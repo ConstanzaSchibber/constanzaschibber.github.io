@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Working In Progress
-subtitle: Each post also has a subtitle
+title: Current Research 
+subtitle: Working Papers
 ---
 
 The following is a list of some of my current working papers, some of which are under review.
