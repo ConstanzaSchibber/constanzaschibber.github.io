@@ -1,6 +1,5 @@
 ---
 layout: page
-title: Current Research
 subtitle: Working Papers
 ---
 
