@@ -41,6 +41,6 @@ I have acquired a comprehensive knowledge of statistics through rigorous trainin
 
 ## Teaching
 
-Currently, I am teaching **Generalized Linear Models** (graduate level) in the Department of Politics at the University of Virginia. I will be teaching Hierarchical Models in Spring 2017. While I was at WUStL, I served as teaching assistant for three methods courses. More information on my courses and my teaching evaluations, on my Teaching page.
+Currently, I am teaching **Generalized Linear Models** (graduate level) in the Department of Politics at the University of Virginia. I will be teaching Hierarchical Models in Spring 2017. While I was at WUStL, I served as teaching assistant for three methods courses. More information on my courses and my teaching evaluations, on my [Teaching](https://constanzaschibber.github.io/teaching/) page.
 
 
