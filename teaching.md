@@ -9,11 +9,11 @@ title: Teaching
 ### Lecturer, Fall 2016
 
 1. Generalized Linear Models, graduate level, University of Virginia
-  - [Syllabus](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/schibber_mle.pdf)
+  - [Syllabus](https://goo.gl/zf8dhL)
 
 2. Mathematics for Political Science, graduate level, University of Virginia 
   - One credit course, mandatory for first year students
-  - [Syllabus](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/syllabusfall2016_math_social_sciences.pdf)
+  - [Syllabus](https://goo.gl/iophnd)
 
 ### Teaching Assistant
 
