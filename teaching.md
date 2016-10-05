@@ -9,7 +9,7 @@ title: Teaching
 ### Lecturer, Fall 2016
 
 1. Generalized Linear Models, graduate level, University of Virginia
-  - [Syllabus](https://goo.gl/zf8dhL)
+  - [Syllabus](https://goo.gl/zf8dhL){:target="_blank"}
 
 2. Mathematics for Political Science, graduate level, University of Virginia 
   - One credit course, mandatory for first year students
