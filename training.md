@@ -38,7 +38,7 @@ I have acquired a comprehensive knowledge of statistics through rigorous trainin
 - Natural Experiments I & II (Thad Dunning and Daniel Hidalgo, IQMR, Summer 2012)
 
 - Computer Assisted Text Analysis (Will Lowe and Sven-Oliver Proksch, IQMR, Summer 2012)
-  - I have worked on an application of a Latent Dirichlet Allocation model using the text of the bills introduced by legislators in Argentina and in Brazil in the past 10 years. Specifically, I relied on the text in which they explained to the public why they wanted to introduce a bill to uncover the topics of the bills. I plan to rely on these data and models in my future work. ([Model summary](https://www.dropbox.com/s/0p05uw13w55fpmq/LDA_TopicBills.pdf?dl=0), [Python code](https://github.com/ConstanzaSchibber/).)
+  - I have worked on an application of a Latent Dirichlet Allocation model using the text of the bills introduced by legislators in Argentina and in Brazil in the past 10 years. Specifically, I relied on the text in which they explained to the public why they wanted to introduce a bill to uncover the topics of the bills. I plan to rely on these data and models in my future work. ([Model summary](https://www.dropbox.com/s/0p05uw13w55fpmq/LDA_TopicBills.pdf?dl=0){:target="_blank"}, [Python code](https://github.com/ConstanzaSchibber/){:target="_blank"}.)
 
 ## Teaching & Programming Workshops
 
