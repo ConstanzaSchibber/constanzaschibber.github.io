@@ -38,10 +38,9 @@ title: Teaching
 1. An Introduction to R, University of Virginia, 2016
 2. Handling Non-English Text in Python, Methods Workshop, WUStL, 2014
   - [Slides](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/cfs_methodsworkshop_python.pdf){:target="_blank"}
-
+  - [Code](https://github.com/ConstanzaSchibber/PythonClasses)
 3. Web Mining with Python, WUStL, 2014
   - [Slides](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/cfs_python_2014.pdf){:target="_blank"}
-  
 4. An Introduction to Python, WUStL, 2012
   - [Slides](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/intro_to_python.pdf){:target="_blank"}
 
