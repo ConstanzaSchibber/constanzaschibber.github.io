@@ -1,7 +1,6 @@
 ---
 layout: page
+title: CV
 ---
 
-
-  <iframe src="http://docs.google.com/gview?url=https://github.com/ConstanzaSchibber/constanzaschibber.github.io/blob/master/pdfs/ConstanzaSchibber_cv.pdf&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
-
+My [CV](https://www.dropbox.com/s/a85zje7flxzvbs3/ConstanzaSchibber_cv.pdf?dl=0){:target="_blank"}
