@@ -17,7 +17,7 @@ title: Teaching
   
 ### Lecturer, Spring 2017
 
-3. Multilevel Models for Social Science Research, graduate level, University of Virginia 
+3. Multilevel Models, graduate level, University of Virginia 
   - Bayesian and Frequentist Multilevel Models
   - [Syllabus](https://constanzaschibber.github.io/pdfs/PL8500_MultilevelModels.pdf){:target="_blank"}
 
