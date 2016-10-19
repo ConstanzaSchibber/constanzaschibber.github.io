@@ -14,20 +14,26 @@ title: Teaching
 2. Mathematics for Political Science, graduate level, University of Virginia 
   - One credit course, mandatory for first year students
   - [Syllabus](https://goo.gl/iophnd){:target="_blank"}
+  
+### Lecturer, Spring 2017
+
+3. Multilevel Models for Social Science Research, graduate level, University of Virginia 
+  - Bayesian and Frequentist Multilevel Models
+  - [Syllabus](https://constanzaschibber.github.io/pdfs/PL8500_MultilevelModels.pdf){:target="_blank"}
 
 ### Teaching Assistant
 
-3. Multilevel Modeling for Quantitative Research, graduate level, WUStL
+4. Multilevel Modeling for Quantitative Research, graduate level, WUStL
   - Professor: Jeff Gill
   - [Syllabus](http://pages.wustl.edu/jgill/multilevel-modeling){:target="_blank"}
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf#page=2){:target="_blank"}
 
-4. Measurement and Latent Trait Models, graduate level, WUStL
+5. Measurement and Latent Trait Models, graduate level, WUStL
   - Professor: Jacob Montgomery
   - [Syllabus](https://pages.wustl.edu/montgomery/teaching/measurement-models){:target="_blank"}
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf#page=3){:target="_blank"}
 
-5. Quantitative Political Methodology, undergraduate level, WUStL
+6. Quantitative Political Methodology, undergraduate level, WUStL
   - Professor: Jacob Montgomery
   - [Syllabus](http://pages.wustl.edu/montgomery/qpm){:target="_blank"}
   - I was in charge of two R Labs per week, develping slides for the Lab, creating homeworks and homework solutions, grading, and holding office hours.
