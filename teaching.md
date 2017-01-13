@@ -6,21 +6,21 @@ title: Teaching
 
 ## Courses on Methodology
 
-### Lecturer, Fall 2016
-
-1. Generalized Linear Models, graduate level, University of Virginia
-  - [Syllabus](https://goo.gl/zf8dhL){:target="_blank"}
-
-2. Mathematics for Political Science, graduate level, University of Virginia 
-  - One credit course, mandatory for first year students
-  - [Syllabus](https://goo.gl/iophnd){:target="_blank"}
-  
 ### Lecturer, Spring 2017
 
-3. Multilevel Models, graduate level, University of Virginia 
+1. Multilevel Models, graduate level, University of Virginia 
   - Bayesian and Frequentist Multilevel Models
   - [Syllabus](https://constanzaschibber.github.io/pdfs/PL8500_MultilevelModels.pdf){:target="_blank"}
 
+### Lecturer, Fall 2016
+
+2. Generalized Linear Models, graduate level, University of Virginia
+  - [Syllabus](https://goo.gl/zf8dhL){:target="_blank"}
+
+3. Mathematics for Political Science, graduate level, University of Virginia 
+  - One credit course, mandatory for first year students
+  - [Syllabus](https://goo.gl/iophnd){:target="_blank"}
+  
 ### Teaching Assistant
 
 4. Multilevel Modeling for Quantitative Research, graduate level, WUStL
