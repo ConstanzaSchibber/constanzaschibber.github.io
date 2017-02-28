@@ -6,10 +6,13 @@ css: "/css/index.css"
 bigimg:
   - "/img/IMG_20151103_065613.jpg"
   - "/img/IMG_20150820_161317.jpg": "Saint Louis, MO"
+  - "/img/IMG_2463.jpg": "Cardinal"
 
 ---
 
-I am a *Postdoctoral Fellow in Political Methodology and Data Science* at the Department of Politics, University of Virginia. I recently received a *PhD in Political Science* at Washington University in Saint Louis. In a nutshell, **my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior**. I have a particular interest in the measurement of complex concepts, the analysis of multilevel data structures, the application of texts-as-data, and the empirical implications of theoretical models.
+I am a *Postdoctoral Fellow in Political Methodology and Data Science* at the Department of Politics, University of Virginia, and I recently received a *PhD in Political Science* at Washington University in Saint Louis. I will be joining the Department of Political Science at Michigan State University as *Assistant Professor* in Political Methodology in the Summer of 2017. I will also be affiliated to the Social Science Data Analytics initiative. 
+
+In a nutshell, **my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior**. I have a particular interest in the measurement of complex concepts, the analysis of multilevel data structures, the application of texts-as-data, and the empirical implications of theoretical models.
 
 **How political institutions affect the correspondence between the policies that citizens and representatives desire and the outcomes that democratic governments produce is the core concern that motivates my research agenda.**  In 2016, one of my collaborative projects was awarded the *Carrie Chapman Catt Prize for research in Women and Politics*. 
 
