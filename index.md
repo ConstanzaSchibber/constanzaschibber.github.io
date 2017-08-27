@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Constanza F. Schibber
-subtitle: Postdoctoral Fellow in Political Methodology and Data Science
+subtitle: Assistant Professor in Political Methodology, Michigan State University
 css: "/css/index.css"
 bigimg:
   - "/img/IMG_20151103_065613.jpg"
