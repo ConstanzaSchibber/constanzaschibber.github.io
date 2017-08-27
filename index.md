@@ -10,7 +10,7 @@ bigimg:
 
 ---
 
-I am a *Postdoctoral Fellow in Political Methodology and Data Science* at the Department of Politics, University of Virginia, and I recently received a *PhD in Political Science* at Washington University in Saint Louis. I will be joining the Department of Political Science at **Michigan State University** as *Assistant Professor* in Political Methodology in the Summer of 2017. I will also be affiliated to the Social Science Data Analytics initiative. 
+I am an Assitant Professor at **Michigan State University** focusing in Political Methodology. I received a *PhD in Political Science* at Washington University in Saint Louis and recently was a *Postdoctoral Fellow in Political Methodology and Data Science* at the Department of Politics, University of Virginia.
 
 In a nutshell, **my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior**. I have a particular interest in the measurement of complex concepts, the analysis of multilevel data structures, the application of texts-as-data, and the empirical implications of theoretical models.
 
