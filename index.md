@@ -16,7 +16,7 @@ In a nutshell, **my research uses Bayesian statistics to uncover the effects of 
 
 **How political institutions affect the correspondence between the policies that citizens and representatives desire and the outcomes that democratic governments produce is the core concern that motivates my research agenda.**  In 2016, one of my collaborative projects was awarded the *Carrie Chapman Catt Prize for research in Women and Politics*. 
 
-Prior to starting the Ph.D. program at Washington University, I conducted over 110 interviews with national legislators, justices, and public officials. I am also a Fulbright Alumni and an International Exchange Alumni with the U.S. Department of State. I received my B.A. in Political Science in *Universidad Torcuato Di Tella* in Buenos Aires, Argentina.  
+Prior to starting the Ph.D. program at Washington University, I conducted over 110 interviews with national legislators, justices, and public officials. I am also a Fulbright Alumni and an International Exchange Alumni with the U.S. Department of State. I received my B.A. in Political Science at *Universidad Torcuato Di Tella* in Buenos Aires, Argentina.  
 
 
 <div class="posts-list">
