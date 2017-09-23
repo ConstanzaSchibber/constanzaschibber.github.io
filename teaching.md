@@ -6,34 +6,39 @@ title: Teaching
 
 ## Courses on Methodology
 
+### Assistant Professor, Fall 2017
+
+1. Quantitative Techniques in Political Science, graduate level, Michigan State University
+  - [Syllabus](https://constanzaschibber.github.io/pdfs/Schibber_PLS801.pdf){:target="_blank"}
+
 ### Lecturer, Spring 2017
 
-1. Multilevel Models, graduate level, University of Virginia 
+2. Multilevel Models, graduate level, University of Virginia 
   - Bayesian and Frequentist Multilevel Models
   - [Syllabus](https://constanzaschibber.github.io/pdfs/PL8500_MultilevelModels.pdf){:target="_blank"}
 
 ### Lecturer, Fall 2016
 
-2. Generalized Linear Models, graduate level, University of Virginia
+3. Generalized Linear Models, graduate level, University of Virginia
   - [Syllabus](https://goo.gl/zf8dhL){:target="_blank"}
 
-3. Mathematics for Political Science, graduate level, University of Virginia 
+4. Mathematics for Political Science, graduate level, University of Virginia 
   - One credit course, mandatory for first year students
   - [Syllabus](https://goo.gl/iophnd){:target="_blank"}
   
 ### Teaching Assistant
 
-4. Multilevel Modeling for Quantitative Research, graduate level, WUStL
+5. Multilevel Modeling for Quantitative Research, graduate level, WUStL
   - Professor: Jeff Gill
   - [Syllabus](http://pages.wustl.edu/jgill/multilevel-modeling){:target="_blank"}
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf#page=2){:target="_blank"}
 
-5. Measurement and Latent Trait Models, graduate level, WUStL
+6. Measurement and Latent Trait Models, graduate level, WUStL
   - Professor: Jacob Montgomery
   - [Syllabus](https://pages.wustl.edu/montgomery/teaching/measurement-models){:target="_blank"}
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf#page=3){:target="_blank"}
 
-6. Quantitative Political Methodology, undergraduate level, WUStL
+7. Quantitative Political Methodology, undergraduate level, WUStL
   - Professor: Jacob Montgomery
   - [Syllabus](http://pages.wustl.edu/montgomery/qpm){:target="_blank"}
   - I was in charge of two R Labs per week, develping slides for the Lab, creating homeworks and homework solutions, grading, and holding office hours.
