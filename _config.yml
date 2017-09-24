@@ -24,7 +24,7 @@ description: Postdoctoral Fellow in Political Methodology and Data Science
 # List of links in the navigation bar
 navbar-links:
 #  About Me: "aboutme"
-  CV: "https://constanzaschibber.github.io/pdfs/ConstanzaSchibber_cv.pdf"{:target="_blank"}
+  CV: "https://constanzaschibber.github.io/pdfs/ConstanzaSchibber_cv.pdf"
   Research Agenda:
     - Working Papers: "InProgress"
     - Dissertation: "dissertation"
