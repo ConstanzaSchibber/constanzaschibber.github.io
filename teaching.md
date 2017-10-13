@@ -41,7 +41,6 @@ title: Teaching
 7. Quantitative Political Methodology, undergraduate level, WUStL
   - Professor: Jacob Montgomery
   - [Syllabus](http://pages.wustl.edu/montgomery/qpm){:target="_blank"}
- [//]: - I was in charge of two R Labs per week, develping slides for the Lab, creating homeworks and homework solutions, grading, and holding office hours.
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf#page=3){:target="_blank"}
 
 ### Programming Workshops
