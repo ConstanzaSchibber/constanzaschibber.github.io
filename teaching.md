@@ -6,39 +6,40 @@ title: Teaching
 
 ## Courses on Methodology
 
-### Assistant Professor, Fall 2017
+### Michigan State University, Assistant Professor, Fall 2017- present
 
-1. Quantitative Techniques in Political Science, graduate level, Michigan State University
+1. Multilevel Models, graduate level, Spring 2018
+  - [Syllabus in progress](https://constanzaschibber.github.io/pdfs/Schibber_PLS900.pdf){:target="_blank"}
+
+2. Quantitative Techniques in Political Science, graduate level, Fall 2017
   - [Syllabus](https://constanzaschibber.github.io/pdfs/Schibber_PLS801.pdf){:target="_blank"}
 
-### Lecturer, Spring 2017
+### University of Virginia, Lecturer, Fall 2016- Spring 2017
 
-2. Multilevel Models, graduate level, University of Virginia 
+3. Multilevel Models, graduate level, Spring 2017
   - Bayesian and Frequentist Multilevel Models
   - [Syllabus](https://constanzaschibber.github.io/pdfs/PL8500_MultilevelModels.pdf){:target="_blank"}
 
-### Lecturer, Fall 2016
-
-3. Generalized Linear Models, graduate level, University of Virginia
+4. Generalized Linear Models, graduate level, Fall 2016
   - [Syllabus](https://goo.gl/zf8dhL){:target="_blank"}
 
-4. Mathematics for Political Science, graduate level, University of Virginia 
+5. Mathematics for Political Science, graduate level, Fall 2016
   - One credit course, mandatory for first year students
   - [Syllabus](https://goo.gl/iophnd){:target="_blank"}
   
-### Teaching Assistant
+### Washington University in Saint Louis, Teaching Assistant
 
-5. Multilevel Modeling for Quantitative Research, graduate level, WUStL
+6. Multilevel Modeling for Quantitative Research, graduate level
   - Professor: Jeff Gill
   - [Syllabus](http://pages.wustl.edu/jgill/multilevel-modeling){:target="_blank"}
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf#page=2){:target="_blank"}
 
-6. Measurement and Latent Trait Models, graduate level, WUStL
+7. Measurement and Latent Trait Models, graduate level
   - Professor: Jacob Montgomery
   - [Syllabus](https://pages.wustl.edu/montgomery/teaching/measurement-models){:target="_blank"}
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf#page=3){:target="_blank"}
 
-7. Quantitative Political Methodology, undergraduate level, WUStL
+8. Quantitative Political Methodology, undergraduate level
   - Professor: Jacob Montgomery
   - [Syllabus](http://pages.wustl.edu/montgomery/qpm){:target="_blank"}
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf#page=3){:target="_blank"}
@@ -54,9 +55,9 @@ title: Teaching
 4. An Introduction to Python, WUStL, 2012
   - [Slides](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/intro_to_python.pdf){:target="_blank"}
 
-## Courses on Institutions and Behavior
+## Courses on Institutions and Behavior, undergraduate level
 
-### Teaching Assistant
+### Washington University in Saint Louis, Teaching Assistant
 
 1. Politics of a Connected Public
   - Professor: Betsy Sinclair
