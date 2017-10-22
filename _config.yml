@@ -29,7 +29,7 @@ navbar-links:
     - Working Papers: "InProgress"
     - Dissertation: "dissertation"
     - Collaborative Data Gathering Projects: "CDGP"
-  Training in Statistics: "training"
+# Training in Statistics: "training"
   Teaching: "teaching"
   Home: "https://constanzaschibber.github.io"
   
