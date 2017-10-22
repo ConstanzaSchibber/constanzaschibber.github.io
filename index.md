@@ -10,9 +10,9 @@ bigimg:
 
 ---
 
-I am an Assistant Professor at **Michigan State University** focusing in Political Methodology. I received a *PhD in Political Science* at Washington University in Saint Louis and I was a *Postdoctoral Fellow in Political Methodology and Data Science* at the Department of Politics and the Quantitative Collaborative, University of Virginia.
+I am an Assistant Professor at the Department of Political Science, **Michigan State University**, focusing in Political Methodology. I am also affiliated to the Social Science Analytics initiative. I recently received a *PhD in Political Science* at Washington University in Saint Louis and I was a *Postdoctoral Fellow in Political Methodology and Data Science* at the Department of Politics and the Quantitative Collaborative, University of Virginia.
 
-In a nutshell, **my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior**. I have a particular interest in latent variable models, the analysis of multilevel data structures, and the application of texts-as-data.
+In a nutshell, **my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior**. I have a particular interest in latent variable models and the analysis of multilevel data structures.
 
 **How political institutions affect the correspondence between the policies that citizens and representatives desire and the outcomes that democratic governments produce is the core concern that motivates my research agenda.**  In 2016, one of my collaborative projects was awarded the *Carrie Chapman Catt Prize for research in Women and Politics*. In 2017, another of my collaborative projects was awarded an *APSA Centennial Grant* from the Warren E. Miller Fund in Electoral Politics.
 
