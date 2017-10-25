@@ -55,6 +55,7 @@ title: Teaching
 4. An Introduction to Python, WUStL, 2012
   - [Slides](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/intro_to_python.pdf){:target="_blank"}
 
+
 [\\]:(
 ## Courses on Institutions and Behavior, undergraduate level
 
@@ -73,5 +74,6 @@ title: Teaching
 3. Presidents, Legislators, and Economic Policy in Latin America
   - Professor: Brian F. Crisp
   - [My teaching evaluations](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/evals.pdf#page=5){:target="_blank"}
+  
   )
 
