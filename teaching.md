@@ -56,7 +56,7 @@ title: Teaching
   - [Slides](https://graduate.artsci.wustl.edu/files/graduatepages/imce/constanza/intro_to_python.pdf){:target="_blank"}
 
 
-[\\]:(
+[\\]: #(
 ## Courses on Institutions and Behavior, undergraduate level
 
 ### Washington University in Saint Louis, Teaching Assistant
