@@ -21,7 +21,7 @@ title: Teaching
   - [Syllabus](https://constanzaschibber.github.io/pdfs/PL8500_MultilevelModels.pdf){:target="_blank"}
 
 4. Generalized Linear Models, graduate level, Fall 2016
-  - [Syllabus](https://goo.gl/zf8dhL){:target="_blank"}
+  - [Syllabus](https://constanzaschibber.github.io/pdfs/SyllabusMLE.pdf){:target="_blank"}
 
 5. Mathematics for Political Science, graduate level, Fall 2016
   - One credit course, mandatory for first year students
