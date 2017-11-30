@@ -10,7 +10,7 @@ bigimg:
 
 ---
 
-I am an Assistant Professor at the Department of Political Science, **Michigan State University**, focusing in Political Methodology. I am also affiliated to the *Social Science Data Analytics initiative*. I recently received a PhD in Political Science at *Washington University in Saint Louis* and I was a *Postdoctoral Fellow in Political Methodology and Data Science* at the Department of Politics and the Quantitative Collaborative, University of Virginia.
+I am an Assistant Professor at the Department of Political Science, **Michigan State University** and I am also affiliated to the *Social Science Data Analytics initiative*. I recently received a PhD in Political Science at *Washington University in Saint Louis* and I was a *Postdoctoral Fellow in Political Methodology and Data Science* at the Department of Politics and the Quantitative Collaborative, University of Virginia.
 
 In a nutshell, **my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior**. I have a particular interest in latent variable models and the analysis of multilevel data structures.
 
