@@ -27,7 +27,7 @@ navbar-links:
   CV: "pdfs/Schibbercv.pdf"
   Research Agenda:
     - Working Papers: "InProgress"
-    - Dissertation: "dissertation"
+#    - Dissertation: "dissertation"
     - Collaborative Data Gathering Projects: "CDGP"
 # Training in Statistics: "training"
   Teaching: "teaching"
