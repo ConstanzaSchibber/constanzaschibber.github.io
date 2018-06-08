@@ -14,9 +14,8 @@ I am an Assistant Professor at the Department of Political Science, **Michigan S
 
 In a nutshell, **my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior**. I have a particular interest in latent variable models and the analysis of multilevel data structures.
 
-**How political institutions affect the correspondence between the policies that citizens and representatives desire and the outcomes that democratic governments produce is the core concern that motivates my research agenda.**  In 2016, one of my collaborative projects was awarded the *Carrie Chapman Catt Prize for research in Women and Politics*. In 2017, another of my collaborative projects was awarded an *APSA Centennial Grant* from the Warren E. Miller Fund in Electoral Politics.
+My work is forthcoming in the *American Journal of Political Science*. One of my collaborative projects was awarded the *Carrie Chapman Catt Prize for research in Women and Politics* another of my collaborative projects was awarded an *APSA Centennial Grant* from the Warren E. Miller Fund in Electoral Politics.
 
-[//]: (Prior to starting the Ph.D. program at Washington University, I conducted over 110 interviews with national legislators, justices, and public officials. I am also a Fulbright Alumni and an International Exchange Alumni with the U.S. Department of State. I received my B.A. in Political Science at *Universidad Torcuato Di Tella* in Buenos Aires, Argentina.)  
 
 
 <div class="posts-list">
