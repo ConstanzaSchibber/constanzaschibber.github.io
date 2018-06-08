@@ -3,8 +3,6 @@ layout: page
 title: "Working Papers"
 ---
 
-The following is a list of some of my current working papers, some of which are under review. 
-
 ## Legislative Organization
  
 **John W. Patty, Constanza F. Schibber, Elizabeth Maggie Penn, and Brian F. Crisp, Congruence, Symmetry, and Committee Structure in Bicameral Legislatures, presented at APSA 2017**
