@@ -14,7 +14,7 @@ I am an Assistant Professor at the Department of Political Science, **Michigan S
 
 In a nutshell, **my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior**. I have a particular interest in latent variable models and the analysis of multilevel data structures.
 
-My work is forthcoming in the *American Journal of Political Science*. One of my collaborative projects was awarded the *Carrie Chapman Catt Prize for research in Women and Politics* another of my collaborative projects was awarded an *APSA Centennial Grant* from the Warren E. Miller Fund in Electoral Politics.
+My work has been published by the [*American Journal of Political Science*](https://constanzaschibber.github.io/pdfs/ajps.12429.pdf) and I recently co-edited the winter issue of the Legislative Scholar on [*Innovations on Data, Measurement, and Methods for the Study of Legislative Politics*](https://constanzaschibber.github.io/pdfs/Winter20.pdf). My collaborative projects have been awarded the *Carrie Chapman Catt Prize for research in Women and Politics* and the *APSA Centennial Grant* from the Warren E. Miller Fund in Electoral Politics.
 
 
 
