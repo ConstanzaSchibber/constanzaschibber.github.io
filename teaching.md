@@ -11,8 +11,12 @@ title: Teaching
 1. Multilevel Models, graduate level, Spring 2018
   - [Syllabus](https://constanzaschibber.github.io/pdfs/PLS900_MultilevelModels.pdf){:target="_blank"}
 
-2. Quantitative Techniques in Political Science, graduate level, Fall 2017
+2. Quantitative Techniques in Political Science, graduate level, Fall 2017, Fall 2018, Fall 2019, Fall 2020
   - [Syllabus](https://constanzaschibber.github.io/pdfs/Schibber_PLS801.pdf){:target="_blank"}
+  
+ 3. Quantitative Techniques in Political Science II, graduate level (Linear Regression), Spring 2019, Spring 2020, Spring 2021
+ 
+ 4. Generalized Linear Models, graduate level
 
 ### University of Virginia, Lecturer, Fall 2016- Spring 2017
 
