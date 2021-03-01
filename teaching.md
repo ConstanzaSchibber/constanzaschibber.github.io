@@ -8,7 +8,7 @@ title: Teaching
 
 ### Michigan State University, Assistant Professor, Fall 2017- present
 
-1. Multilevel Models, graduate level, Spring 2018
+1. Multilevel Models, graduate level, Spring 2018, Spring 2021
   - [Syllabus](https://constanzaschibber.github.io/pdfs/PLS900_MultilevelModels.pdf){:target="_blank"}
 
 2. Quantitative Techniques in Political Science, graduate level, Fall 2017, Fall 2018, Fall 2019, Fall 2020
