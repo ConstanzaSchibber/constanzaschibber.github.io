@@ -35,8 +35,8 @@ title: Teaching
     - Lab 3: Diagnostics
     - Lab 4: Visualization & Prediction
     - Lab 5: Unusual Data
-    - Lab 5: Interactions
-    - Lab 6: Missing Data
+    - Lab 6: Interactions
+    - Lab 7: Missing Data
 
 
 4. Generalized Linear Models, graduate level, Fall 2018, 
