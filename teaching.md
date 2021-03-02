@@ -27,6 +27,7 @@ title: Teaching
     - Lab 11: Hypothesis Testing
     - Extra (in class): Integrals; Law of Large Numbers and Central Limit Theorem
   
+  
  3. Quantitative Techniques in Political Science II, graduate level (Linear Regression), Spring 2019, Spring 2020, Spring 2021
   - R Labs:
     - Lab 1: Causality and Measurment
@@ -36,6 +37,7 @@ title: Teaching
     - Lab 5: Unusual Data
     - Lab 5: Interactions
     - Lab 6: Missing Data
+
 
 4. Generalized Linear Models, graduate level, Fall 2018, 
   - [Syllabus](https://constanzaschibber.github.io/pdfs/Schibber_PLS900.pdf){:target="_blank"}
@@ -48,7 +50,6 @@ title: Teaching
     - Lab 6: Models for Ordered Categorical Dependent Variables. Simulation of Predictions.
     - Lab 7: Bootstrapping, Model Checking, Sensitivity Analysis, Cross-validation
     - Lab 8: Missing Data
-
 
 ### University of Virginia, Lecturer, Fall 2016- Spring 2017
 
