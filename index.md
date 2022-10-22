@@ -10,11 +10,11 @@ bigimg:
 
 ---
 
-I am an Assistant Professor at the Department of Political Science, **Michigan State University** and I am also affiliated to the *Social Science Data Analytics initiative*. I recently received a PhD in Political Science at *Washington University in Saint Louis* and I was a *Postdoctoral Fellow in Political Methodology and Data Science* at the Department of Politics and the Quantitative Collaborative, University of Virginia.
-
-In a nutshell, **my research uses Bayesian statistics to uncover the effects of political institutions on elite and citizen behavior**. I have a particular interest in latent variable models and the analysis of multilevel data structures.
+In a nutshell, **my research uses Bayesian statistics to uncover the effects of institutions on elite and citizen behavior across countries**. I have a particular interest in development of new measures and the analysis of multilevel data structures.
 
 My work has been published by the [*American Journal of Political Science*](https://constanzaschibber.github.io/pdfs/ajps.12429.pdf) and I recently co-edited the winter issue of the Legislative Scholar on [*Innovations on Data, Measurement, and Methods for the Study of Legislative Politics*](https://constanzaschibber.github.io/pdfs/Winter20.pdf). My collaborative projects have been awarded the *Carrie Chapman Catt Prize for research in Women and Politics* and the *APSA Centennial Grant* from the Warren E. Miller Fund in Electoral Politics.
+
+I received a PhD in Political Science at *Washington University in Saint Louis*.
 
 
 
