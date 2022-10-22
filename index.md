@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Constanza F. Schibber
-subtitle: Assistant Professor in Political Methodology
+subtitle:
 css: "/css/index.css"
 bigimg:
   - "/img/IMG_20151103_065613.jpg"
