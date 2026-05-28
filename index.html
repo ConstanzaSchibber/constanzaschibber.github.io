@@ -828,7 +828,7 @@ function TweaksPanel({ tweaks, setTweak, onClose }) {
         <button onClick={onClose} style={{ background:'none', border:'none', cursor:'pointer', fontSize:18, color:'var(--text-muted)' }}>×</button>
       </div>
 
-      <label style={{ display:'block', marginBottom:6, color:'var(--text-muted)', fontSize:11, letterSpacing:'0.08em', textTransform:'uppercase' }}>Max ΔE Distance</label>
+      <label style={{ display:'block', marginBottom:6, color:'var(--text-muted)', fontSize:11, letterSpacing:'0.08em', textTransform:'uppercase' }}>ΔE Band</label>
       <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:18 }}>
         <input type="range" min={2} max={20} step={1} value={tweaks.maxDeltaE}
           onChange={e => setTweak('maxDeltaE', +e.target.value)}
@@ -2089,7 +2089,7 @@ function App() {
     });
   }
   const [tweaks, setTweaksState] = useState(/*EDITMODE-BEGIN*/{
-    "maxDeltaE": 10,
+    "maxDeltaE": 3,
     "accentColor": "#C87890"
   }/*EDITMODE-END*/);
 
@@ -2185,12 +2185,15 @@ function App() {
       .slice(0, NEIGHBORS)
       .map(x => x.c);
   }, [colors, zoomAnchor]);
-  const matches = selectedColor
-    ? getClosestColors(selectedColor.hex, 500)
-        .filter(p => !selectedColor.sourceKey || `${p.brand}|${p.shade}` !== selectedColor.sourceKey)
-        .filter(matchesVibe)
-        .filter(p => p.distance <= tweaks.maxDeltaE)
-    : [];
+  const matches = React.useMemo(() => {
+    if (!selectedColor) return [];
+    const candidates = getClosestColors(selectedColor.hex, 500)
+      .filter(p => !selectedColor.sourceKey || `${p.brand}|${p.shade}` !== selectedColor.sourceKey)
+      .filter(matchesVibe);
+    const bestDist = candidates[0]?.distance ?? 0;
+    const inBand = candidates.filter(p => p.distance <= bestDist + tweaks.maxDeltaE);
+    return inBand.length >= 5 ? inBand : candidates.slice(0, 5);
+  }, [selectedColor, tweaks.maxDeltaE, matchesVibe]);
   // matches: array of real products with .hex .brand .product .shade .finish .retailer .distance
   function togglePin(product) {
     setPinnedItems(prev => {
