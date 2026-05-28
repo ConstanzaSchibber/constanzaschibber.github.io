@@ -1,0 +1,12 @@
+{
+  "name": "lipstick-website",
+  "private": true,
+  "scripts": {
+    "build": "babel app.jsx -o app.js && babel color-finder.jsx -o color-finder.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.0",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-react": "^7.24.0"
+  }
+}
