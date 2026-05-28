@@ -135,9 +135,15 @@
   <h1>About this <em>project</em></h1>
 
   <p class="body-text">
-    A color-matching tool built as part of a machine learning capstone. Products are matched using
-    <a href="color-guide.html">CIELAB color space and Delta E distance</a> —
-    the same standard used in cosmetics manufacturing.
+    Makeup shade names are famously unhelpful. "Velvet Plum," "Midnight Berry," "Spiced Rosewood." While evocative, they make it nearly impossible to find what you're actually looking for across brands.
+  </p>
+
+  <p class="body-text">
+    So I built a color-matching tool that skips the names entirely. Pick a color on the wheel and it finds lip products that genuinely match, ranked by how close they are perceptually using the same standard (<a href="color-guide.html">CIELAB and Delta E</a>) that cosmetics manufacturers use internally.
+  </p>
+
+  <p class="body-text">
+    To make that possible, I first had to build the database: automated color extraction for 9,000+ products using image classification, semantic segmentation, and perceptual color clustering, turning unstructured product photos into a searchable color index.
   </p>
 
   <div class="links">
