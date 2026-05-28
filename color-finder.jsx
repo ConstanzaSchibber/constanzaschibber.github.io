@@ -1635,7 +1635,7 @@ function ListPicker({ wishlist, selectedKey, onPick }) {
               }} />
               <div style={{ textAlign:'center', maxWidth:'100%' }}>
                 <div style={{
-                  fontFamily:'DM Sans', fontSize:9, color:'var(--text-muted)',
+                  fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)',
                   letterSpacing:'0.08em', textTransform:'uppercase',
                   overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap',
                 }}>{p.brand}</div>
@@ -1811,7 +1811,7 @@ function PhotoPicker({ sampledHex, onColor }) {
         )}
       </div>
       <div style={{ display:'flex', alignItems:'center', gap:10, maxWidth:240, alignSelf:'flex-start' }}>
-        <label style={{ fontFamily:'DM Sans', fontSize:9, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', whiteSpace:'nowrap' }}>
+        <label style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', whiteSpace:'nowrap' }}>
           Sample
         </label>
         <input
@@ -1820,7 +1820,7 @@ function PhotoPicker({ sampledHex, onColor }) {
           className="dainty-range"
           style={{ flex:1, accentColor:'var(--blush)', height:2 }}
         />
-        <span style={{ fontFamily:'DM Sans', fontSize:9, color:'var(--text-muted)', minWidth:28, textAlign:'right' }}>{radius}px</span>
+        <span style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', minWidth:28, textAlign:'right' }}>{radius}px</span>
       </div>
       <div style={{ display:'flex', gap:8 }}>
         <button

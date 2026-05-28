@@ -2538,7 +2538,7 @@ function ListPicker({
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'DM Sans',
-        fontSize: 9,
+        fontSize: 12,
         color: 'var(--text-muted)',
         letterSpacing: '0.08em',
         textTransform: 'uppercase',
@@ -2848,7 +2848,7 @@ function PhotoPicker({
   }, /*#__PURE__*/React.createElement("label", {
     style: {
       fontFamily: 'DM Sans',
-      fontSize: 9,
+      fontSize: 12,
       color: 'var(--text-muted)',
       letterSpacing: '0.08em',
       textTransform: 'uppercase',
@@ -2869,7 +2869,7 @@ function PhotoPicker({
   }), /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: 'DM Sans',
-      fontSize: 9,
+      fontSize: 12,
       color: 'var(--text-muted)',
       minWidth: 28,
       textAlign: 'right'
