@@ -548,6 +548,102 @@ function ColorWheel({
   })));
 }
 
+// ── Filter Dropdown ───────────────────────────────────────────────────────────
+function FilterDropdown({
+  label,
+  count,
+  onClear,
+  isOpen,
+  onOpen,
+  children
+}) {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    if (!isOpen) return;
+    function handle(e) {
+      if (ref.current && !ref.current.contains(e.target)) onOpen(null);
+    }
+    document.addEventListener('mousedown', handle);
+    return () => document.removeEventListener('mousedown', handle);
+  }, [isOpen, onOpen]);
+  return /*#__PURE__*/React.createElement("div", {
+    ref: ref,
+    style: {
+      position: 'relative'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => onOpen(isOpen ? null : label),
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 7,
+      fontSize: 11,
+      padding: '5px 12px',
+      borderRadius: 20,
+      border: `1.5px solid ${count ? 'var(--espresso-mid)' : 'var(--border)'}`,
+      background: count ? 'rgba(92,61,48,0.08)' : isOpen ? 'var(--cream-dark)' : 'transparent',
+      color: count ? 'var(--espresso-mid)' : 'var(--text-muted)',
+      cursor: 'pointer',
+      fontFamily: 'DM Sans',
+      fontWeight: count ? 500 : 400,
+      letterSpacing: '0.06em',
+      textTransform: 'uppercase',
+      transition: 'all 0.15s'
+    }
+  }, label, count > 0 && /*#__PURE__*/React.createElement("span", {
+    style: {
+      background: 'var(--espresso-mid)',
+      color: '#fff',
+      fontSize: 9,
+      padding: '1px 6px',
+      borderRadius: 20,
+      lineHeight: 1.6
+    }
+  }, count), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 7,
+      opacity: 0.55,
+      transform: isOpen ? 'rotate(180deg)' : 'none',
+      transition: 'transform 0.15s'
+    }
+  }, "\u25BC")), isOpen && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      top: 'calc(100% + 7px)',
+      left: 0,
+      zIndex: 60,
+      background: '#fff',
+      border: '1px solid var(--border)',
+      borderRadius: 14,
+      boxShadow: '0 10px 30px rgba(42,26,20,0.18)',
+      padding: 14,
+      minWidth: 200,
+      maxWidth: 300,
+      animation: 'fadeUp 0.15s ease'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: 6
+    }
+  }, children), count > 0 && /*#__PURE__*/React.createElement("button", {
+    onClick: onClear,
+    style: {
+      marginTop: 10,
+      fontSize: 10,
+      padding: '4px 10px',
+      borderRadius: 20,
+      border: '1px solid var(--border)',
+      background: 'transparent',
+      color: 'var(--text-muted)',
+      cursor: 'pointer',
+      fontFamily: 'DM Sans',
+      letterSpacing: '0.04em'
+    }
+  }, "Clear ", label.toLowerCase())));
+}
+
 // ── Results Table ─────────────────────────────────────────────────────────────
 function ResultsTable({
   selectedColor,
@@ -565,6 +661,7 @@ function ResultsTable({
   const [activeBrands, setActiveBrands] = React.useState([]);
   const [activeTones, setActiveTones] = React.useState([]);
   const [activeTiers, setActiveTiers] = React.useState([]);
+  const [openFilter, setOpenFilter] = React.useState(null);
 
   // Reset filters when selection changes
   React.useEffect(() => {
@@ -572,6 +669,7 @@ function ResultsTable({
     setActiveBrands([]);
     setActiveTones([]);
     setActiveTiers([]);
+    setOpenFilter(null);
   }, [selectedColor?.id]);
 
   // Classify undertone from LAB hue angle (matches Vibe panel logic)
@@ -921,81 +1019,30 @@ function ResultsTable({
       flexShrink: 0,
       marginLeft: 10
     }
-  }, "Reset to my shade"))), allTiers.length > 1 && /*#__PURE__*/React.createElement("div", {
+  }, "Reset to my shade"))), (allFinishes.length > 1 || orderedTones.length >= 1 || allBrands.length > 1 || allTiers.length > 1) && /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       flexWrap: 'wrap',
-      gap: 6,
-      marginBottom: 8,
-      alignItems: 'center'
+      alignItems: 'center',
+      gap: 8,
+      marginBottom: 14
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 11,
+      fontSize: 10,
       color: 'var(--text-muted)',
-      letterSpacing: '0.08em',
+      letterSpacing: '0.1em',
       textTransform: 'uppercase',
-      marginRight: 4,
       fontFamily: 'DM Sans',
-      minWidth: 40
+      marginRight: 2
     }
-  }, "Price"), allTiers.map(t => {
-    const active = activeTiers.includes(t);
-    return /*#__PURE__*/React.createElement("button", {
-      key: t,
-      onClick: () => toggleTier(t),
-      style: {
-        fontSize: 11,
-        padding: '4px 12px',
-        borderRadius: 20,
-        border: `1.5px solid ${active ? '#8a6e2e' : 'var(--border)'}`,
-        background: active ? 'rgba(138,110,46,0.12)' : 'transparent',
-        color: active ? '#8a6e2e' : 'var(--text-muted)',
-        cursor: 'pointer',
-        fontFamily: 'DM Sans',
-        fontWeight: active ? 600 : 400,
-        letterSpacing: '0.04em',
-        transition: 'all 0.15s'
-      }
-    }, t, active && /*#__PURE__*/React.createElement("span", {
-      style: {
-        marginLeft: 5,
-        opacity: 0.6,
-        fontSize: 10
-      }
-    }, "\u2715"));
-  }), activeTiers.length > 0 && /*#__PURE__*/React.createElement("button", {
-    onClick: () => setActiveTiers([]),
-    style: {
-      fontSize: 11,
-      padding: '4px 10px',
-      borderRadius: 20,
-      border: '1px solid var(--border)',
-      background: 'transparent',
-      color: 'var(--text-muted)',
-      cursor: 'pointer',
-      fontFamily: 'DM Sans',
-      letterSpacing: '0.04em'
-    }
-  }, "Clear")), allFinishes.length > 1 && /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: 6,
-      marginBottom: 8,
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 11,
-      color: 'var(--text-muted)',
-      letterSpacing: '0.08em',
-      textTransform: 'uppercase',
-      marginRight: 4,
-      fontFamily: 'DM Sans',
-      minWidth: 40
-    }
-  }, "Finish"), allFinishes.map(f => {
+  }, "Filter"), allFinishes.length > 1 && /*#__PURE__*/React.createElement(FilterDropdown, {
+    label: "Finish",
+    count: activeFinishes.length,
+    isOpen: openFilter === 'Finish',
+    onOpen: setOpenFilter,
+    onClear: () => setActiveFinishes([])
+  }, allFinishes.map(f => {
     const active = activeFinishes.includes(f);
     const fc = finishColor(f);
     return /*#__PURE__*/React.createElement("button", {
@@ -1012,7 +1059,8 @@ function ResultsTable({
         fontFamily: 'DM Sans',
         fontWeight: active ? 500 : 400,
         letterSpacing: '0.04em',
-        transition: 'all 0.15s'
+        transition: 'all 0.15s',
+        whiteSpace: 'nowrap'
       }
     }, f, active && /*#__PURE__*/React.createElement("span", {
       style: {
@@ -1021,38 +1069,13 @@ function ResultsTable({
         fontSize: 10
       }
     }, "\u2715"));
-  }), activeFinishes.length > 0 && /*#__PURE__*/React.createElement("button", {
-    onClick: () => setActiveFinishes([]),
-    style: {
-      fontSize: 11,
-      padding: '4px 10px',
-      borderRadius: 20,
-      border: '1px solid var(--border)',
-      background: 'transparent',
-      color: 'var(--text-muted)',
-      cursor: 'pointer',
-      fontFamily: 'DM Sans',
-      letterSpacing: '0.04em'
-    }
-  }, "Clear")), orderedTones.length >= 1 && /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: 6,
-      marginBottom: 8,
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 11,
-      color: 'var(--text-muted)',
-      letterSpacing: '0.08em',
-      textTransform: 'uppercase',
-      marginRight: 4,
-      fontFamily: 'DM Sans',
-      minWidth: 40
-    }
-  }, "Undertone"), orderedTones.map(t => {
+  })), orderedTones.length >= 1 && /*#__PURE__*/React.createElement(FilterDropdown, {
+    label: "Undertone",
+    count: activeTones.length,
+    isOpen: openFilter === 'Undertone',
+    onOpen: setOpenFilter,
+    onClear: () => setActiveTones([])
+  }, orderedTones.map(t => {
     const active = activeTones.includes(t);
     return /*#__PURE__*/React.createElement("button", {
       key: t,
@@ -1068,40 +1091,17 @@ function ResultsTable({
         fontFamily: 'DM Sans',
         letterSpacing: '0.04em',
         textTransform: 'capitalize',
-        transition: 'all 0.15s'
+        transition: 'all 0.15s',
+        whiteSpace: 'nowrap'
       }
     }, t);
-  }), activeTones.length > 0 && /*#__PURE__*/React.createElement("button", {
-    onClick: () => setActiveTones([]),
-    style: {
-      fontSize: 11,
-      padding: '4px 10px',
-      borderRadius: 20,
-      border: '1px solid var(--border)',
-      background: 'transparent',
-      color: 'var(--text-muted)',
-      cursor: 'pointer',
-      fontFamily: 'DM Sans'
-    }
-  }, "Clear")), allBrands.length > 1 && /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: 6,
-      marginBottom: 14,
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 11,
-      color: 'var(--text-muted)',
-      letterSpacing: '0.08em',
-      textTransform: 'uppercase',
-      marginRight: 4,
-      fontFamily: 'DM Sans',
-      minWidth: 40
-    }
-  }, "Brand"), allBrands.map(b => {
+  })), allBrands.length > 1 && /*#__PURE__*/React.createElement(FilterDropdown, {
+    label: "Brand",
+    count: activeBrands.length,
+    isOpen: openFilter === 'Brand',
+    onOpen: setOpenFilter,
+    onClear: () => setActiveBrands([])
+  }, allBrands.map(b => {
     const active = activeBrands.includes(b);
     return /*#__PURE__*/React.createElement("button", {
       key: b,
@@ -1117,7 +1117,8 @@ function ResultsTable({
         fontFamily: 'DM Sans',
         fontWeight: active ? 500 : 400,
         letterSpacing: '0.04em',
-        transition: 'all 0.15s'
+        transition: 'all 0.15s',
+        whiteSpace: 'nowrap'
       }
     }, b, active && /*#__PURE__*/React.createElement("span", {
       style: {
@@ -1126,25 +1127,44 @@ function ResultsTable({
         fontSize: 10
       }
     }, "\u2715"));
-  }), activeBrands.length > 0 && /*#__PURE__*/React.createElement("button", {
-    onClick: () => setActiveBrands([]),
-    style: {
-      fontSize: 11,
-      padding: '4px 10px',
-      borderRadius: 20,
-      border: '1px solid var(--border)',
-      background: 'transparent',
-      color: 'var(--text-muted)',
-      cursor: 'pointer',
-      fontFamily: 'DM Sans',
-      letterSpacing: '0.04em'
-    }
-  }, "Clear")), (activeFinishes.length > 0 || activeBrands.length > 0 || activeTones.length > 0 || activeTiers.length > 0) && /*#__PURE__*/React.createElement("div", {
+  })), allTiers.length > 1 && /*#__PURE__*/React.createElement(FilterDropdown, {
+    label: "Price",
+    count: activeTiers.length,
+    isOpen: openFilter === 'Price',
+    onOpen: setOpenFilter,
+    onClear: () => setActiveTiers([])
+  }, allTiers.map(t => {
+    const active = activeTiers.includes(t);
+    return /*#__PURE__*/React.createElement("button", {
+      key: t,
+      onClick: () => toggleTier(t),
+      style: {
+        fontSize: 11,
+        padding: '4px 12px',
+        borderRadius: 20,
+        border: `1.5px solid ${active ? '#8a6e2e' : 'var(--border)'}`,
+        background: active ? 'rgba(138,110,46,0.12)' : 'transparent',
+        color: active ? '#8a6e2e' : 'var(--text-muted)',
+        cursor: 'pointer',
+        fontFamily: 'DM Sans',
+        fontWeight: active ? 600 : 400,
+        letterSpacing: '0.04em',
+        transition: 'all 0.15s',
+        whiteSpace: 'nowrap'
+      }
+    }, t, active && /*#__PURE__*/React.createElement("span", {
+      style: {
+        marginLeft: 5,
+        opacity: 0.6,
+        fontSize: 10
+      }
+    }, "\u2715"));
+  })), (activeFinishes.length > 0 || activeBrands.length > 0 || activeTones.length > 0 || activeTiers.length > 0) && /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
       gap: 10,
-      marginBottom: 10
+      marginLeft: 'auto'
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -1170,7 +1190,7 @@ function ResultsTable({
       fontFamily: 'DM Sans',
       letterSpacing: '0.04em'
     }
-  }, "Clear all filters")), /*#__PURE__*/React.createElement("div", {
+  }, "Clear all"))), /*#__PURE__*/React.createElement("div", {
     style: {
       flex: 1,
       overflowY: 'auto',
@@ -3674,9 +3694,6 @@ function App() {
   }, {
     id: 'photo',
     label: 'From photo'
-  }, {
-    id: 'hex',
-    label: 'From hex'
   }, ...(wishlist.length > 0 ? [{
     id: 'list',
     label: 'From My List'

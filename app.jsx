@@ -389,15 +389,67 @@ function ColorWheel({ colors, selectedId, onSelect, hoveredId, onHover, preserve
   );
 }
 
+// ── Filter Dropdown ───────────────────────────────────────────────────────────
+function FilterDropdown({ label, count, onClear, isOpen, onOpen, children }) {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    if (!isOpen) return;
+    function handle(e) { if (ref.current && !ref.current.contains(e.target)) onOpen(null); }
+    document.addEventListener('mousedown', handle);
+    return () => document.removeEventListener('mousedown', handle);
+  }, [isOpen, onOpen]);
+  return (
+    <div ref={ref} style={{ position:'relative' }}>
+      <button onClick={() => onOpen(isOpen ? null : label)} style={{
+        display:'inline-flex', alignItems:'center', gap:7,
+        fontSize:11, padding:'5px 12px', borderRadius:20,
+        border:`1.5px solid ${count ? 'var(--espresso-mid)' : 'var(--border)'}`,
+        background: count ? 'rgba(92,61,48,0.08)' : (isOpen ? 'var(--cream-dark)' : 'transparent'),
+        color: count ? 'var(--espresso-mid)' : 'var(--text-muted)',
+        cursor:'pointer', fontFamily:'DM Sans', fontWeight: count ? 500 : 400,
+        letterSpacing:'0.06em', textTransform:'uppercase', transition:'all 0.15s',
+      }}>
+        {label}
+        {count > 0 && (
+          <span style={{ background:'var(--espresso-mid)', color:'#fff', fontSize:9, padding:'1px 6px', borderRadius:20, lineHeight:1.6 }}>{count}</span>
+        )}
+        <span style={{ fontSize:7, opacity:0.55, transform: isOpen ? 'rotate(180deg)':'none', transition:'transform 0.15s' }}>▼</span>
+      </button>
+      {isOpen && (
+        <div style={{
+          position:'absolute', top:'calc(100% + 7px)', left:0, zIndex:60,
+          background:'#fff', border:'1px solid var(--border)', borderRadius:14,
+          boxShadow:'0 10px 30px rgba(42,26,20,0.18)', padding:14,
+          minWidth:200, maxWidth:300,
+          animation:'fadeUp 0.15s ease',
+        }}>
+          <div style={{ display:'flex', flexWrap:'wrap', gap:6 }}>
+            {children}
+          </div>
+          {count > 0 && (
+            <button onClick={onClear} style={{
+              marginTop:10, fontSize:10, padding:'4px 10px', borderRadius:20,
+              border:'1px solid var(--border)', background:'transparent',
+              color:'var(--text-muted)', cursor:'pointer', fontFamily:'DM Sans',
+              letterSpacing:'0.04em',
+            }}>Clear {label.toLowerCase()}</button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Results Table ─────────────────────────────────────────────────────────────
 function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togglePin, wishlist, toggleWishlist, toneRamp, toneIdx, setToneIdx }) {
   const [activeFinishes, setActiveFinishes] = React.useState([]);
   const [activeBrands, setActiveBrands] = React.useState([]);
   const [activeTones, setActiveTones] = React.useState([]);
   const [activeTiers, setActiveTiers] = React.useState([]);
+  const [openFilter, setOpenFilter] = React.useState(null);
 
   // Reset filters when selection changes
-  React.useEffect(() => { setActiveFinishes([]); setActiveBrands([]); setActiveTones([]); setActiveTiers([]); }, [selectedColor?.id]);
+  React.useEffect(() => { setActiveFinishes([]); setActiveBrands([]); setActiveTones([]); setActiveTiers([]); setOpenFilter(null); }, [selectedColor?.id]);
 
   // Classify undertone from LAB hue angle (matches Vibe panel logic)
   function toneOf(p) {
@@ -600,143 +652,106 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
         </div>
       )}
 
-      {/* Price tier filter chips */}
-      {allTiers.length > 1 && (
-        <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:8, alignItems:'center' }}>
-          <span style={{ fontSize:11, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', marginRight:4, fontFamily:'DM Sans', minWidth:40 }}>
-            Price
+      {/* Compact filter bar */}
+      {(allFinishes.length > 1 || orderedTones.length >= 1 || allBrands.length > 1 || allTiers.length > 1) && (
+        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', gap:8, marginBottom:14 }}>
+          <span style={{ fontSize:10, color:'var(--text-muted)', letterSpacing:'0.1em', textTransform:'uppercase', fontFamily:'DM Sans', marginRight:2 }}>
+            Filter
           </span>
-          {allTiers.map(t => {
-            const active = activeTiers.includes(t);
-            return (
-              <button key={t} onClick={() => toggleTier(t)} style={{
-                fontSize:11, padding:'4px 12px', borderRadius:20,
-                border: `1.5px solid ${active ? '#8a6e2e' : 'var(--border)'}`,
-                background: active ? 'rgba(138,110,46,0.12)' : 'transparent',
-                color: active ? '#8a6e2e' : 'var(--text-muted)',
-                cursor:'pointer', fontFamily:'DM Sans', fontWeight: active ? 600 : 400,
-                letterSpacing:'0.04em', transition:'all 0.15s',
-              }}>
-                {t}{active && <span style={{ marginLeft:5, opacity:0.6, fontSize:10 }}>✕</span>}
-              </button>
-            );
-          })}
-          {activeTiers.length > 0 && (
-            <button onClick={() => setActiveTiers([])} style={{
-              fontSize:11, padding:'4px 10px', borderRadius:20, border:'1px solid var(--border)',
-              background:'transparent', color:'var(--text-muted)', cursor:'pointer',
-              fontFamily:'DM Sans', letterSpacing:'0.04em',
-            }}>Clear</button>
-          )}
-        </div>
-      )}
 
-      {/* Finish filter chips */}
-      {allFinishes.length > 1 && (
-        <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:8, alignItems:'center' }}>
-          <span style={{ fontSize:11, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', marginRight:4, fontFamily:'DM Sans', minWidth:40 }}>
-            Finish
-          </span>
-          {allFinishes.map(f => {
-            const active = activeFinishes.includes(f);
-            const fc = finishColor(f);
-            return (
-              <button key={f} onClick={() => toggleFinish(f)} style={{
-                fontSize:11, padding:'4px 12px', borderRadius:20,
-                border: `1.5px solid ${active ? fc : 'var(--border)'}`,
-                background: active ? fc + '22' : 'transparent',
-                color: active ? fc : 'var(--text-muted)',
-                cursor:'pointer', fontFamily:'DM Sans', fontWeight: active ? 500 : 400,
-                letterSpacing:'0.04em', transition:'all 0.15s',
-              }}>
-                {f}{active && <span style={{ marginLeft:5, opacity:0.6, fontSize:10 }}>✕</span>}
-              </button>
-            );
-          })}
-          {activeFinishes.length > 0 && (
-            <button onClick={() => setActiveFinishes([])} style={{
-              fontSize:11, padding:'4px 10px', borderRadius:20, border:'1px solid var(--border)',
-              background:'transparent', color:'var(--text-muted)', cursor:'pointer',
-              fontFamily:'DM Sans', letterSpacing:'0.04em',
-            }}>Clear</button>
+          {allFinishes.length > 1 && (
+            <FilterDropdown label="Finish" count={activeFinishes.length}
+              isOpen={openFilter==='Finish'} onOpen={setOpenFilter}
+              onClear={() => setActiveFinishes([])}>
+              {allFinishes.map(f => {
+                const active = activeFinishes.includes(f);
+                const fc = finishColor(f);
+                return (
+                  <button key={f} onClick={() => toggleFinish(f)} style={{
+                    fontSize:11, padding:'4px 12px', borderRadius:20,
+                    border:`1.5px solid ${active ? fc : 'var(--border)'}`,
+                    background: active ? fc + '22' : 'transparent',
+                    color: active ? fc : 'var(--text-muted)',
+                    cursor:'pointer', fontFamily:'DM Sans', fontWeight: active ? 500 : 400,
+                    letterSpacing:'0.04em', transition:'all 0.15s', whiteSpace:'nowrap',
+                  }}>{f}{active && <span style={{ marginLeft:5, opacity:0.6, fontSize:10 }}>✕</span>}</button>
+                );
+              })}
+            </FilterDropdown>
           )}
-        </div>
-      )}
 
-      {/* Undertone filter chips */}
-      {orderedTones.length >= 1 && (
-        <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:8, alignItems:'center' }}>
-          <span style={{ fontSize:11, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', marginRight:4, fontFamily:'DM Sans', minWidth:40 }}>
-            Undertone
-          </span>
-          {orderedTones.map(t => {
-            const active = activeTones.includes(t);
-            return (
-              <button key={t} onClick={() => toggleTone(t)} style={{
-                fontSize:11, padding:'4px 12px', borderRadius:20,
-                border: `1.5px solid ${active ? 'var(--espresso-mid)' : 'var(--border)'}`,
-                background: active ? 'rgba(92,61,48,0.10)' : 'transparent',
-                color: active ? 'var(--espresso-mid)' : 'var(--text-muted)',
-                cursor:'pointer', fontFamily:'DM Sans', letterSpacing:'0.04em',
-                textTransform:'capitalize',
-                transition:'all 0.15s',
-              }}>{t}</button>
-            );
-          })}
-          {activeTones.length > 0 && (
-            <button onClick={() => setActiveTones([])} style={{
-              fontSize:11, padding:'4px 10px', borderRadius:20, border:'1px solid var(--border)',
-              background:'transparent', color:'var(--text-muted)', cursor:'pointer',
-              fontFamily:'DM Sans',
-            }}>Clear</button>
+          {orderedTones.length >= 1 && (
+            <FilterDropdown label="Undertone" count={activeTones.length}
+              isOpen={openFilter==='Undertone'} onOpen={setOpenFilter}
+              onClear={() => setActiveTones([])}>
+              {orderedTones.map(t => {
+                const active = activeTones.includes(t);
+                return (
+                  <button key={t} onClick={() => toggleTone(t)} style={{
+                    fontSize:11, padding:'4px 12px', borderRadius:20,
+                    border:`1.5px solid ${active ? 'var(--espresso-mid)' : 'var(--border)'}`,
+                    background: active ? 'rgba(92,61,48,0.10)' : 'transparent',
+                    color: active ? 'var(--espresso-mid)' : 'var(--text-muted)',
+                    cursor:'pointer', fontFamily:'DM Sans', letterSpacing:'0.04em',
+                    textTransform:'capitalize', transition:'all 0.15s', whiteSpace:'nowrap',
+                  }}>{t}</button>
+                );
+              })}
+            </FilterDropdown>
           )}
-        </div>
-      )}
 
-      {/* Brand filter chips */}
-      {allBrands.length > 1 && (
-        <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:14, alignItems:'center' }}>
-          <span style={{ fontSize:11, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', marginRight:4, fontFamily:'DM Sans', minWidth:40 }}>
-            Brand
-          </span>
-          {allBrands.map(b => {
-            const active = activeBrands.includes(b);
-            return (
-              <button key={b} onClick={() => toggleBrand(b)} style={{
-                fontSize:11, padding:'4px 12px', borderRadius:20,
-                border: `1.5px solid ${active ? 'var(--espresso-mid)' : 'var(--border)'}`,
-                background: active ? 'rgba(92,61,48,0.10)' : 'transparent',
-                color: active ? 'var(--espresso-mid)' : 'var(--text-muted)',
-                cursor:'pointer', fontFamily:'DM Sans', fontWeight: active ? 500 : 400,
-                letterSpacing:'0.04em', transition:'all 0.15s',
-              }}>
-                {b}{active && <span style={{ marginLeft:5, opacity:0.6, fontSize:10 }}>✕</span>}
-              </button>
-            );
-          })}
-          {activeBrands.length > 0 && (
-            <button onClick={() => setActiveBrands([])} style={{
-              fontSize:11, padding:'4px 10px', borderRadius:20, border:'1px solid var(--border)',
-              background:'transparent', color:'var(--text-muted)', cursor:'pointer',
-              fontFamily:'DM Sans', letterSpacing:'0.04em',
-            }}>Clear</button>
+          {allBrands.length > 1 && (
+            <FilterDropdown label="Brand" count={activeBrands.length}
+              isOpen={openFilter==='Brand'} onOpen={setOpenFilter}
+              onClear={() => setActiveBrands([])}>
+              {allBrands.map(b => {
+                const active = activeBrands.includes(b);
+                return (
+                  <button key={b} onClick={() => toggleBrand(b)} style={{
+                    fontSize:11, padding:'4px 12px', borderRadius:20,
+                    border:`1.5px solid ${active ? 'var(--espresso-mid)' : 'var(--border)'}`,
+                    background: active ? 'rgba(92,61,48,0.10)' : 'transparent',
+                    color: active ? 'var(--espresso-mid)' : 'var(--text-muted)',
+                    cursor:'pointer', fontFamily:'DM Sans', fontWeight: active ? 500 : 400,
+                    letterSpacing:'0.04em', transition:'all 0.15s', whiteSpace:'nowrap',
+                  }}>{b}{active && <span style={{ marginLeft:5, opacity:0.6, fontSize:10 }}>✕</span>}</button>
+                );
+              })}
+            </FilterDropdown>
           )}
-        </div>
-      )}
 
-      {/* Active filter summary */}
-      {(activeFinishes.length > 0 || activeBrands.length > 0 || activeTones.length > 0 || activeTiers.length > 0) && (
-        <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:10 }}>
-          <span style={{ fontSize:11, color:'var(--text-muted)', fontFamily:'DM Sans' }}>
-            {filtered.length} of {matches.length} shown
-          </span>
-          <button onClick={() => { setActiveFinishes([]); setActiveBrands([]); setActiveTones([]); setActiveTiers([]); }} style={{
-            fontSize:11, padding:'3px 10px', borderRadius:20, border:'1px solid var(--border)',
-            background:'transparent', color:'var(--blush)', cursor:'pointer',
-            fontFamily:'DM Sans', letterSpacing:'0.04em',
-          }}>
-            Clear all filters
-          </button>
+          {allTiers.length > 1 && (
+            <FilterDropdown label="Price" count={activeTiers.length}
+              isOpen={openFilter==='Price'} onOpen={setOpenFilter}
+              onClear={() => setActiveTiers([])}>
+              {allTiers.map(t => {
+                const active = activeTiers.includes(t);
+                return (
+                  <button key={t} onClick={() => toggleTier(t)} style={{
+                    fontSize:11, padding:'4px 12px', borderRadius:20,
+                    border:`1.5px solid ${active ? '#8a6e2e' : 'var(--border)'}`,
+                    background: active ? 'rgba(138,110,46,0.12)' : 'transparent',
+                    color: active ? '#8a6e2e' : 'var(--text-muted)',
+                    cursor:'pointer', fontFamily:'DM Sans', fontWeight: active ? 600 : 400,
+                    letterSpacing:'0.04em', transition:'all 0.15s', whiteSpace:'nowrap',
+                  }}>{t}{active && <span style={{ marginLeft:5, opacity:0.6, fontSize:10 }}>✕</span>}</button>
+                );
+              })}
+            </FilterDropdown>
+          )}
+
+          {(activeFinishes.length > 0 || activeBrands.length > 0 || activeTones.length > 0 || activeTiers.length > 0) && (
+            <div style={{ display:'flex', alignItems:'center', gap:10, marginLeft:'auto' }}>
+              <span style={{ fontSize:11, color:'var(--text-muted)', fontFamily:'DM Sans' }}>
+                {filtered.length} of {matches.length} shown
+              </span>
+              <button onClick={() => { setActiveFinishes([]); setActiveBrands([]); setActiveTones([]); setActiveTiers([]); }} style={{
+                fontSize:11, padding:'3px 10px', borderRadius:20, border:'1px solid var(--border)',
+                background:'transparent', color:'var(--blush)', cursor:'pointer',
+                fontFamily:'DM Sans', letterSpacing:'0.04em',
+              }}>Clear all</button>
+            </div>
+          )}
         </div>
       )}
 
