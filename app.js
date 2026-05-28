@@ -224,6 +224,29 @@ const BRAND_TIER = {
   // everything else → '$$' (mid-range / prestige)
 };
 
+// Generate a light→deep tonal ramp of 11 steps from an anchor hex.
+// Holds hue angle constant; tapers chroma at the lightest and deepest ends.
+function buildTonalRamp(anchorHex) {
+  const [, a, b] = hexToLab(anchorHex);
+  const hue = Math.atan2(b, a);
+  const chroma = Math.sqrt(a * a + b * b);
+  const STEPS = 11;
+  return Array.from({
+    length: STEPS
+  }, (_, i) => {
+    const t = i / (STEPS - 1);
+    const L = 88 - t * 66; // 88 (lightest) → 22 (deepest)
+    // parabolic taper: 0.35 at both ends, 1.0 at t=0.5
+    const scale = 0.35 + 0.65 * (1 - Math.pow(2 * t - 1, 2));
+    const c = chroma * scale;
+    return {
+      id: `ramp_${i}`,
+      hex: labToHex(L, c * Math.cos(hue), c * Math.sin(hue)),
+      name: ['Lightest', 'Very Light', 'Light', 'Medium-Light', 'Medium-Light', 'Medium', 'Medium-Deep', 'Deep', 'Deep', 'Very Deep', 'Deepest'][i]
+    };
+  });
+}
+
 // ── Color math helpers ─────────────────────────────────────────────────────────
 function hexToRgb(hex) {
   return {
@@ -3251,6 +3274,7 @@ function App() {
   const [selectedColor, setSelectedColor] = useState(null);
   const [hoveredId, setHoveredId] = useState(null);
   const [zoomAnchor, setZoomAnchor] = useState(null);
+  const preZoomRef = React.useRef(null); // original swatch before entering zoom
   const [mode, setMode] = useState('wheel'); // 'wheel' | 'photo' | 'hex' | 'list'
   const [photoHex, setPhotoHex] = useState(null);
   const [hexHex, setHexHex] = useState(null);
@@ -3390,15 +3414,10 @@ function App() {
     return true;
   }
 
-  // When zoomed, show the anchor + its ~10 nearest neighbors (by ΔE in Lab space).
+  // When zoomed, show a light→deep tonal ramp instead of nearest palette neighbors.
   const wheelColors = React.useMemo(() => {
     if (!zoomAnchor) return colors;
-    const anchorLab = hexToLab(zoomAnchor.hex);
-    const NEIGHBORS = 11; // anchor + 10 neighbors
-    return colors.map(c => ({
-      c,
-      dist: c.id === zoomAnchor.id ? 0 : deltaE(anchorLab, hexToLab(c.hex))
-    })).sort((a, b) => a.dist - b.dist).slice(0, NEIGHBORS).map(x => x.c);
+    return buildTonalRamp(zoomAnchor.hex);
   }, [colors, zoomAnchor]);
   const matches = React.useMemo(() => {
     if (!selectedColor) return [];
@@ -3631,7 +3650,23 @@ function App() {
       marginTop: 4
     }
   }, !zoomAnchor && selectedColor && mode === 'wheel' && /*#__PURE__*/React.createElement("button", {
-    onClick: () => setZoomAnchor(selectedColor),
+    onClick: () => {
+      const ramp = buildTonalRamp(selectedColor.hex);
+      const anchorLab = hexToLab(selectedColor.hex);
+      const nearest = ramp.reduce((best, step) => {
+        const d = deltaE(anchorLab, hexToLab(step.hex));
+        return d < best.d ? {
+          step,
+          d
+        } : best;
+      }, {
+        step: ramp[5],
+        d: Infinity
+      }).step;
+      preZoomRef.current = selectedColor;
+      setZoomAnchor(selectedColor);
+      setSelectedColor(nearest);
+    },
     style: {
       padding: '8px 16px',
       fontSize: 11,
@@ -3694,7 +3729,10 @@ function App() {
       justifyContent: 'center'
     }
   }, /*#__PURE__*/React.createElement("button", {
-    onClick: () => setZoomAnchor(null),
+    onClick: () => {
+      setZoomAnchor(null);
+      if (preZoomRef.current) setSelectedColor(preZoomRef.current);
+    },
     style: {
       padding: '8px 16px',
       fontSize: 11,
@@ -3725,7 +3763,7 @@ function App() {
       letterSpacing: '0.05em',
       fontStyle: 'italic'
     }
-  }, "Showing the 11 closest shades to your selection"))), selectedColor && /*#__PURE__*/React.createElement("div", {
+  }, "Lighter to deeper variations of the same hue"))), selectedColor && /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 28,
       display: 'flex',
