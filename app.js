@@ -533,7 +533,7 @@ function ColorWheel({
       y: CY,
       textAnchor: "middle",
       dominantBaseline: "middle",
-      fontSize: "8",
+      fontSize: "11",
       fontFamily: "DM Sans, sans-serif",
       fontWeight: "500",
       fill: lum > 0.32 ? 'rgba(42,26,20,0.7)' : 'rgba(255,255,255,0.85)',
@@ -598,14 +598,14 @@ function FilterDropdown({
     style: {
       background: 'var(--espresso-mid)',
       color: '#fff',
-      fontSize: 9,
+      fontSize: 11,
       padding: '1px 6px',
       borderRadius: 20,
       lineHeight: 1.6
     }
   }, count), /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 7,
+      fontSize: 10,
       opacity: 0.55,
       transform: isOpen ? 'rotate(180deg)' : 'none',
       transition: 'transform 0.15s'
@@ -635,7 +635,7 @@ function FilterDropdown({
     onClick: onClear,
     style: {
       marginTop: 10,
-      fontSize: 10,
+      fontSize: 11,
       padding: '4px 10px',
       borderRadius: 20,
       border: '1px solid var(--border)',
@@ -952,7 +952,7 @@ function ResultsTable({
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 10,
+      fontSize: 11,
       color: 'var(--text-muted)',
       fontFamily: 'DM Sans',
       letterSpacing: '0.03em',
@@ -982,7 +982,7 @@ function ResultsTable({
     });
   }), /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 10,
+      fontSize: 11,
       color: 'var(--text-muted)',
       fontFamily: 'DM Sans',
       letterSpacing: '0.03em',
@@ -1011,7 +1011,7 @@ function ResultsTable({
   }, toneRamp.ramp[toneIdx]?.name.split('· ')[1] || 'variant'), " version \xB7 ", selectedColor.hex.toUpperCase())), toneIdx !== toneRamp.anchorIdx && /*#__PURE__*/React.createElement("button", {
     onClick: () => setToneIdx(toneRamp.anchorIdx),
     style: {
-      fontSize: 10,
+      fontSize: 11,
       padding: '3px 10px',
       borderRadius: 20,
       border: '1px solid var(--border)',
@@ -1033,7 +1033,7 @@ function ResultsTable({
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 10,
+      fontSize: 11,
       color: 'var(--text-muted)',
       letterSpacing: '0.1em',
       textTransform: 'uppercase',
@@ -1070,7 +1070,7 @@ function ResultsTable({
       style: {
         marginLeft: 5,
         opacity: 0.6,
-        fontSize: 10
+        fontSize: 12
       }
     }, "\u2715"));
   })), orderedTones.length >= 1 && /*#__PURE__*/React.createElement(FilterDropdown, {
@@ -1243,7 +1243,7 @@ function ResultsTable({
     style: {
       padding: '12px 16px',
       textAlign: 'left',
-      fontSize: 10,
+      fontSize: 11,
       letterSpacing: '0.1em',
       textTransform: 'uppercase',
       color: 'var(--text-muted)',
@@ -1902,7 +1902,7 @@ function ShareImageModal({
     }
   }, status), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: 10.5,
+      fontSize: 12,
       color: 'var(--text-muted)',
       fontFamily: 'DM Sans',
       textAlign: 'center',
@@ -2412,7 +2412,7 @@ function ComparisonTray({
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'Cormorant Garamond',
-        fontSize: 14,
+        fontSize: 15,
         fontStyle: 'italic',
         color: 'var(--espresso)',
         lineHeight: 1.3,
@@ -2490,7 +2490,7 @@ function ListPicker({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: 'DM Sans',
-      fontSize: 10,
+      fontSize: 11,
       color: 'var(--text-muted)',
       letterSpacing: '0.1em',
       textTransform: 'uppercase',
@@ -2546,7 +2546,7 @@ function ListPicker({
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'DM Sans',
-        fontSize: 9,
+        fontSize: 12,
         color: 'var(--text-muted)',
         letterSpacing: '0.08em',
         textTransform: 'uppercase',
@@ -2557,7 +2557,7 @@ function ListPicker({
     }, p.brand), /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'Cormorant Garamond',
-        fontSize: 13,
+        fontSize: 15,
         fontStyle: 'italic',
         color: isSel ? 'var(--blush)' : 'var(--espresso)',
         lineHeight: 1.2,
@@ -2715,7 +2715,7 @@ function PhotoPicker({
     }, "or click to upload \xB7 JPG, PNG, HEIC"), /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'DM Sans',
-        fontSize: 10,
+        fontSize: 12,
         color: 'var(--text-muted)',
         maxWidth: 260,
         marginTop: 8,
@@ -2724,7 +2724,7 @@ function PhotoPicker({
     }, "Best results from natural daylight. You'll click on the photo to pick the exact shade."), /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'DM Sans',
-        fontSize: 10,
+        fontSize: 12,
         color: 'var(--text-muted)',
         maxWidth: 260,
         marginTop: 14,
@@ -2856,7 +2856,7 @@ function PhotoPicker({
   }, /*#__PURE__*/React.createElement("label", {
     style: {
       fontFamily: 'DM Sans',
-      fontSize: 9,
+      fontSize: 12,
       color: 'var(--text-muted)',
       letterSpacing: '0.08em',
       textTransform: 'uppercase',
@@ -2877,7 +2877,7 @@ function PhotoPicker({
   }), /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: 'DM Sans',
-      fontSize: 9,
+      fontSize: 12,
       color: 'var(--text-muted)',
       minWidth: 28,
       textAlign: 'right'
@@ -3018,13 +3018,13 @@ function HexPicker({
     style: {
       display: 'flex',
       alignItems: 'center',
-      gap: 8,
+      gap: 6,
       background: '#fff',
-      borderRadius: 14,
+      borderRadius: 10,
       border: `1.5px solid ${valid ? 'var(--border)' : 'var(--blush)'}`,
-      padding: '10px 14px',
+      padding: '6px 10px',
       boxShadow: '0 2px 8px var(--shadow)',
-      minWidth: 240
+      minWidth: 180
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -3045,7 +3045,7 @@ function HexPicker({
       outline: 'none',
       background: 'transparent',
       fontFamily: 'DM Sans',
-      fontSize: 16,
+      fontSize: 13,
       fontWeight: 500,
       letterSpacing: '0.1em',
       color: 'var(--espresso)',
@@ -3053,90 +3053,32 @@ function HexPicker({
       minWidth: 0
     }
   }), /*#__PURE__*/React.createElement("button", {
+    onClick: () => colorInputRef.current?.click(),
     title: "Open color picker",
     style: {
-      position: 'relative',
-      overflow: 'hidden',
       border: 'none',
       background: 'var(--cream-dark)',
-      width: 32,
-      height: 32,
-      borderRadius: 8,
+      width: 26,
+      height: 26,
+      borderRadius: 6,
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       color: 'var(--espresso-mid)',
-      fontSize: 15
+      fontSize: 13
     }
-  }, "\uD83C\uDFA8", /*#__PURE__*/React.createElement("input", {
-    type: "color",
-    value: valid ? previewHex : '#C04E62',
-    onChange: e => handlePickerChange(e.target.value),
-    style: {
-      position: 'absolute',
-      inset: 0,
-      opacity: 0,
-      cursor: 'pointer',
-      border: 'none',
-      padding: 0,
-      width: '100%',
-      height: '100%'
-    },
-    "aria-label": "Pick a color"
-  }))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: '100%',
-      maxWidth: 320
-    }
-  }, /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 10,
-      color: 'var(--text-muted)',
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase',
-      textAlign: 'center',
-      marginBottom: 10,
-      fontFamily: 'DM Sans'
-    }
-  }, "Or start from a suggestion"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: 10,
-      justifyContent: 'center'
-    }
-  }, QUICK.map(q => /*#__PURE__*/React.createElement("button", {
-    key: q.hex,
-    onClick: () => {
-      setDraft(q.hex);
-      onColor(q.hex.toLowerCase());
-    },
-    title: q.label,
-    style: {
-      width: 34,
-      height: 34,
-      borderRadius: '50%',
-      background: q.hex,
-      border: '2px solid #fff',
-      outline: normalize(draft) === q.hex.toLowerCase() ? '2px solid var(--espresso)' : '1px solid var(--border)',
-      cursor: 'pointer',
-      boxShadow: `0 2px 6px ${q.hex}55`,
-      transition: 'transform 0.12s'
-    },
-    onMouseEnter: e => e.currentTarget.style.transform = 'scale(1.12)',
-    onMouseLeave: e => e.currentTarget.style.transform = 'scale(1)'
-  })))), /*#__PURE__*/React.createElement("p", {
+  }, "\uD83C\uDFA8")), /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'Cormorant Garamond',
       fontStyle: 'italic',
-      fontSize: 13,
+      fontSize: 15,
       color: 'var(--text-muted)',
       textAlign: 'center',
       maxWidth: 300,
       lineHeight: 1.5
     }
-  }, "Paste a hex from anywhere \u2014 a paint chip, a fabric swatch, a screen pick \u2014 and we'll find lipsticks closest to it."));
+  }, "Pick any color you love or paste a hex, and we'll find the lipsticks closest to it."));
 }
 
 // ── Vibe Panel ──────────────────────────────────────────────────────────

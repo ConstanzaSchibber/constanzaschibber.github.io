@@ -373,7 +373,7 @@ function ColorWheel({ colors, selectedId, onSelect, hoveredId, onHover, preserve
           const lum = luminance(c.hex);
           return (
             <text x={CX} y={CY} textAnchor="middle" dominantBaseline="middle"
-              fontSize="8" fontFamily="DM Sans, sans-serif" fontWeight="500"
+              fontSize="11" fontFamily="DM Sans, sans-serif" fontWeight="500"
               fill={lum > 0.32 ? 'rgba(42,26,20,0.7)' : 'rgba(255,255,255,0.85)'}
               style={{ pointerEvents:'none', userSelect:'none' }}
             >
@@ -411,9 +411,9 @@ function FilterDropdown({ label, count, onClear, isOpen, onOpen, children }) {
       }}>
         {label}
         {count > 0 && (
-          <span style={{ background:'var(--espresso-mid)', color:'#fff', fontSize:9, padding:'1px 6px', borderRadius:20, lineHeight:1.6 }}>{count}</span>
+          <span style={{ background:'var(--espresso-mid)', color:'#fff', fontSize:11, padding:'1px 6px', borderRadius:20, lineHeight:1.6 }}>{count}</span>
         )}
-        <span style={{ fontSize:7, opacity:0.55, transform: isOpen ? 'rotate(180deg)':'none', transition:'transform 0.15s' }}>▼</span>
+        <span style={{ fontSize:10, opacity:0.55, transform: isOpen ? 'rotate(180deg)':'none', transition:'transform 0.15s' }}>▼</span>
       </button>
       {isOpen && (
         <div style={{
@@ -428,7 +428,7 @@ function FilterDropdown({ label, count, onClear, isOpen, onOpen, children }) {
           </div>
           {count > 0 && (
             <button onClick={onClear} style={{
-              marginTop:10, fontSize:10, padding:'4px 10px', borderRadius:20,
+              marginTop:10, fontSize:11, padding:'4px 10px', borderRadius:20,
               border:'1px solid var(--border)', background:'transparent',
               color:'var(--text-muted)', cursor:'pointer', fontFamily:'DM Sans',
               letterSpacing:'0.04em',
@@ -613,7 +613,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
           borderRadius:12, border:'1px solid var(--border)', boxShadow:'0 2px 12px var(--shadow)',
         }}>
           <div style={{ display:'flex', gap:5, alignItems:'center' }}>
-            <span style={{ fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.03em', flexShrink:0 }}>Lighter</span>
+            <span style={{ fontSize:11, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.03em', flexShrink:0 }}>Lighter</span>
             {toneRamp.ramp.map((step, i) => {
               const isAnchor = i === toneRamp.anchorIdx;
               const isActive = i === toneIdx;
@@ -633,7 +633,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
                 />
               );
             })}
-            <span style={{ fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.03em', flexShrink:0 }}>Deeper</span>
+            <span style={{ fontSize:11, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.03em', flexShrink:0 }}>Deeper</span>
           </div>
           <div style={{ marginTop:6, display:'flex', alignItems:'center', justifyContent:'space-between', minHeight:16 }}>
             <span style={{ fontSize:11, fontFamily:'DM Sans', color:'var(--text-muted)', letterSpacing:'0.03em' }}>
@@ -643,7 +643,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
             </span>
             {toneIdx !== toneRamp.anchorIdx && (
               <button onClick={() => setToneIdx(toneRamp.anchorIdx)} style={{
-                fontSize:10, padding:'3px 10px', borderRadius:20, border:'1px solid var(--border)',
+                fontSize:11, padding:'3px 10px', borderRadius:20, border:'1px solid var(--border)',
                 background:'transparent', color:'var(--text-muted)', cursor:'pointer', fontFamily:'DM Sans',
                 letterSpacing:'0.04em', flexShrink:0, marginLeft:10,
               }}>Reset to my shade</button>
@@ -655,7 +655,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
       {/* Compact filter bar */}
       {(allFinishes.length > 1 || orderedTones.length >= 1 || allBrands.length > 1 || allTiers.length > 1) && (
         <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', gap:8, marginBottom:14 }}>
-          <span style={{ fontSize:10, color:'var(--text-muted)', letterSpacing:'0.1em', textTransform:'uppercase', fontFamily:'DM Sans', marginRight:2 }}>
+          <span style={{ fontSize:11, color:'var(--text-muted)', letterSpacing:'0.1em', textTransform:'uppercase', fontFamily:'DM Sans', marginRight:2 }}>
             Filter
           </span>
 
@@ -674,7 +674,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
                     color: active ? fc : 'var(--text-muted)',
                     cursor:'pointer', fontFamily:'DM Sans', fontWeight: active ? 500 : 400,
                     letterSpacing:'0.04em', transition:'all 0.15s', whiteSpace:'nowrap',
-                  }}>{f}{active && <span style={{ marginLeft:5, opacity:0.6, fontSize:10 }}>✕</span>}</button>
+                  }}>{f}{active && <span style={{ marginLeft:5, opacity:0.6, fontSize:12 }}>✕</span>}</button>
                 );
               })}
             </FilterDropdown>
@@ -772,7 +772,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
               ].map((c, idx) => (
                 <th key={idx} className={c.cls} style={{
                   padding:'12px 16px', textAlign:'left',
-                  fontSize:10, letterSpacing:'0.1em', textTransform:'uppercase',
+                  fontSize:11, letterSpacing:'0.1em', textTransform:'uppercase',
                   color:'var(--text-muted)', fontWeight:500, fontFamily:'DM Sans',
                   whiteSpace:'nowrap',
                 }}>
@@ -1228,7 +1228,7 @@ function ShareImageModal({ wishlist, onClose }) {
             }}>{status}</p>
           )}
 
-          <p style={{ fontSize:10.5, color:'var(--text-muted)', fontFamily:'DM Sans', textAlign:'center', marginTop:-4 }}>
+          <p style={{ fontSize:12, color:'var(--text-muted)', fontFamily:'DM Sans', textAlign:'center', marginTop:-4 }}>
             Tip: on mobile, long-press the saved image to share it directly to Instagram or other apps.
           </p>
         </div>
@@ -1547,7 +1547,7 @@ function ComparisonTray({ pinnedItems, onRemove, onClear }) {
               {expanded ? (
                 <div style={{ textAlign:'center', maxWidth:100 }}>
                   <div style={{
-                    fontFamily:'Cormorant Garamond', fontSize:14, fontStyle:'italic',
+                    fontFamily:'Cormorant Garamond', fontSize:15, fontStyle:'italic',
                     color:'var(--espresso)', lineHeight:1.3, marginBottom:4,
                   }}>{p.shade}</div>
                   <div style={{ fontSize:11, color:'var(--text-muted)', fontFamily:'DM Sans', marginBottom:4 }}>
@@ -1603,7 +1603,7 @@ function ListPicker({ wishlist, selectedKey, onPick }) {
   return (
     <div style={{ width:'100%', maxWidth:440, padding:'4px 0 8px' }}>
       <div style={{
-        fontFamily:'DM Sans', fontSize:10, color:'var(--text-muted)',
+        fontFamily:'DM Sans', fontSize:11, color:'var(--text-muted)',
         letterSpacing:'0.1em', textTransform:'uppercase', textAlign:'center',
         marginBottom:14,
       }}>
@@ -1637,12 +1637,12 @@ function ListPicker({ wishlist, selectedKey, onPick }) {
               }} />
               <div style={{ textAlign:'center', maxWidth:'100%' }}>
                 <div style={{
-                  fontFamily:'DM Sans', fontSize:9, color:'var(--text-muted)',
+                  fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)',
                   letterSpacing:'0.08em', textTransform:'uppercase',
                   overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap',
                 }}>{p.brand}</div>
                 <div style={{
-                  fontFamily:'Cormorant Garamond', fontSize:13, fontStyle:'italic',
+                  fontFamily:'Cormorant Garamond', fontSize:15, fontStyle:'italic',
                   color: isSel ? 'var(--blush)' : 'var(--espresso)', lineHeight:1.2,
                   overflow:'hidden', textOverflow:'ellipsis',
                   display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical',
@@ -1750,10 +1750,10 @@ function PhotoPicker({ sampledHex, onColor }) {
         <div style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', letterSpacing:'0.04em' }}>
           or click to upload · JPG, PNG, HEIC
         </div>
-        <div style={{ fontFamily:'DM Sans', fontSize:10, color:'var(--text-muted)', maxWidth:260, marginTop:8, lineHeight:1.5 }}>
+        <div style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', maxWidth:260, marginTop:8, lineHeight:1.5 }}>
           Best results from natural daylight. You'll click on the photo to pick the exact shade.
         </div>
-        <div style={{ fontFamily:'DM Sans', fontSize:10, color:'var(--text-muted)', maxWidth:260, marginTop:14, lineHeight:1.5, display:'flex', alignItems:'center', gap:6 }}>
+        <div style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', maxWidth:260, marginTop:14, lineHeight:1.5, display:'flex', alignItems:'center', gap:6 }}>
           <span style={{ fontSize:11, fontStyle:'normal' }}>🔒</span>
           <span style={{ fontStyle:'italic' }}>Your photo stays on your device — we never upload or store it.</span>
         </div>
@@ -1813,7 +1813,7 @@ function PhotoPicker({ sampledHex, onColor }) {
         )}
       </div>
       <div style={{ display:'flex', alignItems:'center', gap:10, maxWidth:240, alignSelf:'flex-start' }}>
-        <label style={{ fontFamily:'DM Sans', fontSize:9, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', whiteSpace:'nowrap' }}>
+        <label style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', whiteSpace:'nowrap' }}>
           Sample
         </label>
         <input
@@ -1822,7 +1822,7 @@ function PhotoPicker({ sampledHex, onColor }) {
           className="dainty-range"
           style={{ flex:1, accentColor:'var(--blush)', height:2 }}
         />
-        <span style={{ fontFamily:'DM Sans', fontSize:9, color:'var(--text-muted)', minWidth:28, textAlign:'right' }}>{radius}px</span>
+        <span style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', minWidth:28, textAlign:'right' }}>{radius}px</span>
       </div>
       <div style={{ display:'flex', gap:8 }}>
         <button
@@ -1926,12 +1926,12 @@ function HexPicker({ sampledHex, onColor }) {
 
       {/* Hex text input */}
       <div style={{
-        display:'flex', alignItems:'center', gap:8,
-        background:'#fff', borderRadius:14,
+        display:'flex', alignItems:'center', gap:6,
+        background:'#fff', borderRadius:10,
         border:`1.5px solid ${valid ? 'var(--border)' : 'var(--blush)'}`,
-        padding:'10px 14px',
+        padding:'6px 10px',
         boxShadow:'0 2px 8px var(--shadow)',
-        minWidth:240,
+        minWidth:180,
       }}>
         <span style={{ color:'var(--text-muted)', fontFamily:'DM Sans', fontSize:14, fontWeight:500 }}>#</span>
         <input
@@ -1942,70 +1942,28 @@ function HexPicker({ sampledHex, onColor }) {
           maxLength={7}
           style={{
             flex:1, border:'none', outline:'none', background:'transparent',
-            fontFamily:'DM Sans', fontSize:16, fontWeight:500,
+            fontFamily:'DM Sans', fontSize:13, fontWeight:500,
             letterSpacing:'0.1em', color:'var(--espresso)',
             textTransform:'uppercase', minWidth:0,
           }}
         />
         <button
+          onClick={() => colorInputRef.current?.click()}
           title="Open color picker"
           style={{
-            position:'relative', overflow:'hidden',
             border:'none', background:'var(--cream-dark)',
-            width:32, height:32, borderRadius:8, cursor:'pointer',
+            width:26, height:26, borderRadius:6, cursor:'pointer',
             display:'flex', alignItems:'center', justifyContent:'center',
-            color:'var(--espresso-mid)', fontSize:15,
+            color:'var(--espresso-mid)', fontSize:13,
           }}
-        >
-          🎨
-          <input
-            type="color"
-            value={valid ? previewHex : '#C04E62'}
-            onChange={e => handlePickerChange(e.target.value)}
-            style={{
-              position:'absolute', inset:0, opacity:0, cursor:'pointer',
-              border:'none', padding:0, width:'100%', height:'100%',
-            }}
-            aria-label="Pick a color"
-          />
-        </button>
-      </div>
-
-      {/* Quick suggestions */}
-      <div style={{ width:'100%', maxWidth:320 }}>
-        <p style={{
-          fontSize:10, color:'var(--text-muted)', letterSpacing:'0.1em',
-          textTransform:'uppercase', textAlign:'center', marginBottom:10,
-          fontFamily:'DM Sans',
-        }}>
-          Or start from a suggestion
-        </p>
-        <div style={{ display:'flex', flexWrap:'wrap', gap:10, justifyContent:'center' }}>
-          {QUICK.map(q => (
-            <button
-              key={q.hex}
-              onClick={() => { setDraft(q.hex); onColor(q.hex.toLowerCase()); }}
-              title={q.label}
-              style={{
-                width:34, height:34, borderRadius:'50%',
-                background: q.hex, border:'2px solid #fff',
-                outline: normalize(draft) === q.hex.toLowerCase() ? '2px solid var(--espresso)' : '1px solid var(--border)',
-                cursor:'pointer',
-                boxShadow:`0 2px 6px ${q.hex}55`,
-                transition:'transform 0.12s',
-              }}
-              onMouseEnter={e => e.currentTarget.style.transform='scale(1.12)'}
-              onMouseLeave={e => e.currentTarget.style.transform='scale(1)'}
-            />
-          ))}
-        </div>
+        >🎨</button>
       </div>
 
       <p style={{
-        fontFamily:'Cormorant Garamond', fontStyle:'italic', fontSize:13,
+        fontFamily:'Cormorant Garamond', fontStyle:'italic', fontSize:15,
         color:'var(--text-muted)', textAlign:'center', maxWidth:300, lineHeight:1.5,
       }}>
-        Paste a hex from anywhere — a paint chip, a fabric swatch, a screen pick — and we'll find lipsticks closest to it.
+        Pick any color you love or paste a hex, and we'll find the lipsticks closest to it.
       </p>
     </div>
   );
