@@ -220,6 +220,30 @@ const BRAND_TIER = {
   // everything else → '$$' (mid-range / prestige)
 };
 
+// Compact 5-step tonal ramp anchored to a specific shade (2 lighter, anchor, 2 deeper).
+// Used in the results-panel strip for photo/hex/list entry points.
+function generateToneSteps(anchorHex, perSide = 2, stepL = 13, baseName = 'This shade') {
+  const [L0, a0, b0] = hexToLab(anchorHex);
+  const C0 = Math.sqrt(a0 * a0 + b0 * b0);
+  const hueRad = Math.atan2(b0, a0);
+  const out = [];
+  for (let d = -perSide; d <= perSide; d++) {
+    const L = Math.max(14, Math.min(90, L0 - d * stepL));
+    const C = C0 * (1 - 0.12 * Math.abs(d));
+    const name = d === 0 ? baseName : d < 0 ? d === -perSide ? `${baseName} · lightest` : `${baseName} · lighter` : d === perSide ? `${baseName} · deepest` : `${baseName} · deeper`;
+    out.push({
+      id: `t-${d}`,
+      hex: labToHex(L, Math.cos(hueRad) * C, Math.sin(hueRad) * C),
+      name
+    });
+  }
+  return {
+    ramp: out,
+    anchorStep: out[perSide],
+    anchorIdx: perSide
+  };
+}
+
 // Generate a light→deep tonal ramp of 11 steps from an anchor hex.
 // Holds hue angle constant; tapers chroma at the lightest and deepest ends.
 function buildTonalRamp(anchorHex) {
@@ -532,7 +556,10 @@ function ResultsTable({
   pinnedItems,
   togglePin,
   wishlist,
-  toggleWishlist
+  toggleWishlist,
+  toneRamp,
+  toneIdx,
+  setToneIdx
 }) {
   const [activeFinishes, setActiveFinishes] = React.useState([]);
   const [activeBrands, setActiveBrands] = React.useState([]);
@@ -806,7 +833,103 @@ function ResultsTable({
       position: 'relative'
     },
     title: `${m.brand} — ${m.shade}`
-  })))), allTiers.length > 1 && /*#__PURE__*/React.createElement("div", {
+  })))), toneRamp && toneRamp.ramp.length > 1 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 12,
+      padding: '9px 12px 10px',
+      background: '#fff',
+      borderRadius: 12,
+      border: '1px solid var(--border)',
+      boxShadow: '0 2px 12px var(--shadow)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'baseline',
+      justifyContent: 'space-between',
+      marginBottom: 6
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      color: 'var(--text-muted)',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontFamily: 'DM Sans'
+    }
+  }, "Tonal range"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: 'var(--text-muted)',
+      fontFamily: 'DM Sans',
+      letterSpacing: '0.04em',
+      display: 'flex',
+      gap: 16
+    }
+  }, /*#__PURE__*/React.createElement("span", null, "\u2191 Lighter"), /*#__PURE__*/React.createElement("span", null, "Deeper \u2193"))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 5,
+      alignItems: 'stretch'
+    }
+  }, toneRamp.ramp.map((step, i) => {
+    const isAnchor = i === toneRamp.anchorIdx;
+    const isActive = i === toneIdx;
+    return /*#__PURE__*/React.createElement("button", {
+      key: step.id,
+      onClick: () => setToneIdx(i),
+      title: isAnchor ? `${step.name} (your shade)` : step.name,
+      style: {
+        flex: 1,
+        height: 32,
+        borderRadius: 7,
+        cursor: 'pointer',
+        padding: 0,
+        background: step.hex,
+        border: isActive ? '2.5px solid var(--espresso)' : '2px solid #fff',
+        outline: isAnchor && !isActive ? '1.5px dashed rgba(42,26,20,0.35)' : 'none',
+        outlineOffset: -5,
+        boxShadow: isActive ? '0 3px 10px rgba(42,26,20,0.28)' : '0 1px 3px rgba(42,26,20,0.12)',
+        transform: isActive ? 'translateY(-2px)' : 'none',
+        transition: 'all 0.15s'
+      }
+    });
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 6,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      minHeight: 16
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      fontFamily: 'DM Sans',
+      color: 'var(--text-muted)',
+      letterSpacing: '0.03em'
+    }
+  }, toneIdx === toneRamp.anchorIdx ? 'Showing matches for your exact shade' : /*#__PURE__*/React.createElement("span", null, "Matches for a ", /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: 'var(--espresso)',
+      fontWeight: 600
+    }
+  }, toneRamp.ramp[toneIdx]?.name.split('· ')[1] || 'variant'), " version \xB7 ", selectedColor.hex.toUpperCase())), toneIdx !== toneRamp.anchorIdx && /*#__PURE__*/React.createElement("button", {
+    onClick: () => setToneIdx(toneRamp.anchorIdx),
+    style: {
+      fontSize: 10,
+      padding: '3px 10px',
+      borderRadius: 20,
+      border: '1px solid var(--border)',
+      background: 'transparent',
+      color: 'var(--text-muted)',
+      cursor: 'pointer',
+      fontFamily: 'DM Sans',
+      letterSpacing: '0.04em',
+      flexShrink: 0,
+      marginLeft: 10
+    }
+  }, "Reset to my shade"))), allTiers.length > 1 && /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -3256,6 +3379,7 @@ function App() {
   const [hoveredId, setHoveredId] = useState(null);
   const [zoomAnchor, setZoomAnchor] = useState(null);
   const preZoomRef = React.useRef(null); // original swatch before entering zoom
+  const [toneIdx, setToneIdx] = useState(null);
   const [mode, setMode] = useState('wheel'); // 'wheel' | 'photo' | 'hex' | 'list'
   const [photoHex, setPhotoHex] = useState(null);
   const [hexHex, setHexHex] = useState(null);
@@ -3400,7 +3524,19 @@ function App() {
     if (!zoomAnchor) return colors;
     return buildTonalRamp(zoomAnchor.hex);
   }, [colors, zoomAnchor]);
-  const matches = selectedColor ? getClosestColors(selectedColor.hex, tweaks.matchCount * 4).filter(p => !selectedColor.sourceKey || `${p.brand}|${p.shade}` !== selectedColor.sourceKey).filter(matchesVibe).slice(0, tweaks.matchCount) : [];
+
+  // Tonal strip for non-wheel entry points (photo / hex / list).
+  const toneRamp = React.useMemo(() => selectedColor && mode !== 'wheel' ? generateToneSteps(selectedColor.hex, 2, 13, selectedColor.name || 'This shade') : null, [selectedColor?.id, selectedColor?.hex, mode]);
+  React.useEffect(() => {
+    setToneIdx(toneRamp ? toneRamp.anchorIdx : null);
+  }, [toneRamp]);
+  const onAnchor = !toneRamp || toneIdx == null || toneIdx === toneRamp.anchorIdx;
+  const effectiveColor = selectedColor && toneRamp && !onAnchor ? {
+    ...selectedColor,
+    hex: toneRamp.ramp[toneIdx].hex,
+    name: toneRamp.ramp[toneIdx].name
+  } : selectedColor;
+  const matches = selectedColor ? getClosestColors(toneRamp && toneIdx != null && !onAnchor ? toneRamp.ramp[toneIdx].hex : selectedColor.hex, tweaks.matchCount * 4).filter(p => !selectedColor.sourceKey || `${p.brand}|${p.shade}` !== selectedColor.sourceKey).filter(matchesVibe).slice(0, tweaks.matchCount) : [];
   // matches: array of real products with .hex .brand .product .shade .finish .retailer .distance
   function togglePin(product) {
     setPinnedItems(prev => {
@@ -3799,13 +3935,16 @@ function App() {
   }, "Click a segment to find your closest match")), /*#__PURE__*/React.createElement("div", {
     className: "results-col"
   }, /*#__PURE__*/React.createElement(ResultsTable, {
-    selectedColor: selectedColor,
+    selectedColor: effectiveColor,
     matches: matches,
     totalProducts: REAL_PRODUCTS.length,
     pinnedItems: pinnedItems,
     togglePin: togglePin,
     wishlist: wishlist,
-    toggleWishlist: toggleWishlist
+    toggleWishlist: toggleWishlist,
+    toneRamp: toneRamp,
+    toneIdx: toneIdx,
+    setToneIdx: setToneIdx
   }))), /*#__PURE__*/React.createElement("footer", {
     className: "app-footer",
     style: {
