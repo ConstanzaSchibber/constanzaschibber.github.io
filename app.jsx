@@ -581,6 +581,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
                 />
               );
             })}
+            <span style={{ fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.03em', flexShrink:0 }}>Deeper</span>
           </div>
           <div style={{ marginTop:6, display:'flex', alignItems:'center', justifyContent:'space-between', minHeight:16 }}>
             <span style={{ fontSize:11, fontFamily:'DM Sans', color:'var(--text-muted)', letterSpacing:'0.03em' }}>

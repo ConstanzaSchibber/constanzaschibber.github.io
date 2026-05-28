@@ -882,7 +882,15 @@ function ResultsTable({
         transition: 'all 0.15s'
       }
     });
-  })), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: 'var(--text-muted)',
+      fontFamily: 'DM Sans',
+      letterSpacing: '0.03em',
+      flexShrink: 0
+    }
+  }, "Deeper")), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 6,
       display: 'flex',

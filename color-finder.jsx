@@ -556,15 +556,8 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
           marginBottom:12, padding:'9px 12px 10px', background:'#fff',
           borderRadius:12, border:'1px solid var(--border)', boxShadow:'0 2px 12px var(--shadow)',
         }}>
-          <div style={{ display:'flex', alignItems:'baseline', justifyContent:'space-between', marginBottom:6 }}>
-            <span style={{ fontSize:11, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', fontFamily:'DM Sans' }}>
-              Tonal range
-            </span>
-            <span style={{ fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.04em', display:'flex', gap:16 }}>
-              <span>↑ Lighter</span><span>Deeper ↓</span>
-            </span>
-          </div>
-          <div style={{ display:'flex', gap:5, alignItems:'stretch' }}>
+          <div style={{ display:'flex', gap:5, alignItems:'center' }}>
+            <span style={{ fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.03em', flexShrink:0 }}>Lighter</span>
             {toneRamp.ramp.map((step, i) => {
               const isAnchor = i === toneRamp.anchorIdx;
               const isActive = i === toneIdx;
@@ -584,6 +577,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
                 />
               );
             })}
+            <span style={{ fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.03em', flexShrink:0 }}>Deeper</span>
           </div>
           <div style={{ marginTop:6, display:'flex', alignItems:'center', justifyContent:'space-between', minHeight:16 }}>
             <span style={{ fontSize:11, fontFamily:'DM Sans', color:'var(--text-muted)', letterSpacing:'0.03em' }}>
