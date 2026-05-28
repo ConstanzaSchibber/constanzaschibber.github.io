@@ -3015,13 +3015,13 @@ function HexPicker({
     style: {
       display: 'flex',
       alignItems: 'center',
-      gap: 8,
+      gap: 6,
       background: '#fff',
-      borderRadius: 14,
+      borderRadius: 10,
       border: `1.5px solid ${valid ? 'var(--border)' : 'var(--blush)'}`,
-      padding: '10px 14px',
+      padding: '6px 10px',
       boxShadow: '0 2px 8px var(--shadow)',
-      minWidth: 240
+      minWidth: 180
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -3042,7 +3042,7 @@ function HexPicker({
       outline: 'none',
       background: 'transparent',
       fontFamily: 'DM Sans',
-      fontSize: 16,
+      fontSize: 13,
       fontWeight: 500,
       letterSpacing: '0.1em',
       color: 'var(--espresso)',
@@ -3055,15 +3055,15 @@ function HexPicker({
     style: {
       border: 'none',
       background: 'var(--cream-dark)',
-      width: 32,
-      height: 32,
-      borderRadius: 8,
+      width: 26,
+      height: 26,
+      borderRadius: 6,
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       color: 'var(--espresso-mid)',
-      fontSize: 15
+      fontSize: 13
     }
   }, "\uD83C\uDFA8")), /*#__PURE__*/React.createElement("p", {
     style: {

@@ -1927,12 +1927,12 @@ function HexPicker({ sampledHex, onColor }) {
 
       {/* Hex text input */}
       <div style={{
-        display:'flex', alignItems:'center', gap:8,
-        background:'#fff', borderRadius:14,
+        display:'flex', alignItems:'center', gap:6,
+        background:'#fff', borderRadius:10,
         border:`1.5px solid ${valid ? 'var(--border)' : 'var(--blush)'}`,
-        padding:'10px 14px',
+        padding:'6px 10px',
         boxShadow:'0 2px 8px var(--shadow)',
-        minWidth:240,
+        minWidth:180,
       }}>
         <span style={{ color:'var(--text-muted)', fontFamily:'DM Sans', fontSize:14, fontWeight:500 }}>#</span>
         <input
@@ -1943,7 +1943,7 @@ function HexPicker({ sampledHex, onColor }) {
           maxLength={7}
           style={{
             flex:1, border:'none', outline:'none', background:'transparent',
-            fontFamily:'DM Sans', fontSize:16, fontWeight:500,
+            fontFamily:'DM Sans', fontSize:13, fontWeight:500,
             letterSpacing:'0.1em', color:'var(--espresso)',
             textTransform:'uppercase', minWidth:0,
           }}
@@ -1953,9 +1953,9 @@ function HexPicker({ sampledHex, onColor }) {
           title="Open color picker"
           style={{
             border:'none', background:'var(--cream-dark)',
-            width:32, height:32, borderRadius:8, cursor:'pointer',
+            width:26, height:26, borderRadius:6, cursor:'pointer',
             display:'flex', alignItems:'center', justifyContent:'center',
-            color:'var(--espresso-mid)', fontSize:15,
+            color:'var(--espresso-mid)', fontSize:13,
           }}
         >🎨</button>
       </div>
