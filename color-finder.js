@@ -3694,6 +3694,9 @@ function App() {
   }, {
     id: 'photo',
     label: 'From photo'
+  }, {
+    id: 'hex',
+    label: 'From hex'
   }, ...(wishlist.length > 0 ? [{
     id: 'list',
     label: 'From My List'
