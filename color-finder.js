@@ -529,7 +529,7 @@ function ColorWheel({
       y: CY,
       textAnchor: "middle",
       dominantBaseline: "middle",
-      fontSize: "8",
+      fontSize: "11",
       fontFamily: "DM Sans, sans-serif",
       fontWeight: "500",
       fill: lum > 0.32 ? 'rgba(42,26,20,0.7)' : 'rgba(255,255,255,0.85)',
@@ -594,14 +594,14 @@ function FilterDropdown({
     style: {
       background: 'var(--espresso-mid)',
       color: '#fff',
-      fontSize: 9,
+      fontSize: 11,
       padding: '1px 6px',
       borderRadius: 20,
       lineHeight: 1.6
     }
   }, count), /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 7,
+      fontSize: 10,
       opacity: 0.55,
       transform: isOpen ? 'rotate(180deg)' : 'none',
       transition: 'transform 0.15s'
@@ -631,7 +631,7 @@ function FilterDropdown({
     onClick: onClear,
     style: {
       marginTop: 10,
-      fontSize: 10,
+      fontSize: 11,
       padding: '4px 10px',
       borderRadius: 20,
       border: '1px solid var(--border)',
@@ -948,7 +948,7 @@ function ResultsTable({
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 10,
+      fontSize: 11,
       color: 'var(--text-muted)',
       fontFamily: 'DM Sans',
       letterSpacing: '0.03em',
@@ -978,7 +978,7 @@ function ResultsTable({
     });
   }), /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 10,
+      fontSize: 11,
       color: 'var(--text-muted)',
       fontFamily: 'DM Sans',
       letterSpacing: '0.03em',
@@ -1007,7 +1007,7 @@ function ResultsTable({
   }, toneRamp.ramp[toneIdx]?.name.split('· ')[1] || 'variant'), " version \xB7 ", selectedColor.hex.toUpperCase())), toneIdx !== toneRamp.anchorIdx && /*#__PURE__*/React.createElement("button", {
     onClick: () => setToneIdx(toneRamp.anchorIdx),
     style: {
-      fontSize: 10,
+      fontSize: 11,
       padding: '3px 10px',
       borderRadius: 20,
       border: '1px solid var(--border)',
@@ -1029,7 +1029,7 @@ function ResultsTable({
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 10,
+      fontSize: 11,
       color: 'var(--text-muted)',
       letterSpacing: '0.1em',
       textTransform: 'uppercase',
@@ -1066,7 +1066,7 @@ function ResultsTable({
       style: {
         marginLeft: 5,
         opacity: 0.6,
-        fontSize: 10
+        fontSize: 12
       }
     }, "\u2715"));
   })), orderedTones.length >= 1 && /*#__PURE__*/React.createElement(FilterDropdown, {
@@ -1239,7 +1239,7 @@ function ResultsTable({
     style: {
       padding: '12px 16px',
       textAlign: 'left',
-      fontSize: 10,
+      fontSize: 11,
       letterSpacing: '0.1em',
       textTransform: 'uppercase',
       color: 'var(--text-muted)',
@@ -1894,7 +1894,7 @@ function ShareImageModal({
     }
   }, status), /*#__PURE__*/React.createElement("p", {
     style: {
-      fontSize: 10.5,
+      fontSize: 12,
       color: 'var(--text-muted)',
       fontFamily: 'DM Sans',
       textAlign: 'center',
@@ -2404,7 +2404,7 @@ function ComparisonTray({
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'Cormorant Garamond',
-        fontSize: 14,
+        fontSize: 15,
         fontStyle: 'italic',
         color: 'var(--espresso)',
         lineHeight: 1.3,
@@ -2482,7 +2482,7 @@ function ListPicker({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: 'DM Sans',
-      fontSize: 10,
+      fontSize: 11,
       color: 'var(--text-muted)',
       letterSpacing: '0.1em',
       textTransform: 'uppercase',
@@ -2549,7 +2549,7 @@ function ListPicker({
     }, p.brand), /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'Cormorant Garamond',
-        fontSize: 13,
+        fontSize: 15,
         fontStyle: 'italic',
         color: isSel ? 'var(--blush)' : 'var(--espresso)',
         lineHeight: 1.2,
@@ -2707,7 +2707,7 @@ function PhotoPicker({
     }, "or click to upload \xB7 JPG, PNG, HEIC"), /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'DM Sans',
-        fontSize: 10,
+        fontSize: 12,
         color: 'var(--text-muted)',
         maxWidth: 260,
         marginTop: 8,
@@ -2716,7 +2716,7 @@ function PhotoPicker({
     }, "Best results from natural daylight. You'll click on the photo to pick the exact shade."), /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: 'DM Sans',
-        fontSize: 10,
+        fontSize: 12,
         color: 'var(--text-muted)',
         maxWidth: 260,
         marginTop: 14,
@@ -3069,7 +3069,7 @@ function HexPicker({
     style: {
       fontFamily: 'Cormorant Garamond',
       fontStyle: 'italic',
-      fontSize: 13,
+      fontSize: 15,
       color: 'var(--text-muted)',
       textAlign: 'center',
       maxWidth: 300,
