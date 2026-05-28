@@ -79,6 +79,43 @@ function finishColor(finish) {
   return map[finish] || '#8C6858';
 }
 
+// Brand → price tier heuristics. Unlisted brands default to '$$'.
+const BRAND_TIER = {
+  // $ — Drugstore / mass-market
+  "a'pieu":'$','almay':'$','ardell':'$','australis cosmetics':'$','avon':'$',
+  'barry m cosmetics':'$','beauty care naturals':'$','blk/opl':'$','bourjois':'$',
+  "burt's bees":'$','catrice':'$','chapstick':'$','colourpop':'$','covergirl':'$',
+  'e.l.f. cosmetics':'$','essence':'$','etude':'$','flower beauty':'$','flormar':'$',
+  'holika holika':'$','i heart revolution':'$',"i'm meme":'$','iman cosmetics':'$',
+  'inc.redible':'$','j.cat beauty':'$','kay beauty':'$',"l'oréal":'$',
+  'l.a. colors':'$','l.a. girl':'$','makeup revolution':'$','mango people':'$',
+  'max factor':'$','maybelline':'$','milani':'$','morphe 2':'$','mua makeup academy':'$',
+  'nature republic':'$','neutrogena':'$','no7':'$','nykaa':'$',
+  'nyx professional makeup':'$','pacifica':'$','peripera':'$','physicians formula':'$',
+  'revolution pro':'$','revlon':'$','rimmel':'$','sleek makeup':'$','soap & glory':'$',
+  'the balm cosmetics':'$','the creme shop':'$','the lip bar':'$','the saem':'$',
+  'w7':'$','wet n wild':'$','xx revolution':'$',
+  // $$$ — Luxury / designer
+  'addiction tokyo':'$$$','aj crimson':'$$$','armani beauty':'$$$',
+  'augustinus bader':'$$$','bassam fattouh':'$$$','burberry':'$$$',
+  'by terry':'$$$','byredo':'$$$','carolina herrera':'$$$','chanel':'$$$',
+  'chantecaille':'$$$','charlotte tilbury':'$$$','christian louboutin':'$$$',
+  'clé de peau beauté':'$$$','decorté':'$$$','dior':'$$$','dolce & gabbana':'$$$',
+  'edward bess':'$$$','emilie heathe':'$$$','estée lauder':'$$$',
+  'fara homidi':'$$$','florasis':'$$$','givenchy':'$$$','gucci':'$$$',
+  'guerlain':'$$$','hermès':'$$$','house of sillage':'$$$','isamaya':'$$$',
+  'jung saem mool':'$$$','kjaer weis':'$$$','koh gen do':'$$$',
+  'la bouche rouge, paris':'$$$','la perla':'$$$','lancôme':'$$$',
+  'lunasol':'$$$','mara':'$$$','marc jacobs beauty':'$$$','monika blunder':'$$$',
+  'pat mcgrath labs':'$$$','prada beauty':'$$$','rabanne':'$$$',
+  'rodin olio lusso':'$$$','sarah creal':'$$$','sensai':'$$$',
+  'serge lutens':'$$$','shiseido':'$$$','shu uemura':'$$$','sisley paris':'$$$',
+  'skkn by kim':'$$$','suqqu':'$$$','surratt beauty':'$$$','tata harper':'$$$',
+  'tatcha':'$$$','tom ford':'$$$','valentino':'$$$',
+  'victoria beckham beauty':'$$$','westman atelier':'$$$','yves saint laurent':'$$$',
+  // everything else → '$$' (mid-range / prestige)
+};
+
 // ── Color math helpers ─────────────────────────────────────────────────────────
 function hexToRgb(hex) {
   return {
@@ -317,9 +354,10 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
   const [activeFinishes, setActiveFinishes] = React.useState([]);
   const [activeBrands, setActiveBrands] = React.useState([]);
   const [activeTones, setActiveTones] = React.useState([]);
+  const [activeTiers, setActiveTiers] = React.useState([]);
 
   // Reset filters when selection changes
-  React.useEffect(() => { setActiveFinishes([]); setActiveBrands([]); setActiveTones([]); }, [selectedColor?.id]);
+  React.useEffect(() => { setActiveFinishes([]); setActiveBrands([]); setActiveTones([]); setActiveTiers([]); }, [selectedColor?.id]);
 
   // Classify undertone from LAB hue angle (matches Vibe panel logic)
   function toneOf(p) {
@@ -333,12 +371,16 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
     return 'neutral';
   }
 
+  function tierOf(p) { return BRAND_TIER[p.brand] || '$$'; }
+
   // Derive available options from matches
   const allFinishes = [...new Set(matches.map(p => p.finish))].sort();
   const allBrands   = [...new Set(matches.map(p => p.brand))].sort();
   const allTones    = [...new Set(matches.map(toneOf))];
   const TONE_ORDER  = ['cool','neutral','warm'];
   const orderedTones = TONE_ORDER.filter(t => allTones.includes(t));
+  const TIER_ORDER  = ['$','$$','$$$'];
+  const allTiers    = TIER_ORDER.filter(t => matches.some(p => tierOf(p) === t));
 
   if (!selectedColor) return (
     <div style={{
@@ -418,10 +460,17 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
     );
   }
 
+  function toggleTier(t) {
+    setActiveTiers(prev =>
+      prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]
+    );
+  }
+
   const filtered = matches.filter(p =>
     (activeFinishes.length === 0 || activeFinishes.includes(p.finish)) &&
     (activeBrands.length === 0   || activeBrands.includes(p.brand))   &&
-    (activeTones.length === 0    || activeTones.includes(toneOf(p)))
+    (activeTones.length === 0    || activeTones.includes(toneOf(p)))   &&
+    (activeTiers.length === 0    || activeTiers.includes(tierOf(p)))
   );
 
   const maxDist = filtered.length > 0 ? Math.max(...filtered.map(p=>p.distance)) : 1;
@@ -464,6 +513,37 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
           ))}
         </div>
       </div>
+
+      {/* Price tier filter chips */}
+      {allTiers.length > 1 && (
+        <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:8, alignItems:'center' }}>
+          <span style={{ fontSize:11, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', marginRight:4, fontFamily:'DM Sans', minWidth:40 }}>
+            Price
+          </span>
+          {allTiers.map(t => {
+            const active = activeTiers.includes(t);
+            return (
+              <button key={t} onClick={() => toggleTier(t)} style={{
+                fontSize:11, padding:'4px 12px', borderRadius:20,
+                border: `1.5px solid ${active ? '#8a6e2e' : 'var(--border)'}`,
+                background: active ? 'rgba(138,110,46,0.12)' : 'transparent',
+                color: active ? '#8a6e2e' : 'var(--text-muted)',
+                cursor:'pointer', fontFamily:'DM Sans', fontWeight: active ? 600 : 400,
+                letterSpacing:'0.04em', transition:'all 0.15s',
+              }}>
+                {t}{active && <span style={{ marginLeft:5, opacity:0.6, fontSize:10 }}>✕</span>}
+              </button>
+            );
+          })}
+          {activeTiers.length > 0 && (
+            <button onClick={() => setActiveTiers([])} style={{
+              fontSize:11, padding:'4px 10px', borderRadius:20, border:'1px solid var(--border)',
+              background:'transparent', color:'var(--text-muted)', cursor:'pointer',
+              fontFamily:'DM Sans', letterSpacing:'0.04em',
+            }}>Clear</button>
+          )}
+        </div>
+      )}
 
       {/* Finish filter chips */}
       {allFinishes.length > 1 && (
@@ -559,12 +639,12 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
       )}
 
       {/* Active filter summary */}
-      {(activeFinishes.length > 0 || activeBrands.length > 0 || activeTones.length > 0) && (
+      {(activeFinishes.length > 0 || activeBrands.length > 0 || activeTones.length > 0 || activeTiers.length > 0) && (
         <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:10 }}>
           <span style={{ fontSize:11, color:'var(--text-muted)', fontFamily:'DM Sans' }}>
             {filtered.length} of {matches.length} shown
           </span>
-          <button onClick={() => { setActiveFinishes([]); setActiveBrands([]); setActiveTones([]); }} style={{
+          <button onClick={() => { setActiveFinishes([]); setActiveBrands([]); setActiveTones([]); setActiveTiers([]); }} style={{
             fontSize:11, padding:'3px 10px', borderRadius:20, border:'1px solid var(--border)',
             background:'transparent', color:'var(--blush)', cursor:'pointer',
             fontFamily:'DM Sans', letterSpacing:'0.04em',
