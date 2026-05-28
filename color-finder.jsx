@@ -1960,41 +1960,11 @@ function HexPicker({ sampledHex, onColor }) {
         >🎨</button>
       </div>
 
-      {/* Quick suggestions */}
-      <div style={{ width:'100%', maxWidth:320 }}>
-        <p style={{
-          fontSize:10, color:'var(--text-muted)', letterSpacing:'0.1em',
-          textTransform:'uppercase', textAlign:'center', marginBottom:10,
-          fontFamily:'DM Sans',
-        }}>
-          Or start from a suggestion
-        </p>
-        <div style={{ display:'flex', flexWrap:'wrap', gap:10, justifyContent:'center' }}>
-          {QUICK.map(q => (
-            <button
-              key={q.hex}
-              onClick={() => { setDraft(q.hex); onColor(q.hex.toLowerCase()); }}
-              title={q.label}
-              style={{
-                width:34, height:34, borderRadius:'50%',
-                background: q.hex, border:'2px solid #fff',
-                outline: normalize(draft) === q.hex.toLowerCase() ? '2px solid var(--espresso)' : '1px solid var(--border)',
-                cursor:'pointer',
-                boxShadow:`0 2px 6px ${q.hex}55`,
-                transition:'transform 0.12s',
-              }}
-              onMouseEnter={e => e.currentTarget.style.transform='scale(1.12)'}
-              onMouseLeave={e => e.currentTarget.style.transform='scale(1)'}
-            />
-          ))}
-        </div>
-      </div>
-
       <p style={{
         fontFamily:'Cormorant Garamond', fontStyle:'italic', fontSize:13,
         color:'var(--text-muted)', textAlign:'center', maxWidth:300, lineHeight:1.5,
       }}>
-        Paste a hex from anywhere — a paint chip, a fabric swatch, a screen pick — and we'll find lipsticks closest to it.
+        Pick any color you love or paste a hex, and we'll find the lipsticks closest to it.
       </p>
     </div>
   );
