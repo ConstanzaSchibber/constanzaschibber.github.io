@@ -3803,7 +3803,7 @@ function App() {
       e.currentTarget.style.background = 'transparent';
       e.currentTarget.style.color = 'var(--blush)';
     }
-  }, /*#__PURE__*/React.createElement("span", null, "Zoom into this hue"), /*#__PURE__*/React.createElement("svg", {
+  }, /*#__PURE__*/React.createElement("span", null, "See lighter & deeper shades"), /*#__PURE__*/React.createElement("svg", {
     width: "13",
     height: "13",
     viewBox: "0 0 16 16",
@@ -3874,7 +3874,7 @@ function App() {
       letterSpacing: '0.05em',
       fontStyle: 'italic'
     }
-  }, "Lighter to deeper variations of the same hue"))), selectedColor && /*#__PURE__*/React.createElement("div", {
+  }, "Lighter to deeper shades of this color"))), selectedColor && /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 28,
       display: 'flex',

@@ -2442,7 +2442,7 @@ function App() {
                 onMouseEnter={e => { e.currentTarget.style.background = 'var(--blush)'; e.currentTarget.style.color = '#fff'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--blush)'; }}
               >
-                <span>Zoom into this hue</span>
+                <span>See lighter &amp; deeper shades</span>
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style={{ flexShrink:0 }}>
                   <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.5"/>
                   <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -2475,7 +2475,7 @@ function App() {
                   fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans',
                   letterSpacing:'0.05em', fontStyle:'italic',
                 }}>
-                  Lighter to deeper variations of the same hue
+                  Lighter to deeper shades of this color
                 </span>
               </div>
             )}

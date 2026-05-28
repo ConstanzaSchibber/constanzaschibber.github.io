@@ -849,34 +849,18 @@ function ResultsTable({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
-      alignItems: 'baseline',
-      justifyContent: 'space-between',
-      marginBottom: 6
+      gap: 5,
+      alignItems: 'center'
     }
   }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 11,
-      color: 'var(--text-muted)',
-      letterSpacing: '0.08em',
-      textTransform: 'uppercase',
-      fontFamily: 'DM Sans'
-    }
-  }, "Tonal range"), /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 10,
       color: 'var(--text-muted)',
       fontFamily: 'DM Sans',
-      letterSpacing: '0.04em',
-      display: 'flex',
-      gap: 16
+      letterSpacing: '0.03em',
+      flexShrink: 0
     }
-  }, /*#__PURE__*/React.createElement("span", null, "\u2191 Lighter"), /*#__PURE__*/React.createElement("span", null, "Deeper \u2193"))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 5,
-      alignItems: 'stretch'
-    }
-  }, toneRamp.ramp.map((step, i) => {
+  }, "Lighter"), toneRamp.ramp.map((step, i) => {
     const isAnchor = i === toneRamp.anchorIdx;
     const isActive = i === toneIdx;
     return /*#__PURE__*/React.createElement("button", {
@@ -3829,7 +3813,7 @@ function App() {
       e.currentTarget.style.background = 'transparent';
       e.currentTarget.style.color = 'var(--blush)';
     }
-  }, /*#__PURE__*/React.createElement("span", null, "Zoom into this hue"), /*#__PURE__*/React.createElement("svg", {
+  }, /*#__PURE__*/React.createElement("span", null, "See lighter & deeper shades"), /*#__PURE__*/React.createElement("svg", {
     width: "13",
     height: "13",
     viewBox: "0 0 16 16",
@@ -3900,7 +3884,7 @@ function App() {
       letterSpacing: '0.05em',
       fontStyle: 'italic'
     }
-  }, "Lighter to deeper variations of the same hue"))), selectedColor && /*#__PURE__*/React.createElement("div", {
+  }, "Lighter to deeper shades of this color"))), selectedColor && /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 28,
       display: 'flex',

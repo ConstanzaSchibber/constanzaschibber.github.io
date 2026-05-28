@@ -560,15 +560,8 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
           marginBottom:12, padding:'9px 12px 10px', background:'#fff',
           borderRadius:12, border:'1px solid var(--border)', boxShadow:'0 2px 12px var(--shadow)',
         }}>
-          <div style={{ display:'flex', alignItems:'baseline', justifyContent:'space-between', marginBottom:6 }}>
-            <span style={{ fontSize:11, color:'var(--text-muted)', letterSpacing:'0.08em', textTransform:'uppercase', fontFamily:'DM Sans' }}>
-              Tonal range
-            </span>
-            <span style={{ fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.04em', display:'flex', gap:16 }}>
-              <span>↑ Lighter</span><span>Deeper ↓</span>
-            </span>
-          </div>
-          <div style={{ display:'flex', gap:5, alignItems:'stretch' }}>
+          <div style={{ display:'flex', gap:5, alignItems:'center' }}>
+            <span style={{ fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans', letterSpacing:'0.03em', flexShrink:0 }}>Lighter</span>
             {toneRamp.ramp.map((step, i) => {
               const isAnchor = i === toneRamp.anchorIdx;
               const isActive = i === toneIdx;
@@ -2454,7 +2447,7 @@ function App() {
                 onMouseEnter={e => { e.currentTarget.style.background = 'var(--blush)'; e.currentTarget.style.color = '#fff'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--blush)'; }}
               >
-                <span>Zoom into this hue</span>
+                <span>See lighter &amp; deeper shades</span>
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style={{ flexShrink:0 }}>
                   <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.5"/>
                   <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -2487,7 +2480,7 @@ function App() {
                   fontSize:10, color:'var(--text-muted)', fontFamily:'DM Sans',
                   letterSpacing:'0.05em', fontStyle:'italic',
                 }}>
-                  Lighter to deeper variations of the same hue
+                  Lighter to deeper shades of this color
                 </span>
               </div>
             )}
