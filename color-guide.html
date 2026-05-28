@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Color guide · Lip Color Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF6F1;
+    --cream-dark: #F0E8DF;
+    --espresso: #2A1A14;
+    --espresso-mid: #5C3D30;
+    --blush: #C87890;
+    --text-muted: #8C6858;
+    --border: #E0D0C4;
+    --shadow: rgba(42,26,20,0.10);
+  }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--cream);
+    color: var(--espresso);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .page {
+    position: relative; z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+
+  /* Back link */
+  .back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    margin-bottom: 48px;
+    transition: color 0.15s;
+  }
+  .back:hover { color: var(--espresso); }
+
+  /* Hero */
+  .hero { margin-bottom: 56px; }
+  .hero-label {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blush); margin-bottom: 12px; font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.05; letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; font-weight: 400; }
+  .hero-body {
+    font-size: 16px; line-height: 1.7; color: var(--espresso-mid);
+    max-width: 560px;
+  }
+
+  /* Formula card */
+  .formula-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 36px;
+    margin-bottom: 56px;
+    box-shadow: 0 2px 16px var(--shadow);
+    display: flex; gap: 40px; align-items: center;
+  }
+  .formula {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400;
+    color: var(--espresso);
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .formula sub { font-size: 16px; }
+  .formula-desc {
+    font-size: 13px; line-height: 1.7; color: var(--text-muted);
+    border-left: 2px solid var(--border);
+    padding-left: 24px;
+  }
+  .formula-desc strong { color: var(--espresso); font-weight: 500; }
+
+  /* Scale section */
+  .scale-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; margin-bottom: 8px;
+  }
+  .scale-subtitle {
+    font-size: 13px; color: var(--text-muted); margin-bottom: 36px; line-height: 1.6;
+  }
+
+  /* Scale rows */
+  .scale-row {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 0 24px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .scale-row:last-child { border-bottom: none; }
+
+  .scale-de {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300; color: var(--espresso);
+    line-height: 1;
+  }
+  .scale-de span {
+    display: block;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); font-family: 'DM Sans', sans-serif;
+    font-weight: 400; margin-top: 2px;
+  }
+
+  .scale-info { }
+  .scale-label {
+    font-size: 15px; font-weight: 500; color: var(--espresso); margin-bottom: 4px;
+  }
+  .scale-desc {
+    font-size: 13px; color: var(--text-muted); line-height: 1.6;
+  }
+  .scale-retail {
+    display: inline-block; margin-top: 6px;
+    font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    background: var(--cream-dark); color: var(--espresso-mid);
+    font-weight: 500; letter-spacing: 0.04em;
+  }
+
+  .scale-swatches {
+    display: flex; gap: 0; align-items: center; flex-shrink: 0;
+  }
+  .swatch-pair {
+    display: flex; align-items: center; gap: 0;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(42,26,20,0.14);
+  }
+  .swatch {
+    width: 44px; height: 44px;
+  }
+  .swatch-arrow {
+    font-size: 16px; color: var(--text-muted);
+    margin: 0 10px;
+  }
+
+  /* Context section */
+  .context {
+    margin-top: 56px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 36px;
+    box-shadow: 0 2px 16px var(--shadow);
+  }
+  .context h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400; margin-bottom: 16px;
+  }
+  .context p {
+    font-size: 14px; line-height: 1.75; color: var(--espresso-mid);
+    margin-bottom: 12px;
+  }
+  .context p:last-child { margin-bottom: 0; }
+  .context strong { color: var(--espresso); font-weight: 500; }
+
+  /* Section divider */
+  .divider {
+    height: 1px; background: var(--border);
+    margin: 64px 0 48px;
+  }
+  /* Trio cards (undertone / depth examples) */
+  .trio {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin: 28px 0 24px;
+  }
+  .trio-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 16px; padding: 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .trio-swatch {
+    width: 100%; aspect-ratio: 2 / 1;
+    border-radius: 10px;
+    box-shadow: inset 0 -2px 6px rgba(0,0,0,0.15), 0 1px 4px var(--shadow);
+  }
+  .trio-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px; color: var(--espresso);
+  }
+  .trio-desc {
+    font-size: 13px; line-height: 1.55; color: var(--text-muted);
+  }
+  .side-note {
+    font-size: 14px; color: var(--text-muted); line-height: 1.7;
+    font-style: italic; margin-top: 8px;
+    padding-left: 18px; border-left: 2px solid var(--border);
+  }
+  .side-note em { font-style: normal; color: var(--espresso-mid); font-weight: 500; }
+
+  /* Use-case pills */
+  .use-cases {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+  }
+  .use-case {
+    font-size: 12px; padding: 5px 14px; border-radius: 20px;
+    background: var(--cream-dark); color: var(--espresso-mid);
+    border: 1px solid var(--border);
+  }
+
+  /* Footer nav */
+  .page-footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .page-footer-label {
+    font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--espresso); color: #FAF6F1;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 12px 24px; border-radius: 40px; text-decoration: none;
+    transition: background 0.15s;
+  }
+  .cta:hover { background: var(--espresso-mid); }
+
+  @media (max-width: 600px) {
+    .page { padding: 32px 20px 60px; }
+    .formula-card { flex-direction: column; gap: 20px; }
+    .formula-desc { border-left: none; border-top: 2px solid var(--border); padding-left: 0; padding-top: 16px; }
+    .scale-row { grid-template-columns: 56px 1fr; }
+    .scale-swatches { display: none; }
+    .trio { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Back -->
+  <a href="index.html" class="back">
+    ← Back to Color Finder
+  </a>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-label">Color Guide</p>
+    <h1>How colors are <em>compared</em></h1>
+    <p class="hero-body">
+      Three ideas drive every match in this tool: <strong>ΔE</strong> (how different two colors are), 
+      <strong>undertone</strong> (which direction a color leans), and <strong>depth</strong> 
+      (how light or dark it is). Together they describe a shade more precisely than any single name.
+    </p>
+  </div>
+
+  <!-- Section anchor: Delta E -->
+  <h2 id="delta-e" class="scale-title" style="margin-bottom: 24px;">What is <em style="font-family:'Cormorant Garamond',serif;font-style:italic;">ΔE</em>?</h2>
+  <p class="scale-subtitle" style="margin-bottom: 28px;">
+    ΔE (Delta E) is a single number that tells you how different two colors are — 
+    as perceived by the human eye. The smaller the number, the more similar the colors. 
+    It's the industry standard for measuring color accuracy in cosmetics, printing, and design.
+  </p>
+
+  <!-- Formula -->
+  <div class="formula-card">
+    <div class="formula">
+      ΔE = √(ΔL*² + Δa*² + Δb*²)
+    </div>
+    <p class="formula-desc">
+      Colors are measured in <strong>CIELAB space</strong> — a 3D model designed to match 
+      human vision. <strong>L*</strong> is lightness, <strong>a*</strong> is red–green, 
+      and <strong>b*</strong> is yellow–blue. ΔE is simply the straight-line distance 
+      between two points in that space.
+    </p>
+  </div>
+
+  <!-- Scale -->
+  <h2 class="scale-title">The ΔE scale, in plain English</h2>
+  <p class="scale-subtitle">How noticeable is the color difference at each level?</p>
+
+  <div>
+    <!-- ΔE ≤ 1 -->
+    <div class="scale-row">
+      <div class="scale-de">≤ 1<span>ΔE</span></div>
+      <div class="scale-info">
+        <div class="scale-label">Imperceptible</div>
+        <div class="scale-desc">The difference cannot be seen by the human eye, even side by side.</div>
+        <span class="scale-retail">Exact match</span>
+      </div>
+      <div class="scale-swatches">
+        <div class="swatch-pair">
+          <div class="swatch" style="background:#C87890;"></div>
+          <div class="swatch" style="background:#C97991;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ΔE 1–3 -->
+    <div class="scale-row">
+      <div class="scale-de">1–3<span>ΔE</span></div>
+      <div class="scale-info">
+        <div class="scale-label">Just noticeable</div>
+        <div class="scale-desc">Trained eyes can detect the difference. Most consumers cannot.</div>
+        <span class="scale-retail">Excellent match</span>
+      </div>
+      <div class="scale-swatches">
+        <div class="swatch-pair">
+          <div class="swatch" style="background:#C87890;"></div>
+          <div class="swatch" style="background:#CC8498;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ΔE 3–6 -->
+    <div class="scale-row">
+      <div class="scale-de">3–6<span>ΔE</span></div>
+      <div class="scale-info">
+        <div class="scale-label">Noticeable difference</div>
+        <div class="scale-desc">Most people can see a difference. Still in the same color family.</div>
+        <span class="scale-retail">Good match</span>
+      </div>
+      <div class="scale-swatches">
+        <div class="swatch-pair">
+          <div class="swatch" style="background:#C87890;"></div>
+          <div class="swatch" style="background:#D292A0;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ΔE 6–12 -->
+    <div class="scale-row">
+      <div class="scale-de">6–12<span>ΔE</span></div>
+      <div class="scale-info">
+        <div class="scale-label">Clearly different</div>
+        <div class="scale-desc">The difference is obvious at a glance. Related shade, different depth or tone.</div>
+        <span class="scale-retail">Approximate match</span>
+      </div>
+      <div class="scale-swatches">
+        <div class="swatch-pair">
+          <div class="swatch" style="background:#C87890;"></div>
+          <div class="swatch" style="background:#DCA8B4;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ΔE > 12 -->
+    <div class="scale-row">
+      <div class="scale-de">&gt; 12<span>ΔE</span></div>
+      <div class="scale-info">
+        <div class="scale-label">Different colors</div>
+        <div class="scale-desc">These are distinct shades. Useful as a reference point, not a substitute.</div>
+        <span class="scale-retail">Different shade</span>
+      </div>
+      <div class="scale-swatches">
+        <div class="swatch-pair">
+          <div class="swatch" style="background:#C87890;"></div>
+          <div class="swatch" style="background:#ECC8B0;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Context -->
+  <div class="context">
+    <h2>How we use ΔE in this tool</h2>
+    <p>
+      Each lipstick in our database has been measured in <strong>CIELAB color space</strong> 
+      using a spectrophotometer. When you select a color on the wheel, we compute the ΔE distance 
+      from that color to every product in the database and surface the closest matches — ranked 
+      from most to least similar.
+    </p>
+    <p>
+      A ΔE below <strong>5</strong> typically means the product is a very strong candidate 
+      for that consumer's extracted shade. A ΔE between <strong>5 and 10</strong> is still 
+      useful as a reference — same color family, slightly different depth or saturation. 
+      Above <strong>15</strong>, the match is more of an inspiration than a substitute.
+    </p>
+    <p>
+      <strong>Tip for retail advisors:</strong> always show the consumer the actual swatch 
+      alongside the ΔE number. The number gives scientific confidence; the swatch gives the 
+      emotional "yes, that's my color" moment.
+    </p>
+    <div class="use-cases">
+      <span class="use-case">ΔE &lt; 3 — exact dupe</span>
+      <span class="use-case">ΔE 3–6 — same vibe, slightly different</span>
+      <span class="use-case">ΔE 6–12 — same family</span>
+      <span class="use-case">ΔE &gt; 12 — new direction</span>
+    </div>
+  </div>
+
+  <!-- Undertone -->
+  <div class="divider"></div>
+  <h2 id="undertone" class="scale-title">Undertone — how a color leans</h2>
+  <p class="scale-subtitle">
+    Undertone describes which direction a color leans, independent of how light or dark it is.
+    A color can be <strong>cool</strong>, <strong>neutral</strong>, or <strong>warm</strong> —
+    and you can find all three within the same family. There are cool reds and warm reds, cool pinks and warm pinks.
+  </p>
+  <div class="trio">
+    <div class="trio-card">
+      <div class="trio-swatch" style="background:#B83A5E;"></div>
+      <div class="trio-label">Cool red</div>
+      <div class="trio-desc">Leans toward blue or pink. Berries, fuchsias, blue‑based reds.</div>
+    </div>
+    <div class="trio-card">
+      <div class="trio-swatch" style="background:#BC3232;"></div>
+      <div class="trio-label">Neutral red</div>
+      <div class="trio-desc">Balanced — neither blue‑ nor orange‑leaning. True reds and balanced rose.</div>
+    </div>
+    <div class="trio-card">
+      <div class="trio-swatch" style="background:#B84A2A;"></div>
+      <div class="trio-label">Warm red</div>
+      <div class="trio-desc">Leans toward orange or yellow. Bricks, corals, terracotta reds.</div>
+    </div>
+  </div>
+  <p class="side-note">
+    Technically we compute the <em>hue angle</em> in CIELAB space — the direction the color points
+    on the a*–b* plane. Hues under ~12° are cool, 12–28° neutral, above 28° warm.
+  </p>
+
+  <!-- Depth -->
+  <div class="divider"></div>
+  <h2 id="depth" class="scale-title">Depth — how light or dark</h2>
+  <p class="scale-subtitle">
+    Depth describes how light or dark a shade appears — separate from undertone or finish.
+    A light shade can be sheer or pigmented; a deep shade can be matte or glossy. 
+    Depth only refers to the color itself.
+  </p>
+  <div class="trio">
+    <div class="trio-card">
+      <div class="trio-swatch" style="background:#E8B8B0;"></div>
+      <div class="trio-label">Light</div>
+      <div class="trio-desc">Soft and quiet on the lip. Pales, sheers, washes of color.</div>
+    </div>
+    <div class="trio-card">
+      <div class="trio-swatch" style="background:#B86870;"></div>
+      <div class="trio-label">Medium</div>
+      <div class="trio-desc">Pigmented but not heavy. The everyday range — most reds and pinks live here.</div>
+    </div>
+    <div class="trio-card">
+      <div class="trio-swatch" style="background:#5A2530;"></div>
+      <div class="trio-label">Deep</div>
+      <div class="trio-desc">Bold and saturated. Vampy, plum, oxblood, deep berry.</div>
+    </div>
+  </div>
+  <p class="side-note">
+    Technically we read L* (lightness) from CIELAB: under 32 is deep, 32–55 is medium, above 55 is light.
+  </p>
+
+  <!-- Footer nav -->
+  <div class="page-footer">
+    <span class="page-footer-label">Lip Color Finder · Color guide</span>
+    <a href="index.html" class="cta">
+      Back to Color Finder →
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
