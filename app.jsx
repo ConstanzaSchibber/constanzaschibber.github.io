@@ -498,7 +498,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
         </svg>
       </div>
       <p style={{ fontFamily:'Cormorant Garamond', fontSize:20, fontStyle:'italic', fontWeight:300, lineHeight:1.5 }}>
-        Pick a color — from the wheel, a photo,<br/>or a hex code
+        Pick a color from the wheel, a photo,<br/>or a hex code palette
       </p>
       <div className="results-empty-tips" style={{
         marginTop:20, paddingTop:20, borderTop:'1px solid var(--border)',

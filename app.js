@@ -781,7 +781,7 @@ function ResultsTable({
       fontWeight: 300,
       lineHeight: 1.5
     }
-  }, "Pick a color \u2014 from the wheel, a photo,", /*#__PURE__*/React.createElement("br", null), "or a hex code"), /*#__PURE__*/React.createElement("div", {
+  }, "Pick a color from the wheel, a photo,", /*#__PURE__*/React.createElement("br", null), "or a hex code palette"), /*#__PURE__*/React.createElement("div", {
     className: "results-empty-tips",
     style: {
       marginTop: 20,
