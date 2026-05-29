@@ -1074,7 +1074,7 @@ function drawShareImage(canvas, wishlist) {
   ctx.fillStyle = '#5C3D30';
   ctx.textAlign = 'left';
   ctx.font = '500 14px "DM Sans", sans-serif';
-  ctx.fillText('made with Lip Color Finder', fx + 30, fy - 5);
+  ctx.fillText('made with Lipstick Color Finder', fx + 30, fy - 5);
 }
 
 // Truncate text with an ellipsis to fit a max width.
@@ -1254,7 +1254,7 @@ function WishlistPanel({ wishlist, onClose, onRemove, onClear }) {
       lines.push(`   Color: ${p.hex.toUpperCase()}`);
       lines.push('');
     });
-    lines.push(`Saved from Lip Color Finder · ${new Date().toLocaleDateString()}`);
+    lines.push(`Saved from Lipstick Color Finder · ${new Date().toLocaleDateString()}`);
     return lines.join('\n');
   }
 
@@ -2292,7 +2292,7 @@ function App() {
           fontFamily:'Cormorant Garamond', fontWeight:300, fontSize:32,
           color:'var(--espresso)', letterSpacing:'-0.01em',
         }}>
-          Lip Color Finder
+          Lipstick Color Finder
         </h1>
         <span style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', letterSpacing:'0.1em', textTransform:'uppercase' }}>
           Explore 9,000+ shades
