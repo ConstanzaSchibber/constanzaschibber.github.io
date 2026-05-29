@@ -79,6 +79,21 @@
     font-size: 16px; line-height: 1.7; color: var(--espresso-mid);
     max-width: 560px;
   }
+  .hero-list {
+    list-style: none; margin: 16px 0 0; padding: 0;
+    max-width: 560px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .hero-list li {
+    font-size: 16px; line-height: 1.55; color: var(--espresso-mid);
+    padding-left: 20px; position: relative;
+  }
+  .hero-list li::before {
+    content: ''; position: absolute; left: 2px; top: 9px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--blush);
+  }
+  .hero-list strong { color: var(--espresso); }
 
   /* Formula card */
   .formula-card {
@@ -110,7 +125,7 @@
     font-size: 28px; font-weight: 300; margin-bottom: 8px;
   }
   .scale-subtitle {
-    font-size: 13px; color: var(--text-muted); margin-bottom: 36px; line-height: 1.6;
+    font-size: 16px; color: var(--espresso-mid); margin-bottom: 36px; line-height: 1.7;
   }
 
   /* Scale rows */
@@ -180,7 +195,7 @@
     font-size: 24px; font-weight: 400; margin-bottom: 16px;
   }
   .context p {
-    font-size: 14px; line-height: 1.75; color: var(--espresso-mid);
+    font-size: 16px; line-height: 1.7; color: var(--espresso-mid);
     margin-bottom: 12px;
   }
   .context p:last-child { margin-bottom: 0; }
@@ -216,21 +231,11 @@
     font-size: 13px; line-height: 1.55; color: var(--text-muted);
   }
   .side-note {
-    font-size: 14px; color: var(--text-muted); line-height: 1.7;
-    font-style: italic; margin-top: 8px;
-    padding-left: 18px; border-left: 2px solid var(--border);
+    font-size: 16px; color: var(--espresso-mid); line-height: 1.7;
+    font-style: italic; margin-top: 14px;
+    padding-left: 18px; border-left: 2px solid var(--blush);
   }
-  .side-note em { font-style: normal; color: var(--espresso-mid); font-weight: 500; }
-
-  /* Use-case pills */
-  .use-cases {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
-  }
-  .use-case {
-    font-size: 12px; padding: 5px 14px; border-radius: 20px;
-    background: var(--cream-dark); color: var(--espresso-mid);
-    border: 1px solid var(--border);
-  }
+  .side-note em { font-style: normal; color: var(--espresso); font-weight: 500; }
 
   /* Footer nav */
   .page-footer {
@@ -255,8 +260,8 @@
     .page { padding: 32px 20px 60px; }
     .formula-card { flex-direction: column; gap: 20px; }
     .formula-desc { border-left: none; border-top: 2px solid var(--border); padding-left: 0; padding-top: 16px; }
-    .scale-row { grid-template-columns: 56px 1fr auto; }
-    .swatch { width: 28px; height: 28px; }
+    .scale-row { grid-template-columns: 56px 1fr; }
+    .scale-swatches { display: none; }
     .trio { grid-template-columns: 1fr; gap: 12px; }
   }
 </style>
@@ -272,20 +277,53 @@
   <!-- Hero -->
   <div class="hero">
     <p class="hero-label">Color Guide</p>
-    <h1>How colors are <em>compared</em></h1>
-    <p class="hero-body">
-      Three ideas drive every match in this tool: <strong>ΔE</strong> (how different two colors are), 
-      <strong>undertone</strong> (which direction a color leans), and <strong>depth</strong> 
-      (how light or dark it is). Together they describe a shade more precisely than any single name.
+    <h1>How colors are <em>measured</em></h1>
+    <p id="cielab" class="hero-body">
+      CIELAB is an easy way of giving every color a precise location in space. Color names are
+      fuzzy — your "rose" and mine might differ — but CIELAB fixes that by plotting each color
+      as a single point in a 3D space built to match how the human eye actually sees. Three
+      numbers pin a color down exactly. Think of it as a color's address.
     </p>
   </div>
 
+  <div class="trio">
+    <div class="trio-card">
+      <div class="trio-swatch" style="background:linear-gradient(to top,#1a1a1a,#ffffff);"></div>
+      <div class="trio-label">L* — Lightness</div>
+      <div class="trio-desc">How light or dark the color is, from 0 (black) to 100 (white).</div>
+    </div>
+    <div class="trio-card">
+      <div class="trio-swatch" style="background:linear-gradient(to right,#3a8a3a,#c83232);"></div>
+      <div class="trio-label">a* — Green → Red</div>
+      <div class="trio-desc">How far the color leans toward green (negative) or red (positive).</div>
+    </div>
+    <div class="trio-card">
+      <div class="trio-swatch" style="background:linear-gradient(to right,#2a5ac8,#d4b21e);"></div>
+      <div class="trio-label">b* — Blue → Yellow</div>
+      <div class="trio-desc">How far the color leans toward blue (negative) or yellow (positive).</div>
+    </div>
+  </div>
+
+  <h2 class="scale-title" style="margin-bottom: 16px;">From those three numbers, color metrics can be derived</h2>
+  <p class="scale-subtitle" style="margin-bottom: 18px;">
+    Once a color is just three numbers, comparing and describing it becomes simple arithmetic.
+    Each idea in this guide is just a different question asked of those same coordinates:
+  </p>
+  <ul class="hero-list" style="margin-top:0;">
+    <li><strong>ΔE</strong> — how different two colors are</li>
+    <li><strong>Undertone</strong> — which direction it leans</li>
+    <li><strong>Depth</strong> — how light or dark it is</li>
+  </ul>
+
+  <div class="divider"></div>
+
   <!-- Section anchor: Delta E -->
-  <h2 id="delta-e" class="scale-title" style="margin-bottom: 24px;">What is <em style="font-family:'Cormorant Garamond',serif;font-style:italic;">ΔE</em>?</h2>
+  <h2 id="delta-e" class="scale-title" style="margin-bottom: 24px;"><em style="font-family:'Cormorant Garamond',serif;font-style:italic;">ΔE</em>: The distance between two colors</h2>
   <p class="scale-subtitle" style="margin-bottom: 28px;">
-    ΔE (Delta E) is a single number that tells you how different two colors are — 
-    as perceived by the human eye. The smaller the number, the more similar the colors. 
-    It's the industry standard for measuring color accuracy in cosmetics, printing, and design.
+    If every color is a point in CIELAB space, then the difference between two colors is just
+    the distance between their two points. That distance is <strong>ΔE (Delta E)</strong> — one
+    number for how different two colors look to the human eye. The smaller the number, the more
+    similar the colors. It's the industry standard for color accuracy in cosmetics, printing, and design.
   </p>
 
   <!-- Formula -->
@@ -294,10 +332,10 @@
       ΔE = √(ΔL*² + Δa*² + Δb*²)
     </div>
     <p class="formula-desc">
-      Colors are measured in <strong>CIELAB space</strong> — a 3D model designed to match 
-      human vision. <strong>L*</strong> is lightness, <strong>a*</strong> is red–green, 
-      and <strong>b*</strong> is yellow–blue. ΔE is simply the straight-line distance 
-      between two points in that space.
+      Straight from Pythagoras: <strong>ΔE</strong> is the straight-line distance between two
+      points in CIELAB space: the differences in <strong>L*</strong>, <strong>a*</strong>, and
+      <strong>b*</strong>, squared, summed, and rooted. Same math as measuring the distance
+      between two pins on a map, just in three dimensions.
     </p>
   </div>
 
@@ -389,31 +427,21 @@
 
   <!-- Context -->
   <div class="context">
-    <h2>How we use ΔE in this tool</h2>
+    <h2>How ΔE is used in this tool</h2>
     <p>
-      Each lipstick in the database has been color-profiled in <strong>CIELAB color space</strong> using computer vision. When you select a color on the wheel, the ΔE distance from that color to every product in the database is computed and the closest matches are surfaced, ranked from most to least similar.
+      Each lipstick in the database has been color-profiled in <strong>CIELAB color space</strong>
+      using computer vision. When you select a color on the wheel, the ΔE distance from that color
+      to every product in the database is computed and the closest matches are surfaced, ranked
+      from most to least similar.
     </p>
-    <p>
-      A ΔE below <strong>5</strong> typically means the product is a very strong candidate
-      for that consumer's extracted shade. A ΔE between <strong>5 and 10</strong> is still
-      useful as a reference — same color family, slightly different depth or saturation.
-      Above <strong>15</strong>, the match is more of an inspiration than a substitute.
-    </p>
-    <div class="use-cases">
-      <span class="use-case">ΔE &lt; 3 — exact dupe</span>
-      <span class="use-case">ΔE 3–6 — same vibe, slightly different</span>
-      <span class="use-case">ΔE 6–12 — same family</span>
-      <span class="use-case">ΔE &gt; 12 — new direction</span>
-    </div>
   </div>
 
   <!-- Undertone -->
   <div class="divider"></div>
-  <h2 id="undertone" class="scale-title">Undertone — how a color leans</h2>
+  <h2 id="undertone" class="scale-title">Undertone: How a color leans</h2>
   <p class="scale-subtitle">
     Undertone describes which direction a color leans, independent of how light or dark it is.
-    A color can be <strong>cool</strong>, <strong>neutral</strong>, or <strong>warm</strong> —
-    and you can find all three within the same family. There are cool reds and warm reds, cool pinks and warm pinks.
+    Colors within the same family can be <strong>cool</strong>, <strong>neutral</strong>, or <strong>warm</strong>.
   </p>
   <div class="trio">
     <div class="trio-card">
@@ -424,7 +452,7 @@
     <div class="trio-card">
       <div class="trio-swatch" style="background:#BC3232;"></div>
       <div class="trio-label">Neutral red</div>
-      <div class="trio-desc">Balanced — neither blue‑ nor orange‑leaning. True reds and balanced rose.</div>
+      <div class="trio-desc">Balanced, neither blue‑ nor orange‑leaning. True reds and balanced rose.</div>
     </div>
     <div class="trio-card">
       <div class="trio-swatch" style="background:#B84A2A;"></div>
@@ -433,8 +461,8 @@
     </div>
   </div>
   <p class="side-note">
-    Technically we compute the <em>hue angle</em> in CIELAB space — the direction the color points
-    on the a*–b* plane. Hues under ~12° are cool, 12–28° neutral, above 28° warm.
+    The <em>hue angle</em> on the a*–b* plane — the direction the color points — determines undertone.
+    Hues under ~12° are cool, 12–28° neutral, above 28° warm.
   </p>
 
   <!-- Depth -->
@@ -452,7 +480,7 @@
     <div class="trio-card">
       <div class="trio-swatch" style="background:#B86870;"></div>
       <div class="trio-label">Medium</div>
-      <div class="trio-desc">Pigmented but not heavy. The everyday range — most reds and pinks live here.</div>
+      <div class="trio-desc">Pigmented but not heavy. The everyday range, most reds and pinks live here.</div>
     </div>
     <div class="trio-card">
       <div class="trio-swatch" style="background:#5A2530;"></div>
@@ -461,7 +489,7 @@
     </div>
   </div>
   <p class="side-note">
-    Technically we read L* (lightness) from CIELAB: under 32 is deep, 32–55 is medium, above 55 is light.
+    Depth is read directly from <em>L*</em> (lightness): under 32 is deep, 32–55 is medium, above 55 is light.
   </p>
 
   <!-- Footer nav -->
