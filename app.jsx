@@ -1904,18 +1904,20 @@ function HexPicker({ sampledHex, onColor }) {
         display:'flex', alignItems:'center', justifyContent:'center',
         transition:'background 0.2s, box-shadow 0.2s',
         cursor: 'pointer',
-      }} onClick={() => colorInputRef.current?.click()} title="Click to open color picker">
+      }}>
         {!valid && (
           <span style={{ fontFamily:'Cormorant Garamond', fontStyle:'italic', color:'var(--text-muted)', fontSize:18 }}>
             Invalid hex
           </span>
         )}
-        {/* Hidden native color input — triggers system picker (with eyedropper on Chrome desktop) */}
+        {/* Hidden native color input — covers circle so direct tap works on mobile */}
         <input
           ref={colorInputRef}
+          id="hex-color-picker"
           type="color"
           value={valid ? previewHex : '#C04E62'}
           onChange={e => handlePickerChange(e.target.value)}
+          onClick={e => e.stopPropagation()}
           style={{
             position:'absolute', inset:0, opacity:0, cursor:'pointer',
             border:'none', padding:0,
@@ -1947,8 +1949,8 @@ function HexPicker({ sampledHex, onColor }) {
             textTransform:'uppercase', minWidth:0,
           }}
         />
-        <button
-          onClick={() => colorInputRef.current?.click()}
+        <label
+          htmlFor="hex-color-picker"
           title="Open color picker"
           style={{
             border:'none', background:'var(--cream-dark)',
@@ -1956,7 +1958,7 @@ function HexPicker({ sampledHex, onColor }) {
             display:'flex', alignItems:'center', justifyContent:'center',
             color:'var(--espresso-mid)', fontSize:13,
           }}
-        >🎨</button>
+        >🎨</label>
       </div>
 
       <p style={{

@@ -2992,9 +2992,7 @@ function HexPicker({
       justifyContent: 'center',
       transition: 'background 0.2s, box-shadow 0.2s',
       cursor: 'pointer'
-    },
-    onClick: () => colorInputRef.current?.click(),
-    title: "Click to open color picker"
+    }
   }, !valid && /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: 'Cormorant Garamond',
@@ -3004,9 +3002,11 @@ function HexPicker({
     }
   }, "Invalid hex"), /*#__PURE__*/React.createElement("input", {
     ref: colorInputRef,
+    id: "hex-color-picker",
     type: "color",
     value: valid ? previewHex : '#C04E62',
     onChange: e => handlePickerChange(e.target.value),
+    onClick: e => e.stopPropagation(),
     style: {
       position: 'absolute',
       inset: 0,
@@ -3054,8 +3054,8 @@ function HexPicker({
       textTransform: 'uppercase',
       minWidth: 0
     }
-  }), /*#__PURE__*/React.createElement("button", {
-    onClick: () => colorInputRef.current?.click(),
+  }), /*#__PURE__*/React.createElement("label", {
+    htmlFor: "hex-color-picker",
     title: "Open color picker",
     style: {
       border: 'none',
