@@ -2122,6 +2122,7 @@ function App() {
   const [hoveredId, setHoveredId] = useState(null);
   const [zoomAnchor, setZoomAnchor] = useState(null);
   const preZoomRef = React.useRef(null); // original swatch before entering zoom
+  const suppressScrollRef = React.useRef(false);
   const resultsRef = React.useRef(null);
   const [toneIdx, setToneIdx] = useState(null);
   const [mode, setMode] = useState('wheel'); // 'wheel' | 'photo' | 'hex' | 'list'
@@ -2261,6 +2262,7 @@ function App() {
   React.useEffect(() => {
     if (!effectiveColor || !resultsRef.current) return;
     if (window.innerWidth > 900) return;
+    if (suppressScrollRef.current) { suppressScrollRef.current = false; return; }
     const timer = setTimeout(() => {
       resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 80);
@@ -2431,6 +2433,7 @@ function App() {
                   }, { step: ramp[5], d: Infinity }).step;
                   preZoomRef.current = selectedColor;
                   setZoomAnchor(selectedColor);
+                  suppressScrollRef.current = true;
                   setSelectedColor(nearest);
                 }}
                 style={{
