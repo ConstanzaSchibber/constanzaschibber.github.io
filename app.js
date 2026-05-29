@@ -856,20 +856,36 @@ function ResultsTable({
 
   // Toggle a finish on/off
   function toggleFinish(f) {
+    if (!activeFinishes.includes(f)) window.gtag?.('event', 'apply_filter', {
+      filter_type: 'finish',
+      filter_value: f
+    });
     setActiveFinishes(prev => prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f]);
   }
 
   // Toggle a brand on/off
   function toggleBrand(b) {
+    if (!activeBrands.includes(b)) window.gtag?.('event', 'apply_filter', {
+      filter_type: 'brand',
+      filter_value: b
+    });
     setActiveBrands(prev => prev.includes(b) ? prev.filter(x => x !== b) : [...prev, b]);
   }
 
   // Apply both filters
   // Toggle a tone on/off
   function toggleTone(t) {
+    if (!activeTones.includes(t)) window.gtag?.('event', 'apply_filter', {
+      filter_type: 'undertone',
+      filter_value: t
+    });
     setActiveTones(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]);
   }
   function toggleTier(t) {
+    if (!activeTiers.includes(t)) window.gtag?.('event', 'apply_filter', {
+      filter_type: 'price_tier',
+      filter_value: t
+    });
     setActiveTiers(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]);
   }
   const filtered = matches.filter(p => (activeFinishes.length === 0 || activeFinishes.includes(p.finish)) && (activeBrands.length === 0 || activeBrands.includes(p.brand)) && (activeTones.length === 0 || activeTones.includes(toneOf(p))) && (activeTiers.length === 0 || activeTiers.includes(tierOf(p))));
@@ -1958,6 +1974,9 @@ function WishlistPanel({
     }
   }
   function copyToClipboard() {
+    window.gtag?.('event', 'share_wishlist', {
+      method: 'copy_text'
+    });
     const text = formatAsText();
     const done = () => {
       setCopied('text');
@@ -1972,6 +1991,9 @@ function WishlistPanel({
     }
   }
   function downloadTxt() {
+    window.gtag?.('event', 'share_wishlist', {
+      method: 'download_txt'
+    });
     const blob = new Blob([formatAsText()], {
       type: 'text/plain'
     });
@@ -1985,6 +2007,9 @@ function WishlistPanel({
     setTimeout(() => setCopied(null), 2000);
   }
   function copyShareLink() {
+    window.gtag?.('event', 'share_wishlist', {
+      method: 'copy_link'
+    });
     const slugs = wishlist.map(p => `${p.brand}|${p.shade}`).join(',');
     const url = `${window.location.origin}${window.location.pathname}?list=${encodeURIComponent(slugs)}`;
     const done = () => {
@@ -2021,7 +2046,12 @@ function WishlistPanel({
     id: 'image',
     label: 'Share as image',
     icon: '📸',
-    onClick: () => setShowShareImage(true),
+    onClick: () => {
+      window.gtag?.('event', 'share_wishlist', {
+        method: 'share_image'
+      });
+      setShowShareImage(true);
+    },
     done: null
   }];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
@@ -3378,7 +3408,17 @@ function App() {
     setWishlist(prev => {
       const key = p => `${p.brand}|${p.shade}`;
       const exists = prev.some(p => key(p) === key(product));
-      if (exists) return prev.filter(p => key(p) !== key(product));
+      if (exists) {
+        window.gtag?.('event', 'remove_from_wishlist', {
+          brand: product.brand,
+          shade: product.shade
+        });
+        return prev.filter(p => key(p) !== key(product));
+      }
+      window.gtag?.('event', 'add_to_wishlist', {
+        brand: product.brand,
+        shade: product.shade
+      });
       return [...prev, {
         brand: product.brand,
         product: product.product,
@@ -3422,6 +3462,10 @@ function App() {
         name: 'From photo',
         hex: photoHex
       });
+      window.gtag?.('event', 'select_color', {
+        method: 'photo',
+        hex: photoHex
+      });
       setZoomAnchor(null);
     } else {
       setSelectedColor(null);
@@ -3435,6 +3479,10 @@ function App() {
       setSelectedColor({
         id: '__hex__',
         name: 'From hex',
+        hex: hexHex
+      });
+      window.gtag?.('event', 'select_color', {
+        method: 'hex',
         hex: hexHex
       });
       setZoomAnchor(null);
@@ -3538,6 +3586,10 @@ function App() {
       const exists = prev.some(p => key(p) === key(product));
       if (exists) return prev.filter(p => key(p) !== key(product));
       if (prev.length >= 4) return prev; // max 4
+      window.gtag?.('event', 'pin_item', {
+        brand: product.brand,
+        shade: product.shade
+      });
       return [...prev, product];
     });
   }
@@ -3686,6 +3738,9 @@ function App() {
     key: t.id,
     onClick: () => {
       setMode(t.id);
+      window.gtag?.('event', 'select_mode', {
+        mode: t.id
+      });
       if (t.id === 'wheel') {
         setSelectedColor(null);
         setPhotoHex(null);
@@ -3726,7 +3781,13 @@ function App() {
   }, /*#__PURE__*/React.createElement(ColorWheel, {
     colors: wheelColors,
     selectedId: selectedColor?.id,
-    onSelect: c => setSelectedColor(c),
+    onSelect: c => {
+      setSelectedColor(c);
+      window.gtag?.('event', 'select_color', {
+        method: 'wheel',
+        hex: c.hex
+      });
+    },
     hoveredId: hoveredId,
     onHover: setHoveredId,
     preserveOrder: !!zoomAnchor

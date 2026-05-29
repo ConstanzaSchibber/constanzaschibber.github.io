@@ -532,6 +532,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
 
   // Toggle a finish on/off
   function toggleFinish(f) {
+    if (!activeFinishes.includes(f)) window.gtag?.('event', 'apply_filter', { filter_type: 'finish', filter_value: f });
     setActiveFinishes(prev =>
       prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f]
     );
@@ -539,6 +540,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
 
   // Toggle a brand on/off
   function toggleBrand(b) {
+    if (!activeBrands.includes(b)) window.gtag?.('event', 'apply_filter', { filter_type: 'brand', filter_value: b });
     setActiveBrands(prev =>
       prev.includes(b) ? prev.filter(x => x !== b) : [...prev, b]
     );
@@ -547,12 +549,14 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
   // Apply both filters
   // Toggle a tone on/off
   function toggleTone(t) {
+    if (!activeTones.includes(t)) window.gtag?.('event', 'apply_filter', { filter_type: 'undertone', filter_value: t });
     setActiveTones(prev =>
       prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]
     );
   }
 
   function toggleTier(t) {
+    if (!activeTiers.includes(t)) window.gtag?.('event', 'apply_filter', { filter_type: 'price_tier', filter_value: t });
     setActiveTiers(prev =>
       prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]
     );
@@ -1275,6 +1279,7 @@ function WishlistPanel({ wishlist, onClose, onRemove, onClear }) {
   }
 
   function copyToClipboard() {
+    window.gtag?.('event', 'share_wishlist', { method: 'copy_text' });
     const text = formatAsText();
     const done = () => { setCopied('text'); setTimeout(() => setCopied(null), 2000); };
     if (navigator.clipboard && window.isSecureContext) {
@@ -1287,6 +1292,7 @@ function WishlistPanel({ wishlist, onClose, onRemove, onClear }) {
   }
 
   function downloadTxt() {
+    window.gtag?.('event', 'share_wishlist', { method: 'download_txt' });
     const blob = new Blob([formatAsText()], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -1297,6 +1303,7 @@ function WishlistPanel({ wishlist, onClose, onRemove, onClear }) {
   }
 
   function copyShareLink() {
+    window.gtag?.('event', 'share_wishlist', { method: 'copy_link' });
     const slugs = wishlist.map(p => `${p.brand}|${p.shade}`).join(',');
     const url = `${window.location.origin}${window.location.pathname}?list=${encodeURIComponent(slugs)}`;
     const done = () => { setCopied('link'); setTimeout(() => setCopied(null), 2000); };
@@ -1313,7 +1320,7 @@ function WishlistPanel({ wishlist, onClose, onRemove, onClear }) {
     { id:'text',     label:'Copy as text',  icon:'📋', onClick: copyToClipboard, done: copied === 'text' ? 'Copied!' : null },
     { id:'download', label:'Download .txt', icon:'⬇',  onClick: downloadTxt,    done: copied === 'download' ? 'Downloaded!' : null },
     { id:'link',     label:'Copy link',     icon:'🔗', onClick: copyShareLink,  done: copied === 'link' ? 'Copied!' : null },
-    { id:'image',    label:'Share as image',icon:'📸', onClick: () => setShowShareImage(true), done: null },
+    { id:'image',    label:'Share as image',icon:'📸', onClick: () => { window.gtag?.('event', 'share_wishlist', { method: 'share_image' }); setShowShareImage(true); }, done: null },
   ];
 
   return (
@@ -2140,7 +2147,11 @@ function App() {
     setWishlist(prev => {
       const key = p => `${p.brand}|${p.shade}`;
       const exists = prev.some(p => key(p) === key(product));
-      if (exists) return prev.filter(p => key(p) !== key(product));
+      if (exists) {
+        window.gtag?.('event', 'remove_from_wishlist', { brand: product.brand, shade: product.shade });
+        return prev.filter(p => key(p) !== key(product));
+      }
+      window.gtag?.('event', 'add_to_wishlist', { brand: product.brand, shade: product.shade });
       return [...prev, { brand: product.brand, product: product.product, shade: product.shade, finish: product.finish, hex: product.hex }];
     });
   }
@@ -2168,6 +2179,7 @@ function App() {
     if (mode !== 'photo') return;
     if (photoHex) {
       setSelectedColor({ id:'__photo__', name:'From photo', hex: photoHex });
+      window.gtag?.('event', 'select_color', { method: 'photo', hex: photoHex });
       setZoomAnchor(null);
     } else {
       setSelectedColor(null);
@@ -2179,6 +2191,7 @@ function App() {
     if (mode !== 'hex') return;
     if (hexHex) {
       setSelectedColor({ id:'__hex__', name:'From hex', hex: hexHex });
+      window.gtag?.('event', 'select_color', { method: 'hex', hex: hexHex });
       setZoomAnchor(null);
     } else {
       setSelectedColor(null);
@@ -2274,6 +2287,7 @@ function App() {
       const exists = prev.some(p => key(p) === key(product));
       if (exists) return prev.filter(p => key(p) !== key(product));
       if (prev.length >= 4) return prev; // max 4
+      window.gtag?.('event', 'pin_item', { brand: product.brand, shade: product.shade });
       return [...prev, product];
     });
   }
@@ -2360,6 +2374,7 @@ function App() {
               <button key={t.id}
                 onClick={() => {
                   setMode(t.id);
+                  window.gtag?.('event', 'select_mode', { mode: t.id });
                   if (t.id === 'wheel') { setSelectedColor(null); setPhotoHex(null); setHexHex(null); }
                   else if (t.id === 'photo') { setSelectedColor(null); setZoomAnchor(null); setHexHex(null); }
                   else if (t.id === 'hex')   { setSelectedColor(null); setZoomAnchor(null); setPhotoHex(null); }
@@ -2380,7 +2395,7 @@ function App() {
               <ColorWheel
                 colors={wheelColors}
                 selectedId={selectedColor?.id}
-                onSelect={c => setSelectedColor(c)}
+                onSelect={c => { setSelectedColor(c); window.gtag?.('event', 'select_color', { method: 'wheel', hex: c.hex }); }}
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
                 preserveOrder={!!zoomAnchor}
