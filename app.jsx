@@ -2461,7 +2461,7 @@ function App() {
                   <button
                     onClick={() => {
                       setZoomAnchor(null);
-                      if (preZoomRef.current) setSelectedColor(preZoomRef.current);
+                      if (preZoomRef.current) { suppressScrollRef.current = true; setSelectedColor(preZoomRef.current); }
                     }}
                     style={{
                       padding:'8px 16px',
