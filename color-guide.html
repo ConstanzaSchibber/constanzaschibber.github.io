@@ -391,21 +391,13 @@
   <div class="context">
     <h2>How we use ΔE in this tool</h2>
     <p>
-      Each lipstick in our database has been measured in <strong>CIELAB color space</strong> 
-      using a spectrophotometer. When you select a color on the wheel, we compute the ΔE distance 
-      from that color to every product in the database and surface the closest matches — ranked 
-      from most to least similar.
+      Each lipstick in the database has been color-profiled in <strong>CIELAB color space</strong> using computer vision. When you select a color on the wheel, the ΔE distance from that color to every product in the database is computed and the closest matches are surfaced, ranked from most to least similar.
     </p>
     <p>
-      A ΔE below <strong>5</strong> typically means the product is a very strong candidate 
-      for that consumer's extracted shade. A ΔE between <strong>5 and 10</strong> is still 
-      useful as a reference — same color family, slightly different depth or saturation. 
+      A ΔE below <strong>5</strong> typically means the product is a very strong candidate
+      for that consumer's extracted shade. A ΔE between <strong>5 and 10</strong> is still
+      useful as a reference — same color family, slightly different depth or saturation.
       Above <strong>15</strong>, the match is more of an inspiration than a substitute.
-    </p>
-    <p>
-      <strong>Tip for retail advisors:</strong> always show the consumer the actual swatch 
-      alongside the ΔE number. The number gives scientific confidence; the swatch gives the 
-      emotional "yes, that's my color" moment.
     </p>
     <div class="use-cases">
       <span class="use-case">ΔE &lt; 3 — exact dupe</span>
@@ -449,9 +441,7 @@
   <div class="divider"></div>
   <h2 id="depth" class="scale-title">Depth — how light or dark</h2>
   <p class="scale-subtitle">
-    Depth describes how light or dark a shade appears — separate from undertone or finish.
-    A light shade can be sheer or pigmented; a deep shade can be matte or glossy. 
-    Depth only refers to the color itself.
+    Depth describes how light or dark a shade appears.
   </p>
   <div class="trio">
     <div class="trio-card">
