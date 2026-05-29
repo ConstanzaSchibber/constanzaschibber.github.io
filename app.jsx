@@ -498,9 +498,9 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
         </svg>
       </div>
       <p style={{ fontFamily:'Cormorant Garamond', fontSize:20, fontStyle:'italic', fontWeight:300, lineHeight:1.5 }}>
-        Select a color from the palette<br/>to find your perfect lip shade
+        Pick a color — from the wheel, a photo,<br/>or a hex code
       </p>
-      <div style={{
+      <div className="results-empty-tips" style={{
         marginTop:20, paddingTop:20, borderTop:'1px solid var(--border)',
         display:'flex', flexDirection:'column', gap:14, maxWidth:320,
       }}>
@@ -2116,6 +2116,7 @@ function App() {
   const [hoveredId, setHoveredId] = useState(null);
   const [zoomAnchor, setZoomAnchor] = useState(null);
   const preZoomRef = React.useRef(null); // original swatch before entering zoom
+  const resultsRef = React.useRef(null);
   const [toneIdx, setToneIdx] = useState(null);
   const [mode, setMode] = useState('wheel'); // 'wheel' | 'photo' | 'hex' | 'list'
   const [photoHex, setPhotoHex] = useState(null);
@@ -2244,6 +2245,15 @@ function App() {
   const effectiveColor = selectedColor && toneRamp && !onAnchor
     ? { ...selectedColor, hex: toneRamp.ramp[toneIdx].hex, name: toneRamp.ramp[toneIdx].name }
     : selectedColor;
+
+  React.useEffect(() => {
+    if (!effectiveColor || !resultsRef.current) return;
+    if (window.innerWidth > 900) return;
+    const timer = setTimeout(() => {
+      resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+    return () => clearTimeout(timer);
+  }, [effectiveColor?.id, effectiveColor?.hex]);
 
   const matches = React.useMemo(() => {
     if (!selectedColor) return [];
@@ -2495,10 +2505,24 @@ function App() {
               Click a segment to find your closest match
             </p>
           )}
+
+          {/* Mobile-only: show ♥ / + tips below the picker before a color is picked */}
+          {!selectedColor && (
+            <div className="mobile-picker-tips">
+              <div style={{ display:'flex', alignItems:'center', gap:10 }}>
+                <span style={{ fontSize:16, color:'var(--blush)', flexShrink:0, width:28, height:28, borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', background:'rgba(200,120,144,0.10)' }}>♥</span>
+                <p style={{ fontFamily:'Cormorant Garamond', fontSize:15, fontStyle:'italic', fontWeight:400, color:'var(--text-muted)', lineHeight:1.4, margin:0 }}>Tap the heart to save a shade</p>
+              </div>
+              <div style={{ display:'flex', alignItems:'center', gap:10 }}>
+                <span style={{ fontSize:16, color:'var(--espresso-mid)', flexShrink:0, width:28, height:28, borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', background:'var(--cream-dark)', fontWeight:300 }}>+</span>
+                <p style={{ fontFamily:'Cormorant Garamond', fontSize:15, fontStyle:'italic', fontWeight:400, color:'var(--text-muted)', lineHeight:1.4, margin:0 }}>Pin up to four shades to compare</p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Right: Results */}
-        <div className="results-col">
+        <div className="results-col" ref={resultsRef}>
           <ResultsTable selectedColor={effectiveColor} matches={matches} totalProducts={REAL_PRODUCTS.length} pinnedItems={pinnedItems} togglePin={togglePin} wishlist={wishlist} toggleWishlist={toggleWishlist} toneRamp={toneRamp} toneIdx={toneIdx} setToneIdx={setToneIdx} />
         </div>
       </main>
