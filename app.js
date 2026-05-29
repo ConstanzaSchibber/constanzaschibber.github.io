@@ -781,7 +781,8 @@ function ResultsTable({
       fontWeight: 300,
       lineHeight: 1.5
     }
-  }, "Select a color from the palette", /*#__PURE__*/React.createElement("br", null), "to find your perfect lip shade"), /*#__PURE__*/React.createElement("div", {
+  }, "Pick a color \u2014 from the wheel, a photo,", /*#__PURE__*/React.createElement("br", null), "or a hex code"), /*#__PURE__*/React.createElement("div", {
+    className: "results-empty-tips",
     style: {
       marginTop: 20,
       paddingTop: 20,
@@ -3352,6 +3353,7 @@ function App() {
   const [hoveredId, setHoveredId] = useState(null);
   const [zoomAnchor, setZoomAnchor] = useState(null);
   const preZoomRef = React.useRef(null); // original swatch before entering zoom
+  const resultsRef = React.useRef(null);
   const [toneIdx, setToneIdx] = useState(null);
   const [mode, setMode] = useState('wheel'); // 'wheel' | 'photo' | 'hex' | 'list'
   const [photoHex, setPhotoHex] = useState(null);
@@ -3509,6 +3511,17 @@ function App() {
     hex: toneRamp.ramp[toneIdx].hex,
     name: toneRamp.ramp[toneIdx].name
   } : selectedColor;
+  React.useEffect(() => {
+    if (!effectiveColor || !resultsRef.current) return;
+    if (window.innerWidth > 900) return;
+    const timer = setTimeout(() => {
+      resultsRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 80);
+    return () => clearTimeout(timer);
+  }, [effectiveColor?.id, effectiveColor?.hex]);
   const matches = React.useMemo(() => {
     if (!selectedColor) return [];
     const hex = toneRamp && toneIdx != null && !onAnchor ? toneRamp.ramp[toneIdx].hex : selectedColor.hex;
@@ -3912,8 +3925,70 @@ function App() {
       marginTop: 8,
       textAlign: 'center'
     }
-  }, "Click a segment to find your closest match")), /*#__PURE__*/React.createElement("div", {
-    className: "results-col"
+  }, "Click a segment to find your closest match"), !selectedColor && /*#__PURE__*/React.createElement("div", {
+    className: "mobile-picker-tips"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 10
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 16,
+      color: 'var(--blush)',
+      flexShrink: 0,
+      width: 28,
+      height: 28,
+      borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'rgba(200,120,144,0.10)'
+    }
+  }, "\u2665"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: 'Cormorant Garamond',
+      fontSize: 15,
+      fontStyle: 'italic',
+      fontWeight: 400,
+      color: 'var(--text-muted)',
+      lineHeight: 1.4,
+      margin: 0
+    }
+  }, "Tap the heart to save a shade")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 10
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 16,
+      color: 'var(--espresso-mid)',
+      flexShrink: 0,
+      width: 28,
+      height: 28,
+      borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'var(--cream-dark)',
+      fontWeight: 300
+    }
+  }, "+"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: 'Cormorant Garamond',
+      fontSize: 15,
+      fontStyle: 'italic',
+      fontWeight: 400,
+      color: 'var(--text-muted)',
+      lineHeight: 1.4,
+      margin: 0
+    }
+  }, "Pin up to four shades to compare")))), /*#__PURE__*/React.createElement("div", {
+    className: "results-col",
+    ref: resultsRef
   }, /*#__PURE__*/React.createElement(ResultsTable, {
     selectedColor: effectiveColor,
     matches: matches,
