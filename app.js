@@ -700,6 +700,7 @@ function ResultsTable({
   const TIER_ORDER = ['$', '$$', '$$$'];
   const allTiers = TIER_ORDER.filter(t => matches.some(p => tierOf(p) === t));
   if (!selectedColor) return /*#__PURE__*/React.createElement("div", {
+    className: "results-empty-state",
     style: {
       flex: 1,
       display: 'flex',
@@ -3928,6 +3929,84 @@ function App() {
   }, "Click a segment to find your closest match"), !selectedColor && /*#__PURE__*/React.createElement("div", {
     className: "mobile-picker-tips"
   }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: 8,
+      paddingBottom: 12,
+      borderBottom: '1px solid var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "52",
+    height: "52",
+    viewBox: "0 0 80 80",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/React.createElement("rect", {
+    x: "28",
+    y: "48",
+    width: "24",
+    height: "24",
+    rx: "3",
+    fill: "#EDD8CE",
+    stroke: "#D4B8AC",
+    strokeWidth: "1.5"
+  }), /*#__PURE__*/React.createElement("rect", {
+    x: "28",
+    y: "54",
+    width: "24",
+    height: "5",
+    fill: "#E4C8BC",
+    stroke: "#D4B8AC",
+    strokeWidth: "1"
+  }), /*#__PURE__*/React.createElement("rect", {
+    x: "31",
+    y: "34",
+    width: "18",
+    height: "18",
+    rx: "2",
+    fill: "#F0DED8",
+    stroke: "#D4B8AC",
+    strokeWidth: "1.5"
+  }), /*#__PURE__*/React.createElement("rect", {
+    x: "33",
+    y: "22",
+    width: "14",
+    height: "14",
+    fill: "#F2E2DC",
+    stroke: "#D4B8AC",
+    strokeWidth: "1.2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M33 22 L33 18 Q33 8 36 6 Q38 5 40 5 Q42 5 44 6 Q47 8 47 18 L47 22 Z",
+    fill: "#F2E2DC",
+    stroke: "#D4B8AC",
+    strokeWidth: "1.2",
+    strokeLinejoin: "round"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "33",
+    y1: "20",
+    x2: "47",
+    y2: "15",
+    stroke: "#D4B8AC",
+    strokeWidth: "1.2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M36 20 Q35 14 37 8",
+    stroke: "rgba(255,255,255,0.6)",
+    strokeWidth: "1.5",
+    strokeLinecap: "round"
+  })), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: 'Cormorant Garamond',
+      fontSize: 15,
+      fontStyle: 'italic',
+      fontWeight: 300,
+      color: 'var(--text-muted)',
+      lineHeight: 1.5,
+      margin: 0,
+      textAlign: 'center'
+    }
+  }, "Pick a color from the wheel, a photo,", /*#__PURE__*/React.createElement("br", null), "or a hex code palette")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',

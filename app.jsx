@@ -475,7 +475,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
   const allTiers    = TIER_ORDER.filter(t => matches.some(p => tierOf(p) === t));
 
   if (!selectedColor) return (
-    <div style={{
+    <div className="results-empty-state" style={{
       flex:1, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',
       color:'var(--text-muted)', textAlign:'center', padding:40, gap:12,
     }}>
@@ -2506,9 +2506,23 @@ function App() {
             </p>
           )}
 
-          {/* Mobile-only: show ♥ / + tips below the picker before a color is picked */}
+          {/* Mobile-only: lipstick intro + ♥/+ tips, shown below picker before a color is picked */}
           {!selectedColor && (
             <div className="mobile-picker-tips">
+              <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:8, paddingBottom:12, borderBottom:'1px solid var(--border)' }}>
+                <svg width="52" height="52" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="28" y="48" width="24" height="24" rx="3" fill="#EDD8CE" stroke="#D4B8AC" strokeWidth="1.5"/>
+                  <rect x="28" y="54" width="24" height="5" fill="#E4C8BC" stroke="#D4B8AC" strokeWidth="1"/>
+                  <rect x="31" y="34" width="18" height="18" rx="2" fill="#F0DED8" stroke="#D4B8AC" strokeWidth="1.5"/>
+                  <rect x="33" y="22" width="14" height="14" fill="#F2E2DC" stroke="#D4B8AC" strokeWidth="1.2"/>
+                  <path d="M33 22 L33 18 Q33 8 36 6 Q38 5 40 5 Q42 5 44 6 Q47 8 47 18 L47 22 Z" fill="#F2E2DC" stroke="#D4B8AC" strokeWidth="1.2" strokeLinejoin="round"/>
+                  <line x1="33" y1="20" x2="47" y2="15" stroke="#D4B8AC" strokeWidth="1.2"/>
+                  <path d="M36 20 Q35 14 37 8" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+                <p style={{ fontFamily:'Cormorant Garamond', fontSize:15, fontStyle:'italic', fontWeight:300, color:'var(--text-muted)', lineHeight:1.5, margin:0, textAlign:'center' }}>
+                  Pick a color from the wheel, a photo,<br/>or a hex code palette
+                </p>
+              </div>
               <div style={{ display:'flex', alignItems:'center', gap:10 }}>
                 <span style={{ fontSize:16, color:'var(--blush)', flexShrink:0, width:28, height:28, borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', background:'rgba(200,120,144,0.10)' }}>♥</span>
                 <p style={{ fontFamily:'Cormorant Garamond', fontSize:15, fontStyle:'italic', fontWeight:400, color:'var(--text-muted)', lineHeight:1.4, margin:0 }}>Tap the heart to save a shade</p>
