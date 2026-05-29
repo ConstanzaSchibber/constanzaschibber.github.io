@@ -3028,20 +3028,28 @@ function HexPicker({
       fontFamily: 'Cormorant Garamond',
       fontStyle: 'italic',
       color: 'var(--text-muted)',
-      fontSize: 18
+      fontSize: 18,
+      pointerEvents: 'none'
     }
-  }, "Invalid hex"), /*#__PURE__*/React.createElement("input", {
+  }, "Invalid hex"), /*#__PURE__*/React.createElement("label", {
+    htmlFor: "hex-color-picker",
+    style: {
+      position: 'absolute',
+      inset: 0,
+      cursor: 'pointer',
+      borderRadius: '50%'
+    }
+  }), /*#__PURE__*/React.createElement("input", {
     ref: colorInputRef,
     id: "hex-color-picker",
     type: "color",
     value: valid ? previewHex : '#C04E62',
     onChange: e => handlePickerChange(e.target.value),
-    onClick: e => e.stopPropagation(),
     style: {
       position: 'absolute',
-      inset: 0,
+      width: 0,
+      height: 0,
       opacity: 0,
-      cursor: 'pointer',
       border: 'none',
       padding: 0
     },

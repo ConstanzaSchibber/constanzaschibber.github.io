@@ -1913,22 +1913,19 @@ function HexPicker({ sampledHex, onColor }) {
         cursor: 'pointer',
       }}>
         {!valid && (
-          <span style={{ fontFamily:'Cormorant Garamond', fontStyle:'italic', color:'var(--text-muted)', fontSize:18 }}>
+          <span style={{ fontFamily:'Cormorant Garamond', fontStyle:'italic', color:'var(--text-muted)', fontSize:18, pointerEvents:'none' }}>
             Invalid hex
           </span>
         )}
-        {/* Hidden native color input — covers circle so direct tap works on mobile */}
+        {/* Label overlay — most reliable cross-platform way to trigger the color picker */}
+        <label htmlFor="hex-color-picker" style={{ position:'absolute', inset:0, cursor:'pointer', borderRadius:'50%' }} />
         <input
           ref={colorInputRef}
           id="hex-color-picker"
           type="color"
           value={valid ? previewHex : '#C04E62'}
           onChange={e => handlePickerChange(e.target.value)}
-          onClick={e => e.stopPropagation()}
-          style={{
-            position:'absolute', inset:0, opacity:0, cursor:'pointer',
-            border:'none', padding:0,
-          }}
+          style={{ position:'absolute', width:0, height:0, opacity:0, border:'none', padding:0 }}
           aria-label="Pick a color"
         />
       </div>
