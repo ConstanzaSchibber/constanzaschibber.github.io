@@ -1291,7 +1291,7 @@ function ResultsTable({
         border: 'none',
         background: 'transparent',
         cursor: 'pointer',
-        fontSize: 16,
+        fontSize: 20,
         color: isLiked ? 'var(--blush)' : 'var(--border)',
         display: 'flex',
         alignItems: 'center',

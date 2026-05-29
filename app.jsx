@@ -806,7 +806,7 @@ function ResultsTable({ selectedColor, matches, totalProducts, pinnedItems, togg
                         style={{
                           width:28, height:28, borderRadius:'50%', border:'none',
                           background:'transparent', cursor:'pointer',
-                          fontSize:16, color: isLiked ? 'var(--blush)' : 'var(--border)',
+                          fontSize:20, color: isLiked ? 'var(--blush)' : 'var(--border)',
                           display:'flex', alignItems:'center', justifyContent:'center',
                           transition:'transform 0.15s, color 0.15s',
                         }}
