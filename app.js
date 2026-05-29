@@ -3931,18 +3931,21 @@ function App() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'row',
       alignItems: 'center',
-      gap: 8,
+      gap: 14,
       paddingBottom: 12,
       borderBottom: '1px solid var(--border)'
     }
   }, /*#__PURE__*/React.createElement("svg", {
-    width: "52",
-    height: "52",
+    width: "44",
+    height: "44",
     viewBox: "0 0 80 80",
     fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
+    xmlns: "http://www.w3.org/2000/svg",
+    style: {
+      flexShrink: 0
+    }
   }, /*#__PURE__*/React.createElement("rect", {
     x: "28",
     y: "48",
@@ -3998,15 +4001,14 @@ function App() {
   })), /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'Cormorant Garamond',
-      fontSize: 15,
+      fontSize: 18,
       fontStyle: 'italic',
       fontWeight: 300,
       color: 'var(--text-muted)',
       lineHeight: 1.5,
-      margin: 0,
-      textAlign: 'center'
+      margin: 0
     }
-  }, "Pick a color from the wheel, a photo,", /*#__PURE__*/React.createElement("br", null), "or a hex code palette")), /*#__PURE__*/React.createElement("div", {
+  }, "Pick a color from the wheel, a photo, or a hex code palette")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',

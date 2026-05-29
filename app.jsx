@@ -2509,8 +2509,8 @@ function App() {
           {/* Mobile-only: lipstick intro + ♥/+ tips, shown below picker before a color is picked */}
           {!selectedColor && (
             <div className="mobile-picker-tips">
-              <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:8, paddingBottom:12, borderBottom:'1px solid var(--border)' }}>
-                <svg width="52" height="52" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div style={{ display:'flex', flexDirection:'row', alignItems:'center', gap:14, paddingBottom:12, borderBottom:'1px solid var(--border)' }}>
+                <svg width="44" height="44" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink:0 }}>
                   <rect x="28" y="48" width="24" height="24" rx="3" fill="#EDD8CE" stroke="#D4B8AC" strokeWidth="1.5"/>
                   <rect x="28" y="54" width="24" height="5" fill="#E4C8BC" stroke="#D4B8AC" strokeWidth="1"/>
                   <rect x="31" y="34" width="18" height="18" rx="2" fill="#F0DED8" stroke="#D4B8AC" strokeWidth="1.5"/>
@@ -2519,8 +2519,8 @@ function App() {
                   <line x1="33" y1="20" x2="47" y2="15" stroke="#D4B8AC" strokeWidth="1.2"/>
                   <path d="M36 20 Q35 14 37 8" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
-                <p style={{ fontFamily:'Cormorant Garamond', fontSize:15, fontStyle:'italic', fontWeight:300, color:'var(--text-muted)', lineHeight:1.5, margin:0, textAlign:'center' }}>
-                  Pick a color from the wheel, a photo,<br/>or a hex code palette
+                <p style={{ fontFamily:'Cormorant Garamond', fontSize:18, fontStyle:'italic', fontWeight:300, color:'var(--text-muted)', lineHeight:1.5, margin:0 }}>
+                  Pick a color from the wheel, a photo, or a hex code palette
                 </p>
               </div>
               <div style={{ display:'flex', alignItems:'center', gap:10 }}>
