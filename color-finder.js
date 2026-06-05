@@ -3552,8 +3552,8 @@ function App() {
       letterSpacing: '0.1em',
       textTransform: 'uppercase'
     }
-  }, "9,000+ lip products \xB7 closest match"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => setShowVibe(v => !v),
+  }, "9,000+ lip products \xB7 closest match"), /*#__PURE__*/React.createElement("a", {
+    href: "about.html",
     style: {
       marginLeft: 'auto',
       display: 'flex',
@@ -3561,33 +3561,26 @@ function App() {
       gap: 8,
       padding: '8px 16px',
       borderRadius: 24,
-      border: `1.5px solid ${vibeActive ? 'var(--blush)' : 'var(--border)'}`,
-      background: vibeActive ? 'rgba(200,120,144,0.08)' : '#fff',
-      color: vibeActive ? 'var(--blush)' : 'var(--espresso)',
-      cursor: 'pointer',
+      border: '1.5px solid var(--border)',
+      background: '#fff',
+      color: 'var(--espresso)',
+      textDecoration: 'none',
       fontFamily: 'DM Sans',
       fontSize: 12,
       fontWeight: 500,
       letterSpacing: '0.06em',
       textTransform: 'uppercase',
-      transition: 'all 0.15s',
-      position: 'relative'
+      transition: 'all 0.15s'
+    },
+    onMouseEnter: e => {
+      e.currentTarget.style.borderColor = 'var(--blush)';
+      e.currentTarget.style.color = 'var(--blush)';
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.borderColor = 'var(--border)';
+      e.currentTarget.style.color = 'var(--espresso)';
     }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 13,
-      color: 'var(--blush)'
-    }
-  }, "\u2726"), "My Lipstick Vibe", vibeActive > 0 && /*#__PURE__*/React.createElement("span", {
-    style: {
-      background: 'var(--blush)',
-      color: '#fff',
-      fontSize: 10,
-      padding: '1px 7px',
-      borderRadius: 20,
-      marginLeft: 2
-    }
-  }, vibeActive)), /*#__PURE__*/React.createElement("button", {
+  }, "About"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setShowWishlist(true),
     style: {
       display: 'flex',
