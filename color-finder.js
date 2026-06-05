@@ -3920,41 +3920,68 @@ function App() {
     style: {
       borderTop: '1px solid var(--border)',
       display: 'flex',
-      gap: 24,
-      alignItems: 'center'
+      gap: 12,
+      alignItems: 'center',
+      flexWrap: 'wrap'
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 11,
+      fontSize: 13,
       color: 'var(--text-muted)',
-      letterSpacing: '0.05em'
+      letterSpacing: '0.02em',
+      marginRight: 4
     }
   }, "Showing closest matches by color distance (\u0394E)"), /*#__PURE__*/React.createElement("a", {
     href: "color-guide.html",
     style: {
-      fontSize: 11,
-      color: 'var(--blush)',
-      letterSpacing: '0.05em',
+      fontSize: 13,
+      color: 'var(--espresso)',
+      letterSpacing: '0.06em',
+      textTransform: 'uppercase',
+      fontWeight: 500,
       textDecoration: 'none',
-      borderBottom: '1px solid currentColor',
-      paddingBottom: 1,
-      transition: 'opacity 0.15s'
+      padding: '6px 14px',
+      borderRadius: 20,
+      border: '1px solid var(--border)',
+      background: '#fff',
+      transition: 'border-color 0.15s, color 0.15s'
+    },
+    onMouseEnter: e => {
+      e.currentTarget.style.borderColor = 'var(--blush)';
+      e.currentTarget.style.color = 'var(--blush)';
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.borderColor = 'var(--border)';
+      e.currentTarget.style.color = 'var(--espresso)';
     }
   }, "What is \u0394E?"), /*#__PURE__*/React.createElement("a", {
     href: "about.html",
     style: {
-      fontSize: 11,
-      color: 'var(--blush)',
-      letterSpacing: '0.05em',
+      fontSize: 13,
+      color: 'var(--espresso)',
+      letterSpacing: '0.06em',
+      textTransform: 'uppercase',
+      fontWeight: 500,
       textDecoration: 'none',
-      borderBottom: '1px solid currentColor',
-      paddingBottom: 1,
-      transition: 'opacity 0.15s'
+      padding: '6px 14px',
+      borderRadius: 20,
+      border: '1px solid var(--border)',
+      background: '#fff',
+      transition: 'border-color 0.15s, color 0.15s'
+    },
+    onMouseEnter: e => {
+      e.currentTarget.style.borderColor = 'var(--blush)';
+      e.currentTarget.style.color = 'var(--blush)';
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.borderColor = 'var(--border)';
+      e.currentTarget.style.color = 'var(--espresso)';
     }
   }, "About"), selectedColor && matches.length > 0 && /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 11,
-      color: 'var(--text-muted)'
+      fontSize: 13,
+      color: 'var(--text-muted)',
+      marginLeft: 4
     }
   }, "\xB7 ", matches.length, " closest match", matches.length !== 1 ? 'es' : '', " from ", REAL_PRODUCTS.length, " products")), showTweaks && /*#__PURE__*/React.createElement(TweaksPanel, {
     tweaks: tweaks,

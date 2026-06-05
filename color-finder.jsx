@@ -2506,27 +2506,35 @@ function App() {
       {/* Footer */}
       <footer className="app-footer" style={{
         borderTop:'1px solid var(--border)',
-        display:'flex', gap:24, alignItems:'center',
+        display:'flex', gap:12, alignItems:'center', flexWrap:'wrap',
       }}>
-        <span style={{ fontSize:11, color:'var(--text-muted)', letterSpacing:'0.05em' }}>
+        <span style={{ fontSize:13, color:'var(--text-muted)', letterSpacing:'0.02em', marginRight:4 }}>
           Showing closest matches by color distance (ΔE)
         </span>
         <a href="color-guide.html" style={{
-          fontSize:11, color:'var(--blush)', letterSpacing:'0.05em',
-          textDecoration:'none', borderBottom:'1px solid currentColor', paddingBottom:1,
-          transition:'opacity 0.15s',
-        }}>
+          fontSize:13, color:'var(--espresso)', letterSpacing:'0.06em', textTransform:'uppercase',
+          fontWeight:500, textDecoration:'none',
+          padding:'6px 14px', borderRadius:20, border:'1px solid var(--border)',
+          background:'#fff', transition:'border-color 0.15s, color 0.15s',
+        }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor='var(--blush)'; e.currentTarget.style.color='var(--blush)'; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor='var(--border)'; e.currentTarget.style.color='var(--espresso)'; }}
+        >
           What is ΔE?
         </a>
         <a href="about.html" style={{
-          fontSize:11, color:'var(--blush)', letterSpacing:'0.05em',
-          textDecoration:'none', borderBottom:'1px solid currentColor', paddingBottom:1,
-          transition:'opacity 0.15s',
-        }}>
+          fontSize:13, color:'var(--espresso)', letterSpacing:'0.06em', textTransform:'uppercase',
+          fontWeight:500, textDecoration:'none',
+          padding:'6px 14px', borderRadius:20, border:'1px solid var(--border)',
+          background:'#fff', transition:'border-color 0.15s, color 0.15s',
+        }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor='var(--blush)'; e.currentTarget.style.color='var(--blush)'; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor='var(--border)'; e.currentTarget.style.color='var(--espresso)'; }}
+        >
           About
         </a>
         {selectedColor && matches.length > 0 && (
-          <span style={{ fontSize:11, color:'var(--text-muted)' }}>
+          <span style={{ fontSize:13, color:'var(--text-muted)', marginLeft:4 }}>
             · {matches.length} closest match{matches.length !== 1 ? 'es' : ''} from {REAL_PRODUCTS.length} products
           </span>
         )}
