@@ -316,7 +316,7 @@ function getHsl(hex) {
 }
 
 // ── Segmented Color Wheel ──────────────────────────────────────────────────────
-// Each of the 48 colors gets its own arc segment — clear boundaries, labeled,
+// Each of the 40 colors gets its own arc segment — clear boundaries, labeled,
 // clickable. Colors sorted by hue; arranged in 2 rings (light outer, dark inner).
 function ColorWheel({
   colors,

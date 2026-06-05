@@ -2394,7 +2394,7 @@ function App() {
               <ColorWheel
                 colors={wheelColors}
                 selectedId={selectedColor?.id}
-                onSelect={c => { setSelectedColor(c); window.gtag?.('event', 'select_color', { method: 'wheel', hex: c.hex }); }}
+                onSelect={c => { setSelectedColor(c); window.gtag?.('event', 'select_color', { method: 'wheel', hex: c.hex, name: c.name }); }}
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
                 preserveOrder={!!zoomAnchor}
@@ -2435,6 +2435,7 @@ function App() {
                   setZoomAnchor(selectedColor);
                   suppressScrollRef.current = true;
                   setSelectedColor(nearest);
+                  window.gtag?.('event', 'zoom_shades', { hex: selectedColor.hex, name: selectedColor.name });
                 }}
                 style={{
                   padding:'8px 16px',

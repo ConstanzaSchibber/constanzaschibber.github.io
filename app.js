@@ -3798,7 +3798,8 @@ function App() {
       setSelectedColor(c);
       window.gtag?.('event', 'select_color', {
         method: 'wheel',
-        hex: c.hex
+        hex: c.hex,
+        name: c.name
       });
     },
     hoveredId: hoveredId,
@@ -3846,6 +3847,7 @@ function App() {
       setZoomAnchor(selectedColor);
       suppressScrollRef.current = true;
       setSelectedColor(nearest);
+      window.gtag?.('event', 'zoom_shades', { hex: selectedColor.hex, name: selectedColor.name });
     },
     style: {
       padding: '8px 16px',
