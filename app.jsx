@@ -2310,28 +2310,20 @@ function App() {
         <span style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', letterSpacing:'0.1em', textTransform:'uppercase' }}>
           Explore 9,000+ shades
         </span>
-        <button
-          onClick={() => setShowVibe(v => !v)}
-          style={{
+        <a href="about.html" style={{
             marginLeft:'auto', display:'flex', alignItems:'center', gap:8,
             padding:'8px 16px', borderRadius:24,
-            border:`1.5px solid ${vibeActive ? 'var(--blush)' : 'var(--border)'}`,
-            background: vibeActive ? 'rgba(200,120,144,0.08)' : '#fff',
-            color: vibeActive ? 'var(--blush)' : 'var(--espresso)', cursor:'pointer',
+            border:'1.5px solid var(--border)',
+            background:'#fff',
+            color:'var(--espresso)', textDecoration:'none',
             fontFamily:'DM Sans', fontSize:12, fontWeight:500, letterSpacing:'0.06em',
             textTransform:'uppercase', transition:'all 0.15s',
-            position:'relative',
           }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor='var(--blush)'; e.currentTarget.style.color='var(--blush)'; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor='var(--border)'; e.currentTarget.style.color='var(--espresso)'; }}
         >
-          <span style={{ fontSize:13, color:'var(--blush)' }}>✦</span>
-          My Lipstick Vibe
-          {vibeActive > 0 && (
-            <span style={{
-              background:'var(--blush)', color:'#fff',
-              fontSize:10, padding:'1px 7px', borderRadius:20, marginLeft:2,
-            }}>{vibeActive}</span>
-          )}
-        </button>
+          About
+        </a>
         <button
           onClick={() => setShowWishlist(true)}
           style={{
