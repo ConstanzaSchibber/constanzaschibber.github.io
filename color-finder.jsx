@@ -2283,7 +2283,7 @@ function App() {
           Lipstick Color Finder
         </h1>
         <span style={{ fontFamily:'DM Sans', fontSize:12, color:'var(--text-muted)', letterSpacing:'0.1em', textTransform:'uppercase' }}>
-          40 shades · closest match
+          9,000+ lip products · closest match
         </span>
         <button
           onClick={() => setShowVibe(v => !v)}

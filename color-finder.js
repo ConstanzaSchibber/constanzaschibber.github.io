@@ -3552,7 +3552,7 @@ function App() {
       letterSpacing: '0.1em',
       textTransform: 'uppercase'
     }
-  }, "40 shades \xB7 closest match"), /*#__PURE__*/React.createElement("button", {
+  }, "9,000+ lip products \xB7 closest match"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setShowVibe(v => !v),
     style: {
       marginLeft: 'auto',
