@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://constanzaschibber.github.io/sitemap.xml
