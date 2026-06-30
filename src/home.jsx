@@ -111,8 +111,12 @@ export default function Home({ scrollTo, showBadge }) {
                 myself, from the data and metric pipelines to the LLM-as-a-judge graders and
                 evaluation frameworks, not just the analysis on top.
               </p>
+              <p className="hero-bio">
+                To see how I build end-to-end, check out my ML + computer vision project: a system that extracts and matches lipstick shades across brands.
+              </p>
               <div className="hero-links">
-                <button type="button" className="hlink hlink-primary" onClick={revealEmail}>Get in touch</button>
+                <button type="button" className="hlink hlink-primary" onClick={() => scrollTo('work')}>View portfolio <span className="arr">→</span></button>
+                <button type="button" className="hlink" onClick={revealEmail}>Get in touch</button>
                 <a className="hlink" href={L.linkedin} target="_blank" rel="noreferrer" onClick={() => track('click_linkedin')}>LinkedIn</a>
                 <a className="hlink" href={L.github} target="_blank" rel="noreferrer" onClick={() => track('click_github')}>GitHub</a>
               </div>

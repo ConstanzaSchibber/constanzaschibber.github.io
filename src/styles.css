@@ -132,7 +132,7 @@ button { font: inherit; cursor: pointer; background: none; border: none; padding
 .hero-name { font-size: var(--fs-display); margin-bottom: 14px; }
 .hero-tag { font-size: clamp(16px, 1.85vw, 18px); color: var(--ink-soft); margin-bottom: 22px; font-family: var(--font-body); font-weight: 400; max-width: 62ch; line-height: 1.55; }
 .hero-tag strong { color: var(--ink); font-weight: 600; }
-.hero-bio { font-size: clamp(16px, 1.85vw, 18px); color: var(--ink-soft); max-width: 62ch; line-height: 1.55; margin-bottom: 32px; }
+.hero-bio { font-size: clamp(16px, 1.85vw, 18px); color: var(--ink-soft); max-width: 62ch; line-height: 1.55; margin-bottom: 20px; }
 .hero-links { display: flex; flex-wrap: wrap; gap: 8px; }
 .hlink { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; min-height: 44px; white-space: nowrap; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 15px; color: var(--ink); transition: border-color .18s, background .18s, transform .12s; }
 .hlink:hover { border-color: color-mix(in oklab, var(--accent) 55%, var(--line)); background: color-mix(in oklab, var(--accent) 8%, var(--surface)); }
